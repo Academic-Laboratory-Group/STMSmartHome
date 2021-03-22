@@ -3,8 +3,9 @@
 # FPGASmartHome
 SmartHome realised on MAXimator FPGA with use of C++ language.
 
-## Dokumentacja
+## Documentation
 
-## Linki
+## Links
+* [how to build first time](BUILD.md "BUILD.md")
 * [hardware sources](Source/Hardware/ "hardware sources")
 * [software sources](Source/Software/ "software sources")
