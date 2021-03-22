@@ -1,32 +1,91 @@
-# Prerequisites
-*.d
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+# Created with help from https://www.toptal.com/developers/gitignore/api/alteraquartusii
 
-# Precompiled Headers
-*.gch
-*.pch
+### AlteraQuartusII ###
+##list taken with help from http://www.alterawiki.com/wiki/Version_Control (01.10.2015)
+##and book "Systemy embedded w FPGA" Piotr Rzeszut
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+######### Quartus II source files
 
-# Fortran module files
-*.mod
-*.smod
+# project files:
+### project_name.qpf Quartus II project file
+### project_name.qsf Quartus constraint file (lists the hardware constraints defined for a project, from the used chip and pinout to timing constraints)
+### project_name.qws Quartus Window Settings ? (the configuration of the Quartus gui for the project, may be omitted)
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
+# top level source files:
+### project_name.bdf Block diagram / Schematic file (top level schematic file, there may be many nested files)
+### project_name.vhd VHDL file (top level VHDL file)
+### project_name.v Verilog file (top level Verilog file)
 
-# Executables
-*.exe
-*.out
-*.app
+# component source files:
+### component_name.bsf Block Symbol file (component symbol file)
+### component_name.vhd VHDL file (top level VHDL file)
+### component_name.v Verilog file (top level Verilog file)
+
+# SOPC builder project source files (SOPC builder creates many VHDL or Verilog files, that you do not need to store)
+### sopc_project_name.ptf the list and configuration of components selected in the SOPC gui
+### sopc_project_name.bsf Block Symbol file (SOPC component symbol file, especially if you modified it)
+
+# Board Description (if you created your own board, the list is incomplete!)
+### board_name/class.ptf
+
+# software source files:
+### tbd
+
+######## Quartus II binary files
+
+# hardware binary files
+### project_name.sof SRAM Object File
+
+# software binary files
+# Ignore all files
+*
+# But..
+!/*.gitignore
+!/*.md
+
+## Quartus files
+!*.qpf
+!*.qsf
+!*.pof
+!*.qsys
+!*.sopcinfo
+!*.elf
+!*.hex
+!*.mif
+!*.qws
+!*.bdf
+!*.vhd
+!*.v
+!*.ptf
+!*.bsf
+!**/class.ptf
+!*.tbd
+!*.sof
+!*.qip
+!*.sip
+### tbd
+
+## C programming files
+!Source/Software/PongFPGA/**/*.c
+!Source/Software/PongFPGA/**/*.cpp
+!Source/Software/PongFPGA/**/*.h
+
+## Despite the above bsp file should be generated locally
+Source/Software/PongFPGA_bsp
+
+## Other stuff
+!*.tcl
+
+## Materials from book "Systemy embedded w FPGA" and assets formats
+!/Documents/*
+!*.mp4
+!*.jpg
+!*.xcf
+
+## Assets with graphics for Platform Designer components
+!/Assets/*
+
+## Check if foregoing are not in subdirectories
+!*/
+
