@@ -1,4 +1,4 @@
-![ReadMe](Documents/Assets/ReadMe.jpg)
+![ReadMe](docs/ReadMe.jpg)
 
 # FPGASmartHome
 SmartHome realised on MAXimator FPGA with use of C++ language.
