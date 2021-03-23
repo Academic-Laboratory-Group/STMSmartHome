@@ -1,7 +1,7 @@
 ![ReadMe](docs/ReadMe.jpg)
 
 # STMSmartHome
-SmartHome realised on STM with use of C++ language. 
+Smart Home system realised on STM with use of C++ language. 
 
 Product features:
 * 4" touch screen,
