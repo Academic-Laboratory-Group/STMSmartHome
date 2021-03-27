@@ -1,6 +1,6 @@
 ---
 name: "[HW/SW] Issue name"
-about: As in the topic.
+about:
 title: "[HW/SW] Issue title"
 labels: enhancement
 assignees: 
