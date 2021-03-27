@@ -1,6 +1,6 @@
 ---
 name: "[HW/SW] Issue name"
-about:
+about: STMSmartHome
 title: "[HW/SW] Issue title"
 labels: enhancement
 assignees: 
