@@ -1,9 +1,9 @@
 ---
 name: "[HW/SW] Issue name"
-about: Describe this issue template's purpose here.
+about: As in the topic.
 title: "[HW/SW] Issue title"
-labels: bug, enhancement, good first issue, help wanted, question
-assignees: LigasN
+labels: enhancement
+assignees: 
 
 ---
 
