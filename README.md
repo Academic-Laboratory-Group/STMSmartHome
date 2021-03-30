@@ -1,7 +1,7 @@
 ![ReadMe](docs/ReadMe.jpg)
 
-# FPGASmartHome
-SmartHome realised on MAXimator FPGA with use of C++ language. 
+# STMSmartHome
+Smart Home system realised on STM with use of C++ language. 
 
 Product features:
 * 4" touch screen,
