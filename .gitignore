@@ -1,91 +1,147 @@
 
-# Created with help from https://www.toptal.com/developers/gitignore/api/alteraquartusii
+# Created by https://www.toptal.com/developers/gitignore/api/keil,c++,eagle
+# Edit at https://www.toptal.com/developers/gitignore?templates=keil,c++,eagle
 
-### AlteraQuartusII ###
-##list taken with help from http://www.alterawiki.com/wiki/Version_Control (01.10.2015)
-##and book "Systemy embedded w FPGA" Piotr Rzeszut
+### C++ ###
+# Prerequisites
+*.d
 
-######### Quartus II source files
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
 
-# project files:
-### project_name.qpf Quartus II project file
-### project_name.qsf Quartus constraint file (lists the hardware constraints defined for a project, from the used chip and pinout to timing constraints)
-### project_name.qws Quartus Window Settings ? (the configuration of the Quartus gui for the project, may be omitted)
+# Precompiled Headers
+*.gch
+*.pch
 
-# top level source files:
-### project_name.bdf Block diagram / Schematic file (top level schematic file, there may be many nested files)
-### project_name.vhd VHDL file (top level VHDL file)
-### project_name.v Verilog file (top level Verilog file)
+# Linker files
+*.ilk
 
-# component source files:
-### component_name.bsf Block Symbol file (component symbol file)
-### component_name.vhd VHDL file (top level VHDL file)
-### component_name.v Verilog file (top level Verilog file)
+# Debugger Files
+*.pdb
 
-# SOPC builder project source files (SOPC builder creates many VHDL or Verilog files, that you do not need to store)
-### sopc_project_name.ptf the list and configuration of components selected in the SOPC gui
-### sopc_project_name.bsf Block Symbol file (SOPC component symbol file, especially if you modified it)
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
 
-# Board Description (if you created your own board, the list is incomplete!)
-### board_name/class.ptf
+# Fortran module files
+*.mod
+*.smod
 
-# software source files:
-### tbd
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
 
-######## Quartus II binary files
+# Executables
+*.exe
+*.out
+*.app
 
-# hardware binary files
-### project_name.sof SRAM Object File
+### Eagle ###
+# Ignore list for Eagle, a PCB layout tool
 
-# software binary files
-# Ignore all files
-*
-# But..
-!/*.gitignore
-!/*.md
+# Backup files
+*.s#?
+*.b#?
+*.l#?
+*.b$?
+*.s$?
+*.l$?
 
-## Quartus files
-!*.qpf
-!*.qsf
-!*.pof
-!*.qsys
-!*.sopcinfo
-!*.elf
-!*.hex
-!*.mif
-!*.qws
-!*.bdf
-!*.vhd
-!*.v
-!*.ptf
-!*.bsf
-!**/class.ptf
-!*.tbd
-!*.sof
-!*.qip
-!*.sip
-### tbd
+# Eagle project file
+# It contains a serial number and references to the file structure
+# on your computer.
+# comment the following line if you want to have your project file included.
+eagle.epf
 
-## C programming files
-!Source/Software/PongFPGA/**/*.c
-!Source/Software/PongFPGA/**/*.cpp
-!Source/Software/PongFPGA/**/*.h
+# Autorouter files
+*.pro
+*.job
 
-## Despite the above bsp file should be generated locally
-Source/Software/PongFPGA_bsp
+# CAM files
+*.$$$
+*.cmp
+*.ly2
+*.l15
+*.sol
+*.plc
+*.stc
+*.sts
+*.crc
+*.crs
 
-## Other stuff
-!*.tcl
+*.dri
+*.drl
+*.gpi
+*.pls
+*.ger
+*.xln
 
-## Materials from book "Systemy embedded w FPGA" and assets formats
-!/Documents/*
-!*.mp4
-!*.jpg
-!*.xcf
+*.drd
+*.drd.*
 
-## Assets with graphics for Platform Designer components
-!/Assets/*
+*.s#*
+*.b#*
 
-## Check if foregoing are not in subdirectories
-!*/
+*.info
 
+*.eps
+
+# file locks introduced since 7.x
+*.lck
+
+### Keil ###
+# something maybe need to add
+# *.bat  # generate batch file
+# output/project_name # uv project generate without file ext
+# *.SRC # generate source file
+# *.src
+
+# Prerequisites
+*.dep
+# Object files
+*.OBJ
+
+# Listing Files
+*.COD
+*.cod
+*.[Ii]
+*.LST
+*.lst
+*.MAP
+*.map
+*.[Mm]51
+*.[Mm]66
+*.SCR
+*.scr
+
+# LINK output
+*.ABS
+
+# Libraries
+*.LIB
+
+
+# uv output
+*.lnp
+*.build_log.htm
+*.HEX
+*.hex
+
+
+# Build Files
+*._IA
+*.__[Ii]
+*._[Ii][Ii]
+
+# project
+*.uvgui.*
+*.uvguix.*
+
+
+# End of https://www.toptal.com/developers/gitignore/api/keil,c++,eagle
