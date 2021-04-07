@@ -18,8 +18,15 @@
 **/
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "spi.h"
+#include "tim.h"
 #include "usart.h"
 #include "gpio.h"
+
+#include "DEV_Config.h"
+#include "LCD_Driver.h"
+#include "LCD_GUI.h"
+#include "LCD_Touch.h"
 
 /**
   * @brief System Clock Configuration
@@ -65,22 +72,30 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+	MX_SPI1_Init();
+  MX_TIM3_Init();
   MX_USART2_UART_Init();
 	
-	DiodeBlinker blinker(GPIOA, GPIO_PIN_5);
+	LCD_SCAN_DIR Lcd_ScanDir = SCAN_DIR_DFT;//SCAN_DIR_DFT = D2U_L2R	
+	LCD_Init(Lcd_ScanDir, 1000);
+	TP_Init(Lcd_ScanDir);
 
-  /* Infinite loop */
-	for( unsigned i = 1000u; i > 100u; i /= 2u )
-	{
-		for (unsigned j = 0u; j < 6u; ++j)
-		{
-			blinker.update();
-		}
-		blinker.setDelay(i);
-	}
+	TP_GetAdFac();
+//	DiodeBlinker blinker(GPIOA, GPIO_PIN_5);
+
+//  /* Infinite loop */
+//	for( unsigned i = 1000u; i > 100u; i /= 2u )
+//	{
+//		for (unsigned j = 0u; j < 6u; ++j)
+//		{
+//			blinker.update();
+//		}
+//		blinker.setDelay(i);
+//	}
   while (1)
   {
-		blinker.update();
+		TP_DrawBoard();
+		//blinker.update();
   }
 }
 
