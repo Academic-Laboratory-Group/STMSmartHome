@@ -4,17 +4,17 @@ GUIBuilder::GUIBuilder()
 {
 	m_gui = new GUI();
 }
-void GUIBuilder::addButton(ButtonShape shape, Color color)
+void GUIBuilder::addButton(ButtonShape shape, Color color, int x, int y)
 {
-	//m_gui->addButton(shape, color);
+	m_gui->addButton(shape, color, x, y);
 }
 
-void GUIBuilder::addTextBox(Color color)
+void GUIBuilder::addTextBox(char *text, Color color, int x, int y)
 {
-	
+	m_gui->addTextBox(text, color, x, y);
 }
 
-void GUIBuilder::addKeyboard(Color color)
+void GUIBuilder::addKeyboard(void)
 {
 	
 }

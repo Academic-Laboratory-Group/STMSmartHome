@@ -13,6 +13,7 @@ class Button
 		int Y;
 	
 	public:
+		Button(ButtonShape shape, Color color, int x, int y);
 		void render();
 		void processInput();
 };

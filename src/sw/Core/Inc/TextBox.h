@@ -1,20 +1,19 @@
 #ifndef _TEXTBOX_H_
 #define _TEXTBOX_H_
 
-#include <iostream>
 #include "Utils.h"
 #include <string>
 
 class TextBox
 {
 	private:
-		Color m_color;
-		//XYPair m_size;
-		//XYPair m_displayAddress;
-	
 		std::string m_text;
+		Color m_color;
+		int X;
+		int Y;
 	
 	public:
+		TextBox(std::string text, Color color, int x, int y);
 		void render();
 		void processInput();
 }	;

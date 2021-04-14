@@ -8,9 +8,8 @@ class GUIBuilder
 		GUI *m_gui;
 	public:
 		GUIBuilder();
-	  ~GUIBuilder();
-		void addButton( ButtonShape shape, Color color);
-		void addTextBox( Color color);
-		void addKeyboard( Color color);
+		void addButton(ButtonShape shape, Color color, int x, int y);
+		void addTextBox(char *text, Color color, int x, int y);
+		void addKeyboard(void);
 };
 

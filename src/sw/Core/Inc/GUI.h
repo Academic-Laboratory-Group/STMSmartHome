@@ -1,7 +1,6 @@
 #ifndef _GUI_H_
 #define _GUI_H_
 
-#include <iostream>
 #include <vector>
 #include "Button.h"
 #include "TextBox.h"
@@ -15,8 +14,8 @@ class GUI
 		Color m_backgroundColor;
 	
 	public:
-		void addButton();
-		void addTextBox();
+		void addButton(ButtonShape shape, Color color, int x, int y);
+		void addTextBox(char *text, Color color, int x, int y);
 		void render();
 		void processInput();
 };
