@@ -95,6 +95,7 @@ int main(void)
   while (1)
   {
 		TP_DrawBoard();
+		
 		//blinker.update();
   }
 }

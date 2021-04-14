@@ -189,7 +189,7 @@
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
-            <useUlib>1</useUlib>
+            <useUlib>0</useUlib>
             <EndSel>0</EndSel>
             <uLtcg>0</uLtcg>
             <nSecure>0</nSecure>
@@ -472,6 +472,41 @@
               <FileName>usart.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Core\Src\usart.c</FilePath>
+            </File>
+            <File>
+              <FileName>Prog.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Core\Src\Prog.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Button.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Core\Src\Button.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>GUI.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Core\Src\GUI.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>GUIBuilder.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Core\Src\GUIBuilder.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>State.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Core\Src\State.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>StateManager.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Core\Src\StateManager.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>TextBox.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Core\Src\TextBox.cpp</FilePath>
             </File>
           </Files>
         </Group>
