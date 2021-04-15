@@ -15,9 +15,10 @@ class GUI
 	
 	public:
 		void addButton(ButtonShape shape, Color color, int x, int y);
-		void addTextBox(char *text, Color color, int x, int y);
+		void addTextBox(std::string text, Color color, int x, int y);
 		void render();
 		void processInput();
 };
 	
 #endif
+

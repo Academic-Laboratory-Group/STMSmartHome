@@ -9,7 +9,7 @@ class GUIBuilder
 	public:
 		GUIBuilder();
 		void addButton(ButtonShape shape, Color color, int x, int y);
-		void addTextBox(char *text, Color color, int x, int y);
+		void addTextBox(std::string text, Color color, int x, int y);
 		void addKeyboard(void);
 };
 

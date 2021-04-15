@@ -4,7 +4,7 @@ void GUI::addButton(ButtonShape shape, Color color, int x, int y)
 	m_buttons.push_back(Button(shape, color, x, y));
 }
 
-void GUI::addTextBox(char *text, Color color, int x, int y)
+void GUI::addTextBox(std::string text, Color color, int x, int y)
 {
 	m_textboxes.push_back(TextBox(text, color, x ,y));
 }
