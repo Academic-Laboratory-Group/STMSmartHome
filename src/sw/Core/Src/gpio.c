@@ -81,6 +81,32 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(TP_IRQ_GPIO_Port, &GPIO_InitStruct);
 
+	///////////////////SENSORS////////////
+	GPIO_InitStruct.Pin = GPIO_PIN_8 | GPIO_PIN_6 | GPIO_PIN_5;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+}
+
+void ONE_WIRE_INPUT(GPIO_TypeDef* m_GPIOx, uint16_t m_GPIO_pin)
+{
+	GPIO_InitTypeDef GPIO_InitStruct = {0};
+
+  GPIO_InitStruct.Pin = m_GPIO_pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(m_GPIOx, &GPIO_InitStruct);
+}
+
+void ONE_WIRE_OUTPUT(GPIO_TypeDef* m_GPIOx, uint16_t m_GPIO_pin)
+{
+	GPIO_InitTypeDef GPIO_InitStruct = {0};
+
+  GPIO_InitStruct.Pin = m_GPIO_pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(m_GPIOx, &GPIO_InitStruct);
 }
 
 /* USER CODE BEGIN 2 */

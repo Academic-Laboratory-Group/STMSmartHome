@@ -2,6 +2,7 @@
 #define _UTILS_H_
 	
 #include <utility>
+#include "gpio.h"
 
 using namespace std;
 
@@ -18,7 +19,7 @@ enum ProgState
 enum ButtonShape
 {
 	Square,
-	Circle,
+	Circle
 };
 	
 enum Color
@@ -36,9 +37,12 @@ enum Color
 	YELLOW = 0xFFE0,
 	BROWN = 0XBC40,
 	BRRED = 0XFC07,
-	GRAY = 0X8430,
+	GRAY = 0X8430
 };
 
-
+enum Sensor
+{
+	Temperature = GPIO_PIN_8
+};
 
 #endif

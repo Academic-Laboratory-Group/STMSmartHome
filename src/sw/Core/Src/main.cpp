@@ -74,6 +74,8 @@ int main(void)
   MX_GPIO_Init();
 	MX_SPI1_Init();
   MX_TIM3_Init();
+	MX_TIM13_Init();
+  MX_TIM14_Init();
   MX_USART2_UART_Init();
 	
 	LCD_SCAN_DIR Lcd_ScanDir = SCAN_DIR_DFT;//SCAN_DIR_DFT = D2U_L2R	

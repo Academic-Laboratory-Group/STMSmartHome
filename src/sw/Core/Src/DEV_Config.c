@@ -48,6 +48,7 @@ note:
 uint8_t SPI4W_Write_Byte(uint8_t value)                                    
 {   
 	HAL_SPI_Transmit(&hspi1, &value, 1,1000);
+	return 0;
 }
 
 uint8_t SPI4W_Read_Byte(uint8_t value)                                    
