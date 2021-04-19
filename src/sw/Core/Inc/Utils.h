@@ -39,6 +39,11 @@ enum Color
 	GRAY = 0X8430,
 };
 
-
+enum ChooseSensor
+{
+	Sensor1,
+	Sensor2,
+	Sensor3,
+};
 
 #endif
