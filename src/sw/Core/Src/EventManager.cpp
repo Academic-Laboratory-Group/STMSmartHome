@@ -1,19 +1,19 @@
 #include "EventManager.h"
+#include <algorithm>
 
-void EventManager::subscribe(TemperatureSensor observers)
+void EventManager::subscribe(SensorListener* listener)
 {
-	m_subscribers.push_back(observers);
+	listeners.push_back(listener);
 }
-void EventManager::unsubscribe(TemperatureSensor observers)
+void EventManager::unsubscribe(SensorListener* listener)
 {
-
+	listeners.erase(std::remove(listeners.begin(), listeners.end(), listener), listeners.end());
 }
 
-void EventManager::notify()
+void EventManager::notify(Sensor sensor, int value)
 {
-	temperatures.clear();
-	for (int i = 0; i < m_subscribers.size(); i++)
+	for (int i = 0; i < listeners.size(); ++i)
 	{
-		temperatures.push_back(m_subscribers[i].update());
+		listeners[i]->notify(sensor, value);
 	}
 }

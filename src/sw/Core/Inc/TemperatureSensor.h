@@ -4,16 +4,19 @@
 #include "gpio.h"
 #include "SensorObserver.h"
 #include "Utils.h"
+#include "EventManager.h"
 
 class TemperatureSensor
 {
 	private:
+		EventManager* m_eventManager;
 		GPIO_TypeDef* m_GPIOx; 
-		uint16_t m_GPIO_pin;
+		Sensor m_sensor;
 			
 	public:
-		TemperatureSensor(ChooseSensor sensor);
-		int update();
+		TemperatureSensor(EventManager* eventManager, Sensor sensor);
+		void update();
+		int getSensorValue();
 
 };
 	

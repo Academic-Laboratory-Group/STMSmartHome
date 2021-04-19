@@ -44,7 +44,7 @@ uint8_t DS18B20_Init(GPIO_TypeDef* m_GPIOx, uint16_t m_GPIO_pin)
 void DS18B20_Write(uint8_t data, GPIO_TypeDef* m_GPIOx, uint16_t m_GPIO_pin)
 {
   ONE_WIRE_OUTPUT(m_GPIOx, m_GPIO_pin);
-  for (int i = 0; i < 8; i++)
+  for (unsigned i = 0; i < 8; ++i)
   {
     ONE_WIRE_RESET(m_GPIOx, m_GPIO_pin);
     Delay_us(10);
@@ -62,7 +62,7 @@ uint8_t DS18B20_Read(GPIO_TypeDef* m_GPIOx, uint16_t m_GPIO_pin)
   ONE_WIRE_SET(m_GPIOx, m_GPIO_pin);
   Delay_us(2);
   uint8_t data = 0;
-  for (int i = 0; i < 8; i++)
+  for (unsigned i = 0; i < 8; ++i)
   {
     ONE_WIRE_RESET(m_GPIOx, m_GPIO_pin);
     Delay_us(1);

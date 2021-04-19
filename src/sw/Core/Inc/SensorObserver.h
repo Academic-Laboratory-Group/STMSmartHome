@@ -1,10 +1,12 @@
 #ifndef _SENSOROBSERVER_H_
 #define _SENSOROBSERVER_H_
 
-class SensorObserver
+#include "Utils.h"
+
+class SensorListener
 {
 	public:
-		virtual int update() = 0;
+		virtual void notify(Sensor sensor, int value) = 0;
 };
 	
 #endif

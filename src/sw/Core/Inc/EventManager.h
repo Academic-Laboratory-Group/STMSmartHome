@@ -1,20 +1,19 @@
 #ifndef _EVENTMANAGER_H_
 #define _EVENTMANAGER_H_
 
-#include "TemperatureSensor.h"
-#include "Utils.h"
+#include "SensorObserver.h"
 #include <vector>
+#include "Utils.h"
 
 class EventManager
 {
 	private:
-		std::vector <TemperatureSensor> m_subscribers;
+		std::vector <SensorListener*> listeners;
 	
 	public:
-		std::vector <int> temperatures;
-		void subscribe(TemperatureSensor observers);
-		void unsubscribe(TemperatureSensor observers);
-		void notify();
+		void subscribe(SensorListener* listener);
+		void unsubscribe(SensorListener* listener);
+		void notify(Sensor sensor, int value);
 
 };
 	
