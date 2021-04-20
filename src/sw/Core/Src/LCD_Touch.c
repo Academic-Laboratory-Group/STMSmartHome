@@ -206,6 +206,11 @@ static uint8_t TP_Scan(uint8_t chCoordType)
 
     return (sTP_DEV.chStatus & TP_PRESS_DOWN);
 }
+void TP_Scan0()
+{
+	TP_Scan(0);
+}
+
 
 /*******************************************************************************
 function:
@@ -286,7 +291,7 @@ void TP_Adjust(void)
     uint16_t XYpoint_Arr[4][2];
     uint32_t Dx, Dy;
     uint16_t Sqrt1, Sqrt2;
-    float Dsqrt = 0.0;
+    float Dsqrt = 0.0f;
 
     LCD_Clear(LCD_BACKGROUND);
     GUI_DisString_EN(0, 60, "Please use the stylus click the cross"\
@@ -352,7 +357,7 @@ void TP_Adjust(void)
                 Sqrt2 = sqrt(Dx + Dy);
 
                 Dsqrt = (float)Sqrt1 / Sqrt2;
-                if(Dsqrt < 0.95 || Dsqrt > 1.05 || Sqrt1 == 0 || Sqrt2 == 0) {
+                if(Dsqrt < 0.95f || Dsqrt > 1.05f || Sqrt1 == 0.f || Sqrt2 == 0.f) {
 //                    DEBUG("Adjust X direction \r\n");
                     cnt = 0;
                     TP_ShowInfo(XYpoint_Arr[0][0], XYpoint_Arr[0][1],
@@ -385,7 +390,7 @@ void TP_Adjust(void)
                 Sqrt2 = sqrt(Dx + Dy);//
 
                 Dsqrt = (float)Sqrt1 / Sqrt2;
-                if(Dsqrt < 0.95 || Dsqrt > 1.05) {
+                if(Dsqrt < 0.95f || Dsqrt > 1.05f) {
  //                   DEBUG("Adjust Y direction \r\n");
                     cnt = 0;
                     TP_ShowInfo(XYpoint_Arr[0][0], XYpoint_Arr[0][1],
@@ -418,7 +423,7 @@ void TP_Adjust(void)
                 Sqrt2 = sqrt(Dx + Dy);//
 
                 Dsqrt = (float)Sqrt1 / Sqrt2;
-                if(Dsqrt < 0.95 || Dsqrt > 1.05) {
+                if(Dsqrt < 0.95f || Dsqrt > 1.05f) {
  //                   DEBUG("Adjust diagonal direction\r\n");
                     cnt = 0;
                     TP_ShowInfo(XYpoint_Arr[0][0], XYpoint_Arr[0][1],

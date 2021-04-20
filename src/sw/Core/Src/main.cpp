@@ -16,7 +16,12 @@
   *
   ******************************************************************************
 **/
+
+#define NULL ((void *)0)
+	
 /* Includes ------------------------------------------------------------------*/
+#include "Prog.h"
+
 #include "main.h"
 #include "spi.h"
 #include "tim.h"
@@ -34,6 +39,14 @@
   */
 void SystemClock_Config(void);
 
+/**
+  * @brief Prog interuption handler
+  * @retval None
+  */
+void ProgInteruptionHandler(void)
+{
+		Prog::getInstance()->processInput();
+}
 
 /**
   * @brief  The application entry point.
@@ -62,8 +75,12 @@ int main(void)
 
 	TP_GetAdFac();
 
-  while (1)
-  {
+	while(1)
+	{
+		TP_DrawBoard();
+		//It is one after another temporarily
+		//Prog::getInstance()->update(1);
+		//Prog::getInstance()->render();
   }
 }
 

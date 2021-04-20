@@ -1,5 +1,5 @@
-#ifndef _SENSOROBSERVER_H_
-#define _SENSOROBSERVER_H_
+#ifndef _SENSOR_LISTENER_H_
+#define _SENSOR_LISTENER_H_
 
 #include "Utils.h"
 
