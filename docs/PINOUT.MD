@@ -5,7 +5,7 @@
                                                    GND  ------------------->  GND
 To correct work temperature sensor should be connected also resistor pull up between pin VDD and DQ.
 
-Scheamtic to correct connection:
+Schematic to correct connection:
 
 ![connect](NUCLEO_SENSOR.jpg)
 
