@@ -1,3 +1,4 @@
+![connect](docs/NUCLEO_SENSOR.jpg)
 # PINOUT for digital temperature sensor DS18B20
                                                 NUCLEO PIN                SENSOR PIN
                                                    PC8  ------------------->  DQ
