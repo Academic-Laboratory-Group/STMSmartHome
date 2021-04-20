@@ -7,7 +7,7 @@ To correct work temperature sensor should be connected also resistor pull up bet
 
 Scheamtic to correct connection:
 
-![connect](docs/NUCLEO_SENSOR.png)
+![connect](docs/NUCLEO_SENSOR.jpg)
 
              
         
