@@ -3,9 +3,9 @@
                                                    PC8  ------------------->  DQ
                                                    +5V  ------------------->  VDD
                                                    GND  ------------------->  GND
-To correct work temperature sensor should be connected also resistor pull up between pin VDD and DQ.
+Pull up resistor should be connected between pin VDD and DQ to assure correct work of temperature sensor.
 
-Schematic to correct connection:
+Schematic of correct connections:
 
 ![connect](NUCLEO_SENSOR.jpg)
 
