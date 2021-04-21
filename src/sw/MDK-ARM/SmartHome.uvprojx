@@ -313,7 +313,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>1</Optim>
+            <Optim>2</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -537,11 +537,6 @@
               <FileName>MainMenuState.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\Core\Src\MainMenuState.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>MainMenuState.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Core\Inc\MainMenuState.h</FilePath>
             </File>
           </Files>
         </Group>

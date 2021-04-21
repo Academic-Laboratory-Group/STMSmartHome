@@ -1,12 +1,12 @@
 #include "GUI.h"
 void GUI::addButton(ButtonShape shape, Color color, int x, int y)
 {
-	m_buttons.push_back(Button(shape, color, x, y));
+	m_buttons.assign(1, Button(shape, color, x, y));
 }
 
 void GUI::addTextBox(std::string text, Color color, int x, int y)
 {
-	m_textboxes.push_back(TextBox(text, color, x ,y));
+	m_textboxes.assign(1, TextBox(text, color, x ,y));
 }
 
 void GUI::render()

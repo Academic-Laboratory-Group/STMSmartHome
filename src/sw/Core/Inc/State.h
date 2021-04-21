@@ -10,10 +10,11 @@
 class State : public Updatable, public Renderable
 {	
 	protected:
-		StateManager m_stateManager;
+		StateManager* m_stateManager;
 		GUI* m_gui;
 		GUIBuilder m_guiBuilder;
 	public:
+		State(StateManager* stateManager) : m_stateManager(stateManager){};
 		virtual ~State(){};
 		virtual void processInput() = 0;
 };

@@ -6,7 +6,7 @@
 class MainMenuState: public State
 {
 	public:
-		MainMenuState();
+		MainMenuState(StateManager* stateManager);
 		virtual ~MainMenuState();
 		virtual void update(float deltaTime);
 		virtual void render();

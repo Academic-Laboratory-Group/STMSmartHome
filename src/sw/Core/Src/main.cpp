@@ -33,6 +33,8 @@
 #include "LCD_GUI.h"
 #include "LCD_Touch.h"
 
+static Prog* prog;
+
 /**
   * @brief System Clock Configuration
   * @retval None
@@ -45,7 +47,7 @@ void SystemClock_Config(void);
   */
 void ProgInteruptionHandler(void)
 {
-		Prog::getInstance()->processInput();
+		prog->processInput();
 }
 
 /**
@@ -74,14 +76,18 @@ int main(void)
 	TP_Init(Lcd_ScanDir);
 
 	TP_GetAdFac();
-
+	
+	// Program's engine initialisation
+	prog = new Prog();
+	
 	while(1)
 	{
-		TP_DrawBoard();
 		//It is one after another temporarily
-		//Prog::getInstance()->update(1);
-		//Prog::getInstance()->render();
+		prog->update(1);
+		prog->render();
   }
+	
+	//delete prog;
 }
 
 /**

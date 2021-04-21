@@ -7,21 +7,14 @@
 #include "Updatable.h"
 #include "Renderable.h"
 
-class Prog : public Updatable
+class Prog : public Updatable, public Renderable
 {
 	private:
-		Prog();
-		~Prog();
-    Prog(Prog &other){};
-    void operator=(const Prog &){};
-	
-	
-		// Singleton instance
-		static Prog* m_instance;
 		StateManager m_stateManager;
 	
 	public:    
-		static Prog* getInstance();
+		Prog();
+		~Prog(){};
 		virtual void update(float deltaTime);
 		virtual void render();
 		void processInput();

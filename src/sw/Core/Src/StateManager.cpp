@@ -4,7 +4,7 @@
 
 StateManager::StateManager()
 {
-	m_currentState = new MainMenuState();
+	m_currentState = new MainMenuState(this);
 }
 
 StateManager::~StateManager()
