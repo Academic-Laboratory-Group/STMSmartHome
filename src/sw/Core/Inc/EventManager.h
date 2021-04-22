@@ -1,7 +1,7 @@
 #ifndef _EVENTMANAGER_H_
 #define _EVENTMANAGER_H_
 
-#include "SensorObserver.h"
+#include "SensorListener.h"
 #include <vector>
 #include "Utils.h"
 
@@ -14,7 +14,6 @@ class EventManager
 		void subscribe(SensorListener* listener);
 		void unsubscribe(SensorListener* listener);
 		void notify(Sensor sensor, int value);
-
 };
 	
 #endif

@@ -61,6 +61,8 @@ void TP_Adjust(void);
 void TP_Dialog(void);
 void TP_DrawBoard(void);
 void TP_Temp(void);
+void TP_Scan0(void);
+
 void TP_DrawRectangle(POINT Xstart, POINT Ystart, POINT Xend, POINT Yend,
                        COLOR Color, DRAW_FILL Filled, DOT_PIXEL Dot_Pixel);
 void TP_Init( LCD_SCAN_DIR Lcd_ScanDir );

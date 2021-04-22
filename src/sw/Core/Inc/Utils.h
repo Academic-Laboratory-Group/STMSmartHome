@@ -4,8 +4,6 @@
 #include <utility>
 #include "gpio.h"
 
-using namespace std;
-
 enum ProcessInputType
 {
 	

@@ -1,26 +1,20 @@
 #include "Prog.h"
 
-Prog::Prog()
+Prog::Prog() : m_stateManager()
 {
-	
-}
-
-Prog::~Prog()
-{
-	
 }
 
 void Prog::update(float deltaTime)
 {
-	
+	m_stateManager.update(deltaTime);
 }
 
 void Prog::render()
 {
-	
+	m_stateManager.render();
 }
 
 void Prog::processInput()
 {
-	
+	m_stateManager.processInput();
 }

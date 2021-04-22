@@ -16,7 +16,12 @@
   *
   ******************************************************************************
 **/
+
+#define NULL ((void *)0)
+	
 /* Includes ------------------------------------------------------------------*/
+#include "Prog.h"
+
 #include "main.h"
 #include "spi.h"
 #include "tim.h"
@@ -28,34 +33,22 @@
 #include "LCD_GUI.h"
 #include "LCD_Touch.h"
 
+static Prog* prog;
+
 /**
   * @brief System Clock Configuration
   * @retval None
   */
 void SystemClock_Config(void);
 
-class DiodeBlinker
+/**
+  * @brief Prog interuption handler
+  * @retval None
+  */
+void ProgInteruptionHandler(void)
 {
-private:
-	GPIO_TypeDef* m_GPIOx; 
-	uint16_t m_GPIO_pin;
-	unsigned m_delay;
-	
-public:
-			
-	DiodeBlinker(GPIO_TypeDef* GPIOx, uint16_t GPIO_pin ) : m_GPIOx(GPIOx), m_GPIO_pin(GPIO_pin), m_delay(1000u){}
-	
-	void setDelay(unsigned delay)
-	{
-		m_delay = delay;
-	}
-	
-	void update()
-	{
-		HAL_GPIO_TogglePin(m_GPIOx, m_GPIO_pin);
-		HAL_Delay(m_delay);
-	}
-};
+		prog->processInput();
+}
 
 /**
   * @brief  The application entry point.
@@ -83,23 +76,18 @@ int main(void)
 	TP_Init(Lcd_ScanDir);
 
 	TP_GetAdFac();
-//	DiodeBlinker blinker(GPIOA, GPIO_PIN_5);
-
-//  /* Infinite loop */
-//	for( unsigned i = 1000u; i > 100u; i /= 2u )
-//	{
-//		for (unsigned j = 0u; j < 6u; ++j)
-//		{
-//			blinker.update();
-//		}
-//		blinker.setDelay(i);
-//	}
-  while (1)
-  {
-		TP_DrawBoard();
-		
-		//blinker.update();
+	
+	// Program's engine initialisation
+	prog = new Prog();
+	
+	while(1)
+	{
+		//It is one after another temporarily
+		prog->update(1);
+		prog->render();
   }
+	
+	//delete prog;
 }
 
 /**

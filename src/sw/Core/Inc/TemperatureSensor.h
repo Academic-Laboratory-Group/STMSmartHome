@@ -2,7 +2,7 @@
 #define _TEMPERATURESENSOR_H_
 
 #include "gpio.h"
-#include "SensorObserver.h"
+#include "SensorListener.h"
 #include "Utils.h"
 #include "EventManager.h"
 
