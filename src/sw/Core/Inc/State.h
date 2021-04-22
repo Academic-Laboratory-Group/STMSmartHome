@@ -14,7 +14,7 @@ class State : public Updatable, public Renderable
 		GUI* m_gui;
 		GUIBuilder m_guiBuilder;
 	public:
-		State(StateManager* stateManager) : m_stateManager(stateManager){};
+		State(StateManager* stateManager) : m_stateManager(stateManager){}
 		virtual ~State(){};
 		virtual void processInput() = 0;
 };

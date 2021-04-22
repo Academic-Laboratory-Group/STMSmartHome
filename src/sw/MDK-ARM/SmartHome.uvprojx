@@ -10,8 +10,9 @@
       <TargetName>SmartHome</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060960::V5.06 update 7 (build 960)::.\ARMCC</pCCUsed>
-      <uAC6>0</uAC6>
+      <pArmCC>6150000::V6.15::ARMCLANG</pArmCC>
+      <pCCUsed>6150000::V6.15::ARMCLANG</pCCUsed>
+      <uAC6>1</uAC6>
       <TargetOption>
         <TargetCommonOption>
           <Device>STM32F446RETx</Device>
@@ -322,7 +323,7 @@
             <PlainCh>0</PlainCh>
             <Ropi>0</Ropi>
             <Rwpi>0</Rwpi>
-            <wLevel>2</wLevel>
+            <wLevel>1</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>1</uC99>
@@ -336,7 +337,7 @@
             <v6WtE>0</v6WtE>
             <v6Rtti>0</v6Rtti>
             <VariousControls>
-              <MiscControls></MiscControls>
+              <MiscControls>-xc++ -std=c++11</MiscControls>
               <Define>USE_HAL_DRIVER,STM32F446xx</Define>
               <Undefine></Undefine>
               <IncludePath>../Core/Inc;  ../Drivers/STM32F4xx_HAL_Driver/Inc;  ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;  ../Drivers/CMSIS/Device/ST/STM32F4xx/Include;  ../Drivers/CMSIS/Include</IncludePath>
