@@ -17,4 +17,3 @@ Product features:
 * [how to build first time](BUILDING.md "BUILD.md")
 * [software project](/src/sw/MDK-ARM/ "software_project")
 * [software sources](/src/sw/Core/ "software_sources")
-* 
