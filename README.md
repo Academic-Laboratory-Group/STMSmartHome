@@ -14,6 +14,7 @@ Product features:
 ## Documentation
 
 ## Links
-* [how to build first time](BUILD.md "BUILD.md")
-* [hardware sources](Source/Hardware/ "hardware sources")
-* [software sources](Source/Software/ "software sources")
+* [how to build first time](BUILDING.md "BUILD.md")
+* [software project](/src/sw/MDK-ARM/ "software_project")
+* [software sources](/src/sw/Core/ "software_sources")
+* 
