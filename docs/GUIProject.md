@@ -1,4 +1,4 @@
-# GUI design. 
+# GUI design
 ## Main menu
 ![MainMenu](assets/GUIVisualization/MainMenu.png)
 
