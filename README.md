@@ -13,8 +13,8 @@ Product features:
 
 ## Documentation
 ### Instructions
-* [how to build first time](BUILDING.md "BUILD.md")
-* [how to connect devices to stm (pinout)](PINOUT.md "PINOUT.md")
+* [how to build first time](docs/BUILDING.md "BUILD.md")
+* [how to connect devices to stm (pinout)](docs/PINOUT.md "PINOUT.md")
 
 ### Block diagram
 ![BlockDiagram](docs/BlockDiagram.png)
