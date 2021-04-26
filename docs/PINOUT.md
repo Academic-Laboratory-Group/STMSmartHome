@@ -7,7 +7,7 @@ Pull up resistor should be connected between pin VDD and DQ to assure correct wo
 
 Schematic of correct connections:
 
-![connect](NUCLEO_SENSOR.jpg)
+![NucleoSensor](assets/NucleoSensor.jpg)
 
              
         
