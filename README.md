@@ -17,7 +17,7 @@ Product features:
 * [how to connect devices to stm (pinout)](docs/PINOUT.md "PINOUT.md")
 
 ### Block diagram
-![BlockDiagram](docs/BlockDiagram.png)
+![BlockDiagram](docs/assets/BlockDiagram.png)
 
 ### UML
 ![UML](docs/assets/UML.png)
