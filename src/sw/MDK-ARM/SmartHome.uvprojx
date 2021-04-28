@@ -539,6 +539,16 @@
               <FileType>8</FileType>
               <FilePath>..\Core\Src\MainMenuState.cpp</FilePath>
             </File>
+            <File>
+              <FileName>Utils.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Core\Inc\Utils.h</FilePath>
+            </File>
+            <File>
+              <FileName>State.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Core\Inc\State.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
