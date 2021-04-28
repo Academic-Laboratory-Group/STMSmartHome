@@ -84,7 +84,8 @@ int main(void)
 	{
 		//It is one after another temporarily
 		prog->update(1);
-		prog->render();
+		prog->render(); 
+
   }
 	
 	//delete prog;

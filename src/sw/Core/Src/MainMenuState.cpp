@@ -4,8 +4,14 @@
 MainMenuState::MainMenuState(StateManager* stateManager) : State(stateManager)
 {
 	// make new
-	m_guiBuilder.addButton(Square, BLUE, 100, 50);
-	
+	m_guiBuilder.addTextBox("SmartHome App", BLACK, 240, 40, 24);
+	m_guiBuilder.addTextBox("FirstRoom", BLACK, 180, 140, 20);
+	//m_guiBuilder.addTextBox("temperature", BLACK, 180, 140, 20);
+	m_guiBuilder.addTextBox("23*C", BLACK, 370, 160, 20);
+	m_guiBuilder.addTextBox("SecondRoom", BLACK, 240, 120, 20);
+	//m_guiBuilder.addTextBox("23*C", BLACK, 380, 120, 20);
+	m_guiBuilder.addButton(Square, RED, 240, 247, 60, 220);
+	m_guiBuilder.addTextBox("Adjust settings", BLACK, 240, 247, 20);
 	// set pointer to new GUI
 	m_gui = m_guiBuilder.getResult();
 }

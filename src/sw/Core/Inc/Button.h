@@ -11,9 +11,11 @@ class Button
 		Color m_color;
 		int X;
 		int Y;
+		int High;
+		int Width;
 	
 	public:
-		Button(ButtonShape shape, Color color, int x, int y);
+		Button(ButtonShape shape, Color color, int x, int y, int high, int width);
 		void render();
 		void processInput();
 };

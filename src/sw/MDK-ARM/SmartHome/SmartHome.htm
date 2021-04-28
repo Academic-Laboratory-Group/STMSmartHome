@@ -3,7 +3,7 @@
 <title>Static Call Graph - [SmartHome\SmartHome.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image SmartHome\SmartHome.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6150002: Last Updated: Wed Apr 28 14:20:35 2021
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6150002: Last Updated: Wed Apr 28 21:59:05 2021
 <BR><P>
 <H3>Maximum Stack Usage =       1488 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1107,7 +1107,6 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 </UL>
 <BR>[Called By]<UL><LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Driver_Delay_ms
-<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[f5]"></a>HAL_GPIO_Init</STRONG> (Thumb, 406 bytes, Stack size 48 bytes, stm32f4xx_hal_gpio.o(.text.HAL_GPIO_Init))
@@ -1132,8 +1131,8 @@ Global Symbols
 <P><STRONG><a name="[df]"></a>HAL_GetTick</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, stm32f4xx_hal.o(.text.HAL_GetTick))
 <BR><BR>[Called By]<UL><LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_TransmitReceive
 <LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_Transmit
-<LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_ClockConfig
 <LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
+<LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_ClockConfig
 <LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_OscConfig
 <LI><a href="#[145]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_WaitFlagStateUntilTimeout(__SPI_HandleTypeDef*, unsigned int, FlagStatus, unsigned int, unsigned int)
 </UL>
@@ -3197,7 +3196,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[18d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;libunwind::UnwindCursor&lang;libunwind::LocalAddressSpace, libunwind::Registers_arm&rang;::stepWithEHABI()
 </UL>
 
-<P><STRONG><a name="[b3]"></a>main</STRONG> (Thumb, 90 bytes, Stack size 0 bytes, main.o(.text.main))
+<P><STRONG><a name="[b3]"></a>main</STRONG> (Thumb, 98 bytes, Stack size 0 bytes, main.o(.text.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 1488 + Unknown Stack Size
 <LI>Call Chain = main &rArr; Prog::Prog() &rArr; StateManager::StateManager() &rArr; MainMenuState::MainMenuState(StateManager*) &rArr; GUIBuilder::addTextBox(std::__1::basic_string&lang;char, std::__1::char_traits&lang;char&rang;, std::__1::allocator&lang;char&rang; &rang;, Color, int, int, int) &rArr; GUI::addTextBox(std::__1::basic_string&lang;char, std::__1::char_traits&lang;char&rang;, std::__1::allocator&lang;char&rang; &rang;, Color, int, int, int) &rArr; TextBox::TextBox(std::__1::basic_string&lang;char, std::__1::char_traits&lang;char&rang;, std::__1::allocator&lang;char&rang; &rang;, Color, int, int, int) &rArr; std::__1::basic_string&lang;char, std::__1::char_traits&lang;char&rang;, std::__1::allocator&lang;char&rang; &rang;::operator=(std::__1::basic_string&lang;char, std::__1::char_traits&lang;char&rang;, std::__1::allocator&lang;char&rang; &rang; const&) &rArr; std::__1::basic_string&lang;char, std::__1::char_traits&lang;char&rang;, std::__1::allocator&lang;char&rang; &rang;& std::__1::basic_string&lang;char, std::__1::char_traits&lang;char&rang;, std::__1::allocator&lang;char&rang; &rang;::__assign_no_alias&lang;true&rang;(char const*, unsigned int) &rArr; std::__1::basic_string&lang;char, std::__1::char_traits&lang;char&rang;, std::__1::allocator&lang;char&rang; &rang;::__grow_by_and_replace(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, char const*) &rArr; std::__1::__basic_string_common&lang;true&rang;::__throw_length_error() const &rArr; __cxa_free_exception &rArr; __cxa_call_unexpected &rArr;  __cxa_begin_catch (Cycle)
 </UL>
@@ -3214,7 +3213,6 @@ Global Symbols
 <LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
 <LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Init
 <LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Init
-<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
 </UL>
 <BR>[Called By]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
