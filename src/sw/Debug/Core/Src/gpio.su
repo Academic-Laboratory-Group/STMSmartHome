@@ -1,3 +1,0 @@
-gpio.c:41:6:MX_GPIO_Init	48	static
-gpio.c:92:6:ONE_WIRE_INPUT	40	static
-gpio.c:102:6:ONE_WIRE_OUTPUT	40	static

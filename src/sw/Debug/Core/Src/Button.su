@@ -1,3 +1,0 @@
-Button.cpp:4:1:Button::Button(ButtonShape, Color, int, int, int, int)	24	static
-Button.cpp:13:6:void Button::render()	40	static
-Button.cpp:21:6:void Button::processInput()	16	static

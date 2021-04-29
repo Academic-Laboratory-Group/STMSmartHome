@@ -145,16 +145,18 @@ eagle.epf
 
 ### Eclipse ###
 .metadata
-bin/
-tmp/
+*/bin/
+*/Debug/
+*/tmp/
 *.tmp
 *.bak
 *.swp
 *~.nib
 local.properties
-.settings/
+*.settings/
 .loadpath
 .recommenders
+*.mxproject
 
 # External tool builders
 .externalToolBuilders/

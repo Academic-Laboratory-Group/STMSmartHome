@@ -1,6 +1,0 @@
-gthr-default.h:229:1:int __gthread_key_delete(__gthread_key_t)	16	static
-StateManager.cpp:9:1:StateManager::StateManager()	24	static
-StateManager.cpp:14:1:StateManager::~StateManager()	16	static
-StateManager.cpp:19:6:virtual void StateManager::update(float)	16	static
-StateManager.cpp:24:6:virtual void StateManager::render()	16	static
-StateManager.cpp:29:6:void StateManager::processInput()	16	static
