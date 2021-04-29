@@ -1,0 +1,14 @@
+LCD_Touch.c:32:17:TP_Read_ADC	24	static
+LCD_Touch.c:67:17:TP_Read_ADC_Average	40	static
+LCD_Touch.c:107:13:TP_Read_ADC_XY	16	static
+LCD_Touch.c:122:13:TP_Read_TwiceADC	24	static
+LCD_Touch.c:154:16:TP_Scan	16	static
+LCD_Touch.c:209:6:TP_Scan0	8	static
+LCD_Touch.c:223:13:TP_DrawCross	40	static
+LCD_Touch.c:244:13:TP_ShowInfo	48	static
+LCD_Touch.c:288:6:TP_Adjust	88	static
+LCD_Touch.c:552:6:TP_GetAdFac	16	static
+LCD_Touch.c:586:6:TP_Dialog	24	static
+LCD_Touch.c:632:6:TP_DrawBoard	16	static
+LCD_Touch.c:722:6:TP_Temp	8	static
+LCD_Touch.c:751:6:TP_Init	16	static

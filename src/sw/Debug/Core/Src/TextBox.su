@@ -1,0 +1,4 @@
+gthr-default.h:229:1:int __gthread_key_delete(__gthread_key_t)	16	static
+TextBox.cpp:4:1:TextBox::TextBox(std::string, Color, int, int, int)	24	static
+TextBox.cpp:14:6:void TextBox::render()	32	static
+TextBox.cpp:24:6:void TextBox::processInput()	16	static

@@ -79,12 +79,12 @@ int main(void)
 	
 	// Program's engine initialisation
 	prog = new Prog();
-	
+	prog->render();
 	while(1)
 	{
 		//It is one after another temporarily
 		prog->update(1);
-		prog->render(); 
+		//prog->render();
 
   }
 	

@@ -18,7 +18,7 @@ void TextBox::render()
 	if(Size == 20)
 		GUI_DisString_EN(X - ((m_text.length()/2) * 15), Y - 8, m_text.c_str(), &Font20, FONT_BACKGROUND, m_color);
 	if(Size == 24)
-		GUI_DisString_EN(X - ((m_text.length()/2) * 18.5), Y - 10, m_text.c_str(), &Font24, FONT_BACKGROUND, m_color);
+		GUI_DisString_EN(X - ((m_text.length()/2) * 17), Y - 10, m_text.c_str(), &Font24, FONT_BACKGROUND, m_color);
 }
 
 void TextBox::processInput()

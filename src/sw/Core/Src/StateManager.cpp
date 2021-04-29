@@ -1,6 +1,10 @@
 #include "StateManager.h"
 #include "State.h"
 #include "MainMenuState.h"
+#include "ChangeRoomNameMenuState.h"
+#include "NewDeviceControllingSignalMenuState.h"
+#include "RoomChooseMenuState.h"
+#include "RoomSettingsMenuState.h"
 
 StateManager::StateManager()
 {

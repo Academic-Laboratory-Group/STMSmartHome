@@ -9,10 +9,10 @@ class Button
 	private:
 		ButtonShape m_shape;
 		Color m_color;
-		int X;
-		int Y;
-		int High;
-		int Width;
+		int m_x;
+		int m_y;
+		int m_high;
+		int m_width;
 	
 	public:
 		Button(ButtonShape shape, Color color, int x, int y, int high, int width);
