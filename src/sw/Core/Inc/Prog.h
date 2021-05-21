@@ -1,23 +1,31 @@
-#ifndef _PROG_H_
-#define _PROG_H_
+#pragma once
 
-#define NULL ((void *)0)
-	
 #include "StateManager.h"
 #include "Updatable.h"
 #include "Renderable.h"
 
+#include <memory>
+
+/// Singleton pattern without globals
 class Prog : public Updatable, public Renderable
 {
 	private:
-		StateManager m_stateManager;
-	
-	public:    
 		Prog();
-		~Prog(){};
-		virtual void update(float deltaTime);
-		virtual void render();
-		void processInput();
-};
 
-#endif
+	public:
+		Prog(const Prog&) = delete;
+		Prog& operator=(const Prog &) = delete;
+		Prog(Prog &&) = delete;
+		Prog & operator=(Prog &&) = delete;
+		~Prog() = default;
+
+		static Prog* getInstance();
+
+		void update(float deltaTime) override;
+		void render() override;
+		void processInput();
+
+	private:
+		static std::unique_ptr<Prog> s_progInstance;
+		std::unique_ptr<StateManager> m_stateManager;
+};

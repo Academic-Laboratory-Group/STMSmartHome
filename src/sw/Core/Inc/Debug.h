@@ -19,7 +19,9 @@
 
 #define DEV_DEBUG 1
 #if DEV_DEBUG
-#define DEBUG(info,...) HAL_UART_Transmit(&huart2, &info, 1, 10)
+	#ifndef DEBUG
+		#define DEBUG(info,...) HAL_UART_Transmit(&huart2, &info, 1, 10)
+	#endif
 #else
 	#define DEBUG(__info,...)  
 #endif

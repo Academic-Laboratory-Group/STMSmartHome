@@ -42,8 +42,8 @@ typedef struct {
 	int16_t iYoff;
 	float fXfac;
 	float fYfac;
-	//Select the coordinates of the XPT2046 touch \
-	  screen relative to what scan direction
+	// Select the coordinates of the XPT2046 touch
+	// screen relative to what scan direction.
 	LCD_SCAN_DIR TP_Scan_Dir;
 }TP_DEV;
 

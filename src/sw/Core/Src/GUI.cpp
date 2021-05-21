@@ -13,10 +13,10 @@ void GUI::addTextBox(std::string text, Color color, int x, int y, int size)
 
 void GUI::render()
 {
-	for (int i = 0; i < m_buttons.size(); ++i)
+	for (auto i = 0u; i < m_buttons.size(); ++i)
 		m_buttons[i].render();
 
-	for (int i = 0; i < m_textboxes.size(); ++i)
+	for (auto i = 0u; i < m_textboxes.size(); ++i)
 		m_textboxes[i].render();
 }
 
