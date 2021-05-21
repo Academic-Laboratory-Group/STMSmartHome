@@ -11,9 +11,10 @@ class TextBox
 		Color m_color;
 		int X;
 		int Y;
+		int Size;
 	
 	public:
-		TextBox(std::string text, Color color, int x, int y);
+		TextBox(std::string text, Color color, int x, int y, int size);
 		void render();
 		void processInput();
 }	;

@@ -36,8 +36,7 @@ extern "C" {
 /* USER CODE END Private defines */
 
 void MX_GPIO_Init(void);
-void ONE_WIRE_INPUT(GPIO_TypeDef* m_GPIOx, uint16_t m_GPIO_pin);
-void ONE_WIRE_OUTPUT(GPIO_TypeDef* m_GPIOx, uint16_t m_GPIO_pin);
+
 /* USER CODE BEGIN Prototypes */
 
 /* USER CODE END Prototypes */

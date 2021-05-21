@@ -9,11 +9,13 @@ class Button
 	private:
 		ButtonShape m_shape;
 		Color m_color;
-		int X;
-		int Y;
+		int m_x;
+		int m_y;
+		int m_high;
+		int m_width;
 	
 	public:
-		Button(ButtonShape shape, Color color, int x, int y);
+		Button(ButtonShape shape, Color color, int x, int y, int high, int width);
 		void render();
 		void processInput();
 };
