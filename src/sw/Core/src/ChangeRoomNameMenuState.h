@@ -11,7 +11,7 @@ class ChangeRoomNameMenuState: public State
 
 		void update(float deltaTime) override;
 		void render() override;
-		void processInput() override;
+		void processInput(std::pair<unsigned, unsigned> touchAddress) override;
 
 	private:
 		std::string m_name;

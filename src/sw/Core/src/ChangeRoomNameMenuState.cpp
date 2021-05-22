@@ -29,6 +29,7 @@ void ChangeRoomNameMenuState::render()
 	m_gui->render();
 }
 
-void ChangeRoomNameMenuState::processInput()
+void ChangeRoomNameMenuState::processInput(std::pair<unsigned, unsigned> touchAddress)
 {
+	m_gui->processInput(touchAddress);
 }

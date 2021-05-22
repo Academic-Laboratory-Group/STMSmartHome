@@ -1,15 +1,10 @@
 #ifndef _UTILS_H_
 #define _UTILS_H_
 	
-#include <utility>
 #include "gpio.h"
 
-enum ProcessInputType
-{
-	
-};
 
-enum ProgState
+enum ProcessInputType
 {
 	
 };

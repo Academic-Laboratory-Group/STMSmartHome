@@ -2,22 +2,24 @@
 #define _TEXTBOX_H_
 
 #include "Utils.h"
+#include "Renderable.h"
+
 #include <string>
 
-class TextBox
+
+class TextBox : public Renderable
 {
+	public:
+		TextBox(std::string text, Color color, unsigned x, unsigned y, unsigned size);
+		void render();
+
 	private:
 		std::string m_text;
 		Color m_color;
-		int X;
-		int Y;
-		int Size;
-	
-	public:
-		TextBox(std::string text, Color color, int x, int y, int size);
-		void render();
-		void processInput();
-}	;
+		unsigned m_x;
+		unsigned m_y;
+		unsigned m_size;
+};
+
 
 #endif
-

@@ -7,7 +7,7 @@
 
 StateManager::StateManager()
 {
-	m_currentState = std::make_unique<MainMenuState>(std::shared_ptr<StateManager>(this));
+	m_currentState = std::make_shared<MainMenuState>(std::shared_ptr<StateManager>(this));
 }
 
 void StateManager::update(float deltaTime)
@@ -20,7 +20,12 @@ void StateManager::render()
 	m_currentState->render();
 }
 
-void StateManager::processInput()
+void StateManager::processInput(std::pair<unsigned, unsigned> touchAddress)
 {
-	m_currentState->processInput();
+	m_currentState->processInput(touchAddress);
+}
+
+void StateManager::changeState(std::shared_ptr<State> state)
+{
+	m_currentState = std::move(state);
 }

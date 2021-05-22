@@ -8,17 +8,19 @@
 #include <memory>
 
 class StateManager : public Updatable, Renderable
-{	
+{
 	public:
 		StateManager();
 		~StateManager() = default;
 
-		void update(float deltaTime);
-		void render();
-		void processInput();
+		void update(float deltaTime) override;
+		void render() override;
+		void processInput(std::pair<unsigned, unsigned> touchAddress);
+
+		void changeState(std::shared_ptr<State> state);
 
 	private:
-		std::unique_ptr<State> m_currentState;
+		std::shared_ptr<State> m_currentState;
 };
 
 #endif

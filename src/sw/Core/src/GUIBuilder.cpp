@@ -14,6 +14,11 @@ void GUIBuilder::addTextBox(std::string text, Color color, int x, int y, int siz
 	m_gui->addTextBox(text, color, x, y, size);
 }
 
+void GUIBuilder::setBackgroundColor(Color color)
+{
+	m_gui->setBackgroundColor(color);
+}
+
 void GUIBuilder::addKeyboard()
 {
 	

@@ -1,27 +1,20 @@
 #include "TextBox.h"
 #include "LCD_GUI.h"
 
-TextBox::TextBox(std::string text, Color color, int x, int y, int size)
+TextBox::TextBox(std::string text, Color color, unsigned x, unsigned y, unsigned size) :
+m_text(text), m_color(color), m_x(x), m_y(y), m_size(size)
 {
-	m_text = text;
-	m_color = color;
-	X = x;
-	Y = y;
-	Size = size;
-
 }
 
 void TextBox::render()
 {
-	if(Size == 16)
-		GUI_DisString_EN(X - ((m_text.length()/2) * 11), Y - 6, m_text.c_str(), &Font16, FONT_BACKGROUND, m_color);
-	if(Size == 20)
-		GUI_DisString_EN(X - ((m_text.length()/2) * 15), Y - 8, m_text.c_str(), &Font20, FONT_BACKGROUND, m_color);
-	if(Size == 24)
-		GUI_DisString_EN(X - ((m_text.length()/2) * 17), Y - 10, m_text.c_str(), &Font24, FONT_BACKGROUND, m_color);
-}
-
-void TextBox::processInput()
-{
-	
+	if(m_size == 16)
+		GUI_DisString_EN(m_x - ((m_text.length()/2) * 11), m_y - 6, m_text.c_str(),
+				&Font16, FONT_BACKGROUND, m_color);
+	if(m_size == 20)
+		GUI_DisString_EN(m_x - ((m_text.length()/2) * 15), m_y - 8, m_text.c_str(),
+				&Font20, FONT_BACKGROUND, m_color);
+	if(m_size == 24)
+		GUI_DisString_EN(m_x - ((m_text.length()/2) * 17), m_y - 10, m_text.c_str(),
+				&Font24, FONT_BACKGROUND, m_color);
 }

@@ -1,24 +1,34 @@
 #ifndef _GUI_H_
 #define _GUI_H_
 
-#include <vector>
 #include "Button.h"
 #include "TextBox.h"
 #include "Utils.h"
+#include "Renderable.h"
 
-class GUI
+#include <vector>
+#include <memory>
+
+
+class GUI : public Renderable
 {
-	private:
-		std::vector <Button> m_buttons;
-		std::vector <TextBox> m_textboxes;
-		Color m_backgroundColor;
-	
 	public:
-		void addButton(ButtonShape shape, Color color, int x, int y, int high, int width);
-		void addTextBox(std::string text, Color color, int x, int y, int size);
-		void render();
-		void processInput();
+		GUI() = default;
+		~GUI() = default;
+
+		void render() override;
+		int processInput(std::pair<unsigned, unsigned> touchAddress);
+
+		void addButton(ButtonShape shape, Color color, unsigned x, unsigned y,
+				unsigned high, unsigned width);
+		void addTextBox(std::string text, Color color, unsigned x, unsigned y, unsigned size);
+		void setBackgroundColor(Color color);
+
+	private:
+		std::vector<std::shared_ptr<Button>> m_buttons;
+		std::vector<std::shared_ptr<TextBox>> m_textboxes;
+		Color m_backgroundColor;
 };
+
 	
 #endif
-

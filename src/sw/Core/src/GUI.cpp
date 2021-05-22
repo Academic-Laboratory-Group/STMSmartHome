@@ -1,26 +1,44 @@
 #include "GUI.h"
 
-void GUI::addButton(ButtonShape shape, Color color, int x, int y, int high, int width)
-{
-	
-	m_buttons.push_back(Button(shape, color, x, y, high, width));
-}
+#include "LCD_GUI.h"
 
-void GUI::addTextBox(std::string text, Color color, int x, int y, int size)
-{
-	m_textboxes.push_back(TextBox(text, color, x ,y, size));
-}
+#include <algorithm>
+
 
 void GUI::render()
 {
-	for (auto i = 0u; i < m_buttons.size(); ++i)
-		m_buttons[i].render();
+	GUI_Clear(m_backgroundColor);
 
-	for (auto i = 0u; i < m_textboxes.size(); ++i)
-		m_textboxes[i].render();
+	for_each(m_buttons.begin(), m_buttons.end(),
+			[](std::shared_ptr<Button> button){ button->render(); });
+	for_each(m_textboxes.begin(), m_textboxes.end(),
+			[](std::shared_ptr<TextBox> textboxes){ textboxes->render(); });
 }
 
-void GUI::processInput()
+int GUI::processInput(std::pair<unsigned, unsigned> touchAddress)
 {
-	
+	const auto it = std::find_if(m_buttons.begin(), m_buttons.end(),
+			[touchAddress](std::shared_ptr<Button> button){ return button->processInput(touchAddress); });
+
+	if(it != m_buttons.end())
+		return std::distance(m_buttons.begin(), it);
+
+	return -1;
 }
+
+void GUI::addButton(ButtonShape shape, Color color, unsigned x, unsigned y,
+		unsigned high, unsigned width)
+{
+	m_buttons.push_back(std::make_unique<Button>(shape, color, x, y, high, width));
+}
+
+void GUI::addTextBox(std::string text, Color color, unsigned x, unsigned y, unsigned size)
+{
+	m_textboxes.push_back(std::make_unique<TextBox>(text, color, x ,y, size));
+}
+
+void GUI::setBackgroundColor(Color color)
+{
+	m_backgroundColor = color;
+}
+

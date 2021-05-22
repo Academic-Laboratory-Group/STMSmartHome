@@ -55,13 +55,15 @@ typedef struct{
 	DOT_PIXEL DotPixel; 
 }TP_DRAW;
 
+extern TP_DEV sTP_DEV;
+extern TP_DRAW sTP_Draw;
+extern LCD_DIS sLCD_DIS;
 
 void TP_GetAdFac(void);
 void TP_Adjust(void);
 void TP_Dialog(void);
 void TP_DrawBoard(void);
-void TP_Temp(void);
-void TP_Scan0(void);
+uint8_t TP_Scan(uint8_t chCoordType);
 
 void TP_DrawRectangle(POINT Xstart, POINT Ystart, POINT Xend, POINT Yend,
                        COLOR Color, DRAW_FILL Filled, DOT_PIXEL Dot_Pixel);

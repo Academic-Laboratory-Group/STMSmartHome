@@ -33,6 +33,7 @@ void NewDeviceControllingSignalMenuState::render()
 	m_gui->render();
 }
 
-void NewDeviceControllingSignalMenuState::processInput()
+void NewDeviceControllingSignalMenuState::processInput(std::pair<unsigned, unsigned> touchAddress)
 {
+	m_gui->processInput(touchAddress);
 }

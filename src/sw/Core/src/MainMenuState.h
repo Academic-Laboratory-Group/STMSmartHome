@@ -8,9 +8,16 @@ class MainMenuState: public State
 	public:
 		MainMenuState(std::shared_ptr<StateManager> stateManager);
 		~MainMenuState() = default;
+
 		void update(float deltaTime) override;
 		void render() override;
-		void processInput() override;
+		void processInput(std::pair<unsigned, unsigned> touchAddress) override;
+
+	private:
+		enum class Buttons
+		{
+			Adjust
+		};
 };
 	
 #endif

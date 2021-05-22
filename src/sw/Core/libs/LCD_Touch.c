@@ -18,9 +18,8 @@
 #include <math.h>
 #include "tim.h"
 
-extern LCD_DIS sLCD_DIS;
-static TP_DEV sTP_DEV;
-static TP_DRAW sTP_Draw;
+TP_DEV sTP_DEV;
+TP_DRAW sTP_Draw;
 
 /*******************************************************************************
 function:
@@ -29,7 +28,7 @@ parameter:
 	Channel_Cmd :	0x90: Read channel Y +, select the ADC resolution is 12 bits, set to differential mode
 					0xd0: Read channel x +, select the ADC resolution is 12 bits, set to differential mode
 *******************************************************************************/
-static uint16_t TP_Read_ADC(uint8_t CMD)
+uint16_t TP_Read_ADC(uint8_t CMD)
 {
     uint16_t Data = 0;
 
@@ -64,7 +63,7 @@ parameter:
 *******************************************************************************/
 #define READ_TIMES  5	//Number of readings
 #define LOST_NUM    1	//Discard value
-static uint16_t TP_Read_ADC_Average(uint8_t Channel_Cmd)
+uint16_t TP_Read_ADC_Average(uint8_t Channel_Cmd)
 {
     uint8_t i, j;
     uint16_t Read_Buff[READ_TIMES];
@@ -104,7 +103,7 @@ parameter:
 	Channel_Cmd :	0x90 :Read channel Y +
 					0xd0 :Read channel x +
 *******************************************************************************/
-static void TP_Read_ADC_XY(uint16_t *pXCh_Adc, uint16_t  *pYCh_Adc )
+void TP_Read_ADC_XY(uint16_t *pXCh_Adc, uint16_t  *pYCh_Adc )
 {
     *pXCh_Adc = TP_Read_ADC_Average(0xD0);
     *pYCh_Adc = TP_Read_ADC_Average(0x90);
@@ -119,7 +118,7 @@ parameter:
 					pXCh_Adc = 0xd0 :Read channel x +
 *******************************************************************************/
 #define ERR_RANGE 50	//tolerance scope
-static bool TP_Read_TwiceADC(uint16_t *pXCh_Adc, uint16_t  *pYCh_Adc )
+bool TP_Read_TwiceADC(uint16_t *pXCh_Adc, uint16_t  *pYCh_Adc )
 {
     uint16_t XCh_Adc1, YCh_Adc1, XCh_Adc2, YCh_Adc2;
 
@@ -151,7 +150,7 @@ parameter:
 					1 : calibration
 					0 : relative position
 *******************************************************************************/
-static uint8_t TP_Scan(uint8_t chCoordType)
+uint8_t TP_Scan(uint8_t chCoordType)
 {
     //In X, Y coordinate measurement, IRQ is disabled and output is low
     if (!GET_TP_IRQ) {//Press the button to press
@@ -205,10 +204,6 @@ static uint8_t TP_Scan(uint8_t chCoordType)
     }
 
     return (sTP_DEV.chStatus & TP_PRESS_DOWN);
-}
-void TP_Scan0()
-{
-	TP_Scan(0);
 }
 
 
@@ -717,29 +712,6 @@ void TP_DrawBoard(void)
             }
         }
     }
-}
-
-void TP_Temp(void)
-{
-    TP_Scan(0);
-    if (sTP_DEV.chStatus & TP_PRESS_DOWN) {		//Press the button
-        //Horizontal screen
-        if (sTP_Draw.Xpoint < sLCD_DIS.LCD_Dis_Column &&
-            //Determine whether the law is legal
-            sTP_Draw.Ypoint < sLCD_DIS.LCD_Dis_Page) {
-            //Judgment is horizontal screen
-            if(sLCD_DIS.LCD_Dis_Column > sLCD_DIS.LCD_Dis_Page) 
-						{							
-             //Vertical screen
-            } 
-						else 
-						{
-                
-             // Horizontal(pionowy) screen
-            }
-        }
-    }
-
 }
 
 

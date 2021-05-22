@@ -29,7 +29,7 @@ void Prog::render()
 	m_stateManager->render();
 }
 
-void Prog::processInput()
+void Prog::processInput(std::pair<unsigned, unsigned> touchAddress)
 {
-	m_stateManager->processInput();
+	m_stateManager->processInput(touchAddress);
 }

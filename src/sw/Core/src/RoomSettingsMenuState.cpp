@@ -4,7 +4,7 @@
 RoomSettingsMenuState::RoomSettingsMenuState(std::shared_ptr<StateManager> stateManager) : State(stateManager)
 {
 	// make new
-	m_guiBuilder.addButton(Square, YELLOW, 240, 160, 320, 480);
+	m_guiBuilder.setBackgroundColor(WHITE);
 
 	m_guiBuilder.addTextBox(m_name, BLACK, 230, 40, 24);
 
@@ -38,8 +38,9 @@ void RoomSettingsMenuState::render()
 	m_gui->render();
 }
 
-void RoomSettingsMenuState::processInput()
+void RoomSettingsMenuState::processInput(std::pair<unsigned, unsigned> touchAddress)
 {
+	m_gui->processInput(touchAddress);
 }
 
 

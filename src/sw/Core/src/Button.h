@@ -2,24 +2,25 @@
 #define _BUTTON_H_
 
 #include "Utils.h"
+#include "Renderable.h"
 
+#include <utility>
 
-class Button
+class Button : public Renderable
 {
+	public:
+		Button(ButtonShape shape, Color color, unsigned x, unsigned y, unsigned height, unsigned width);
+
+		void render();
+		bool processInput(std::pair<unsigned, unsigned> touchAddress) const;
+
 	private:
 		ButtonShape m_shape;
 		Color m_color;
-		int m_x;
-		int m_y;
-		int m_high;
-		int m_width;
-	
-	public:
-		Button(ButtonShape shape, Color color, int x, int y, int high, int width);
-		void render();
-		void processInput();
+		unsigned m_x;
+		unsigned m_y;
+		unsigned m_height;
+		unsigned m_width;
 };
 
-
 #endif
-

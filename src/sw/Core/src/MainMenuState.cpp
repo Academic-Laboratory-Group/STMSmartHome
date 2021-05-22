@@ -1,10 +1,15 @@
+#include "RoomSettingsMenuState.h"
 #include "MainMenuState.h"
+#include "StateManager.h"
 #include "Utils.h"
+
+#include <memory>
+
 
 MainMenuState::MainMenuState(std::shared_ptr<StateManager> stateManager) : State(stateManager)
 {
 	// make new
-	m_guiBuilder.addButton(Square, YELLOW, 240, 160, 320, 480);
+	m_guiBuilder.setBackgroundColor(YELLOW);
 
 	m_guiBuilder.addTextBox("SmartHome App", BLACK, 240, 40, 24);
 
@@ -16,6 +21,7 @@ MainMenuState::MainMenuState(std::shared_ptr<StateManager> stateManager) : State
 
 	m_guiBuilder.addButton(Square, BLUE, 240, 247, 60, 220);
 	m_guiBuilder.addTextBox("Adjust settings", BLACK, 240, 247, 20);
+
 	// set pointer to new GUI
 	m_gui = m_guiBuilder.getResult();
 }
@@ -29,6 +35,20 @@ void MainMenuState::render()
 	m_gui->render();
 }
 
-void MainMenuState::processInput()
+void MainMenuState::processInput(std::pair<unsigned, unsigned> touchAddress)
 {
+	auto manager = m_stateManager.lock();
+	const auto inputResult = m_gui->processInput(touchAddress);
+
+	if (inputResult < 0)
+		return;
+
+	switch(inputResult)
+	{
+		case (int)Buttons::Adjust:
+			manager->changeState(std::make_shared<RoomSettingsMenuState>(manager));
+			return;
+		default:
+			assert(!"Out of possibilities");
+	}
 }

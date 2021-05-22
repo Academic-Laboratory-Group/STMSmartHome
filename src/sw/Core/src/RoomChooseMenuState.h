@@ -11,7 +11,7 @@ class RoomChooseMenuState: public State
 
 		void update(float deltaTime) override;
 		void render() override;
-		void processInput() override;
+		void processInput(std::pair<unsigned, unsigned> touchAddress) override;
 };
 
 #endif /* INC_ROOMCHOOSEMENUSTATE_H_ */
