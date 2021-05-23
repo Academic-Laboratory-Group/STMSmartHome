@@ -7,7 +7,8 @@
 
 StateManager::StateManager()
 {
-	m_currentState = std::make_shared<MainMenuState>(std::shared_ptr<StateManager>(this));
+	std::shared_ptr<StateManager> thisPtr(this);
+	m_currentState = std::make_shared<MainMenuState>(thisPtr);
 }
 
 void StateManager::update(float deltaTime)

@@ -23,25 +23,24 @@ RoomSettingsMenuState::RoomSettingsMenuState(std::shared_ptr<StateManager> state
 	m_guiBuilder.addTextBox("-", BLACK, 333, 240, 24);
 
 	m_guiBuilder.addTextBox("BACK", BLACK, 50, 300, 20);
+
 	// set pointer to new GUI
 	m_gui = m_guiBuilder.getResult();
+
+	// temporary
+	render();
 }
 
 void RoomSettingsMenuState::update(float deltaTime)
 {
 }
 
-//#include "LCD_Touch.h"
 void RoomSettingsMenuState::render()
 {
-	//TP_DrawBoard();
-	m_gui->render();
+	m_gui.render();
 }
 
 void RoomSettingsMenuState::processInput(std::pair<unsigned, unsigned> touchAddress)
 {
-	m_gui->processInput(touchAddress);
+	m_gui.processInput(touchAddress);
 }
-
-
-

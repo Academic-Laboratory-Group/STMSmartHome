@@ -93,7 +93,7 @@ int main(void)
 	TP_GetAdFac();
 	
 	// Program's engine initialisation
-	Prog::getInstance()->render();
+	// Prog::getInstance()->render();
 	while(1)
 	{
 		processInput();

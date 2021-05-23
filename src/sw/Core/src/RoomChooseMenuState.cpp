@@ -10,8 +10,12 @@ RoomChooseMenuState::RoomChooseMenuState(std::shared_ptr<StateManager> stateMana
 	m_guiBuilder.addTextBox("Add new room", BLACK, 245, 247, 20);
 
 	m_guiBuilder.addTextBox("BACK", BLACK, 50, 300, 20);
+
 	// set pointer to new GUI
 	m_gui = m_guiBuilder.getResult();
+
+	// temporary
+	render();
 }
 
 void RoomChooseMenuState::update(float deltaTime)
@@ -22,11 +26,10 @@ void RoomChooseMenuState::update(float deltaTime)
 void RoomChooseMenuState::render()
 {
 	//TP_DrawBoard();
-	m_gui->render();
+	m_gui.render();
 }
 
 void RoomChooseMenuState::processInput(std::pair<unsigned, unsigned> touchAddress)
 {
-	m_gui->processInput(touchAddress);
+	m_gui.processInput(touchAddress);
 }
-

@@ -1,3 +1,5 @@
+#ifndef _GUI_BUILDER_H_
+#define _GUI_BUILDER_H_
 
 #include "GUI.h"
 #include "Utils.h"
@@ -7,7 +9,8 @@
 class GUIBuilder
 {
 	protected:
-		std::unique_ptr<GUI> m_gui;
+		GUI m_gui;
+
 	public:
 		GUIBuilder();
 		~GUIBuilder() = default;
@@ -17,6 +20,8 @@ class GUIBuilder
 		void addKeyboard(void);
 		void setBackgroundColor(Color color);
 		void reset();
-		std::unique_ptr<GUI> getResult();
+		GUI getResult();
 };
 
+
+#endif

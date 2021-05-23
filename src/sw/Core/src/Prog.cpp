@@ -8,7 +8,7 @@ std::unique_ptr<Prog> Prog::s_progInstance;
 Prog::Prog()
 {
 	assert("Prog creation possible only by getInstance!" && !s_progInstance);
-	m_stateManager = std::make_unique<StateManager>();
+	m_stateManager = std::make_shared<StateManager>();
 }
 
 Prog* Prog::getInstance()

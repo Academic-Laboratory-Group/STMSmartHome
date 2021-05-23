@@ -18,22 +18,24 @@ NewDeviceControllingSignalMenuState::NewDeviceControllingSignalMenuState(std::sh
 	m_guiBuilder.addTextBox("Impulse", BLACK, 238, 247, 20);
 
 	m_guiBuilder.addTextBox("BACK", BLACK, 50, 300, 20);
+
 	// set pointer to new GUI
 	m_gui = m_guiBuilder.getResult();
+
+	// temporary
+	render();
 }
 
 void NewDeviceControllingSignalMenuState::update(float deltaTime)
 {
 }
 
-//#include "LCD_Touch.h"
 void NewDeviceControllingSignalMenuState::render()
 {
-	//TP_DrawBoard();
-	m_gui->render();
+	m_gui.render();
 }
 
 void NewDeviceControllingSignalMenuState::processInput(std::pair<unsigned, unsigned> touchAddress)
 {
-	m_gui->processInput(touchAddress);
+	m_gui.processInput(touchAddress);
 }

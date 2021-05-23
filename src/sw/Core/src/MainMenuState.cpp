@@ -4,6 +4,7 @@
 #include "Utils.h"
 
 #include <memory>
+#include <assert.h>
 
 
 MainMenuState::MainMenuState(std::shared_ptr<StateManager> stateManager) : State(stateManager)
@@ -24,6 +25,9 @@ MainMenuState::MainMenuState(std::shared_ptr<StateManager> stateManager) : State
 
 	// set pointer to new GUI
 	m_gui = m_guiBuilder.getResult();
+
+	// temporary
+	render();
 }
 
 void MainMenuState::update(float deltaTime)
@@ -32,13 +36,12 @@ void MainMenuState::update(float deltaTime)
 
 void MainMenuState::render()
 {
-	m_gui->render();
+	m_gui.render();
 }
 
 void MainMenuState::processInput(std::pair<unsigned, unsigned> touchAddress)
 {
-	auto manager = m_stateManager.lock();
-	const auto inputResult = m_gui->processInput(touchAddress);
+	const auto inputResult = m_gui.processInput(touchAddress);
 
 	if (inputResult < 0)
 		return;
@@ -46,9 +49,9 @@ void MainMenuState::processInput(std::pair<unsigned, unsigned> touchAddress)
 	switch(inputResult)
 	{
 		case (int)Buttons::Adjust:
-			manager->changeState(std::make_shared<RoomSettingsMenuState>(manager));
+			m_stateManager->changeState(std::make_shared<RoomSettingsMenuState>(m_stateManager));
 			return;
 		default:
-			assert(!"Out of possibilities");
+			assert(!("InputResult out of range."));
 	}
 }

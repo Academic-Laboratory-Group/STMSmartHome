@@ -18,4 +18,5 @@ class RoomSettingsMenuState: public State
 		std::string m_temperature;
 };
 
+
 #endif /* INC_ROOMSETTINGSMENUSTATE_H_ */

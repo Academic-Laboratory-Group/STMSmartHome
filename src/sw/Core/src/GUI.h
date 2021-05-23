@@ -13,7 +13,7 @@
 class GUI : public Renderable
 {
 	public:
-		GUI() = default;
+		GUI() : m_backgroundColor(WHITE) {};
 		~GUI() = default;
 
 		void render() override;

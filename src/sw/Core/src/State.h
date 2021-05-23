@@ -13,14 +13,14 @@ class State : public Updatable, public Renderable
 {	
 	public:
 		State(std::shared_ptr<StateManager> stateManager) :
-			m_stateManager(stateManager), m_gui(std::make_unique<GUI>()), m_guiBuilder(){}
+			m_stateManager(stateManager), m_guiBuilder(){}
 		virtual ~State() = default;
 
 		virtual void processInput(std::pair<unsigned, unsigned> touchAddress) = 0;
 
 	protected:
-		std::weak_ptr<StateManager> m_stateManager;
-		std::unique_ptr<GUI> m_gui;
+		std::shared_ptr<StateManager> m_stateManager;
+		GUI m_gui;
 		GUIBuilder m_guiBuilder;
 };
 

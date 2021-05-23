@@ -17,6 +17,9 @@ ChangeRoomNameMenuState::ChangeRoomNameMenuState(std::shared_ptr<StateManager> s
 
 	// set pointer to new GUI
 	m_gui = m_guiBuilder.getResult();
+
+	// temporary
+	render();
 }
 
 void ChangeRoomNameMenuState::update(float deltaTime)
@@ -25,11 +28,10 @@ void ChangeRoomNameMenuState::update(float deltaTime)
 
 void ChangeRoomNameMenuState::render()
 {
-	//TP_DrawBoard();
-	m_gui->render();
+	m_gui.render();
 }
 
 void ChangeRoomNameMenuState::processInput(std::pair<unsigned, unsigned> touchAddress)
 {
-	m_gui->processInput(touchAddress);
+	m_gui.processInput(touchAddress);
 }
