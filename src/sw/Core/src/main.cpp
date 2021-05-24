@@ -100,8 +100,7 @@ int main(void)
 		//It is one after another temporarily
 		Prog::getInstance()->update(1);
 		//Prog::getInstance()->render();
-
-  }
+	}
 }
 
 /**

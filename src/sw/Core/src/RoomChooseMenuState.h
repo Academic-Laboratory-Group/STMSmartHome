@@ -12,6 +12,14 @@ class RoomChooseMenuState: public State
 		void update(float deltaTime) override;
 		void render() override;
 		void processInput(std::pair<unsigned, unsigned> touchAddress) override;
+
+	private:
+		enum class Buttons
+		{
+			Back,
+			Room,
+			NewRoom
+		};
 };
 
 #endif /* INC_ROOMCHOOSEMENUSTATE_H_ */

@@ -1,23 +1,29 @@
 # GUI design
+## Colors
+* Background - #FCF5D8
+* Button background - #F2D9B0
+* Frames - #CD8742
+
 ## State diagram
 ![StateDiagram](assets/StateDiagram.png)
 
-## Main menu
+## Menu projects
+### Main menu
 ![MainMenu](assets/GUIVisualization/MainMenu.png)
 
-## Room settings menu
+### Room settings menu
 ![RoomSettingsMenu](assets/GUIVisualization/RoomSettingsMenu.png)  
 ![RoomSettingsMenu2](assets/GUIVisualization/RoomSettingsMenu2.png)
 
-## Room choose menu
+### Room choose menu
 ![RoomChooseMenu](assets/GUIVisualization/RoomChooseMenu.png)
 
-## Change string value menu
+### Change string value menu
 ![ChangeStringValueMenu](assets/GUIVisualization/ChangeStringValueMenu.png)
 
-## Add new device menu
+### Add new device menu
 ![AddNewDeviceMenu](assets/GUIVisualization/AddNewDeviceMenu.png)
 
-## Other things probably needed to have:
+### Other things probably needed to have:
 * change number value menu,
 * add new device menu extensions like unit type, limits (min and max value), pins where connected the device is.

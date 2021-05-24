@@ -1,4 +1,4 @@
-#include "RoomSettingsMenuState.h"
+#include "RoomChooseMenuState.h"
 #include "MainMenuState.h"
 #include "StateManager.h"
 #include "Utils.h"
@@ -10,7 +10,7 @@
 MainMenuState::MainMenuState(std::shared_ptr<StateManager> stateManager) : State(stateManager)
 {
 	// make new
-	m_guiBuilder.setBackgroundColor(YELLOW);
+	m_guiBuilder.setBackgroundColor(BACKGROUND);
 
 	m_guiBuilder.addTextBox("SmartHome App", BLACK, 240, 40, 24);
 
@@ -49,7 +49,7 @@ void MainMenuState::processInput(std::pair<unsigned, unsigned> touchAddress)
 	switch(inputResult)
 	{
 		case (int)Buttons::Adjust:
-			m_stateManager->changeState(std::make_shared<RoomSettingsMenuState>(m_stateManager));
+			m_stateManager->changeState(std::make_shared<RoomChooseMenuState>(m_stateManager));
 			return;
 		default:
 			assert(!("InputResult out of range."));

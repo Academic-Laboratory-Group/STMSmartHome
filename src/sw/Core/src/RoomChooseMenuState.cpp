@@ -1,15 +1,23 @@
 #include "RoomChooseMenuState.h"
+#include "MainMenuState.h"
+#include "RoomSettingsMenuState.h"
+#include "ChangeRoomNameMenuState.h"
+#include "StateManager.h"
 #include "Utils.h"
 
 RoomChooseMenuState::RoomChooseMenuState(std::shared_ptr<StateManager> stateManager) : State(stateManager)
 {
 	// make new
-	m_guiBuilder.addButton(Square, YELLOW, 240, 160, 320, 480);
+	m_guiBuilder.setBackgroundColor(BACKGROUND);
 
-	m_guiBuilder.addButton(Square, BLUE, 240, 247, 60, 220);
-	m_guiBuilder.addTextBox("Add new room", BLACK, 245, 247, 20);
-
+	m_guiBuilder.addButton(Square, BUTTON_BACKGROUND, 0, 200, 100, 200);
 	m_guiBuilder.addTextBox("BACK", BLACK, 50, 300, 20);
+
+	m_guiBuilder.addButton(Square, BUTTON_BACKGROUND, 0, 0, 100, 200);
+	m_guiBuilder.addTextBox("Room 1", BLACK, 100, 50, 20);
+
+	m_guiBuilder.addButton(Square, BUTTON_BACKGROUND, 0, 200, 100, 200);
+	m_guiBuilder.addTextBox("Add new room", BLACK, 50, 300, 20);
 
 	// set pointer to new GUI
 	m_gui = m_guiBuilder.getResult();
@@ -22,14 +30,30 @@ void RoomChooseMenuState::update(float deltaTime)
 {
 }
 
-//#include "LCD_Touch.h"
 void RoomChooseMenuState::render()
 {
-	//TP_DrawBoard();
 	m_gui.render();
 }
 
 void RoomChooseMenuState::processInput(std::pair<unsigned, unsigned> touchAddress)
 {
-	m_gui.processInput(touchAddress);
+	const auto inputResult = m_gui.processInput(touchAddress);
+
+	if (inputResult < 0)
+		return;
+
+	switch(inputResult)
+	{
+		case (int)Buttons::Back:
+			m_stateManager->changeState(std::make_shared<MainMenuState>(m_stateManager));
+			return;
+		case (int)Buttons::Room:
+			m_stateManager->changeState(std::make_shared<RoomSettingsMenuState>(m_stateManager));
+			return;
+		case (int)Buttons::NewRoom:
+			m_stateManager->changeState(std::make_shared<ChangeRoomNameMenuState>(m_stateManager));
+			return;
+		default:
+			assert(!("InputResult out of range."));
+	}
 }

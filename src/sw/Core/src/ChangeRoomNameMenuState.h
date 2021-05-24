@@ -14,6 +14,11 @@ class ChangeRoomNameMenuState: public State
 		void processInput(std::pair<unsigned, unsigned> touchAddress) override;
 
 	private:
+		enum class Buttons
+		{
+			Back
+		};
+
 		std::string m_name;
 };
 

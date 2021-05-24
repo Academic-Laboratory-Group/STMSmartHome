@@ -12,6 +12,12 @@ class NewDeviceControllingSignalMenuState: public State
 		void update(float deltaTime) override;
 		void render() override;
 		void processInput(std::pair<unsigned, unsigned> touchAddress) override;
+
+	private:
+		enum class Buttons
+		{
+			Back
+		};
 };
 
 #endif /* INC_NEWDEVICECONTROLLINGSIGNALMENUSTATE_H_ */
