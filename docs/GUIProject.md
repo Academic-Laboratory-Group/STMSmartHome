@@ -1,4 +1,7 @@
 # GUI design
+## State diagram
+![StateDiagram](assets/StateDiagram.png)
+
 ## Main menu
 ![MainMenu](assets/GUIVisualization/MainMenu.png)
 
