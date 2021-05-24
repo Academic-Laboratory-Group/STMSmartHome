@@ -12,7 +12,7 @@ void TextBox::render()
 		GUI_DisString_EN(m_x - ((m_text.length()/2) * 11), m_y - 6, m_text.c_str(),
 				&Font16, FONT_BACKGROUND, m_color);
 	if(m_size == 20)
-		GUI_DisString_EN(m_x - ((m_text.length()/2) * 15), m_y - 8, m_text.c_str(),
+		GUI_DisString_EN(m_x - ((m_text.length()/2) * 15) + 5, m_y - 8, m_text.c_str(),
 				&Font20, FONT_BACKGROUND, m_color);
 	if(m_size == 24)
 		GUI_DisString_EN(m_x - ((m_text.length()/2) * 17), m_y - 10, m_text.c_str(),

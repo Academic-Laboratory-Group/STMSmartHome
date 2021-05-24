@@ -9,7 +9,8 @@ RoomSettingsMenuState::RoomSettingsMenuState(std::shared_ptr<StateManager> state
 	// make new
 	m_guiBuilder.setBackgroundColor(BACKGROUND);
 
-	m_guiBuilder.addTextBox(m_name, BLACK, 230, 40, 24);
+	m_guiBuilder.addButton(Square, BUTTON_BACKGROUND, 50, 300, 40, 100);
+	m_guiBuilder.addTextBox("BACK", BLACK, 50, 300, 20);
 
 	m_guiBuilder.addTextBox("Temperature:", BLACK, 115, 85, 20);
 	m_guiBuilder.addTextBox(m_temperature, BLACK, 220, 85, 20);

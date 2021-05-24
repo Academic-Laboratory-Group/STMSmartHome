@@ -15,8 +15,10 @@ ChangeRoomNameMenuState::ChangeRoomNameMenuState(std::shared_ptr<StateManager> s
 	m_guiBuilder.addTextBox("A  S  D  F  G  H  J  K  L", BLACK, 240, 180, 20);
 	m_guiBuilder.addTextBox("Z  X  C  V  B  N  M", BLACK, 240, 230, 20);
 
-	m_guiBuilder.addButton(Square, BUTTON_BACKGROUND, 0, 200, 100, 200);
+	m_guiBuilder.addButton(Square, BUTTON_BACKGROUND, 50, 300, 40, 100);
 	m_guiBuilder.addTextBox("BACK", BLACK, 50, 300, 20);
+
+	m_guiBuilder.addButton(Square, BUTTON_BACKGROUND, 430, 300, 40, 100);
 	m_guiBuilder.addTextBox("ENTER", BLACK, 420, 300, 20);
 
 	// set pointer to new GUI

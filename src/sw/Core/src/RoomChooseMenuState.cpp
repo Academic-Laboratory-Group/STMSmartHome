@@ -10,14 +10,14 @@ RoomChooseMenuState::RoomChooseMenuState(std::shared_ptr<StateManager> stateMana
 	// make new
 	m_guiBuilder.setBackgroundColor(BACKGROUND);
 
-	m_guiBuilder.addButton(Square, BUTTON_BACKGROUND, 0, 200, 100, 200);
+	m_guiBuilder.addButton(Square, BUTTON_BACKGROUND, 50, 300, 40, 100);
 	m_guiBuilder.addTextBox("BACK", BLACK, 50, 300, 20);
 
-	m_guiBuilder.addButton(Square, BUTTON_BACKGROUND, 0, 0, 100, 200);
+	m_guiBuilder.addButton(Square, BUTTON_BACKGROUND, 100, 50, 40, 110);
 	m_guiBuilder.addTextBox("Room 1", BLACK, 100, 50, 20);
 
-	m_guiBuilder.addButton(Square, BUTTON_BACKGROUND, 0, 200, 100, 200);
-	m_guiBuilder.addTextBox("Add new room", BLACK, 50, 300, 20);
+	m_guiBuilder.addButton(Square, BUTTON_BACKGROUND, 240, 247, 50, 200);
+	m_guiBuilder.addTextBox("Add new room", BLACK, 240, 247, 20);
 
 	// set pointer to new GUI
 	m_gui = m_guiBuilder.getResult();
