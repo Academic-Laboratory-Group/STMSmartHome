@@ -2,8 +2,9 @@
 
 #include "LCD_GUI.h"
 
-Button::Button(ButtonShape shape, Color color, unsigned x, unsigned y, unsigned height, unsigned width) :
-m_shape(shape), m_color(color), m_x(x), m_y(y), m_height(height), m_width(width)
+Button::Button(ButtonShape shape, Color color, unsigned xCenter, unsigned yCenter,
+		unsigned width, unsigned height) :
+m_shape(shape), m_color(color), m_x(xCenter), m_y(yCenter), m_width(width), m_height(height)
 {
 }
 

@@ -9,7 +9,8 @@
 class Button : public Renderable
 {
 	public:
-		Button(ButtonShape shape, Color color, unsigned x, unsigned y, unsigned height, unsigned width);
+		Button(ButtonShape shape, Color color, unsigned xCenter, unsigned yCenter,
+				unsigned width, unsigned height);
 
 		void render();
 		bool processInput(std::pair<unsigned, unsigned> touchAddress) const;
@@ -19,8 +20,8 @@ class Button : public Renderable
 		Color m_color;
 		unsigned m_x;
 		unsigned m_y;
-		unsigned m_height;
 		unsigned m_width;
+		unsigned m_height;
 };
 
 #endif

@@ -8,16 +8,16 @@
 RoomChooseMenuState::RoomChooseMenuState(std::shared_ptr<StateManager> stateManager) : State(stateManager)
 {
 	// make new
-	m_guiBuilder.setBackgroundColor(BACKGROUND);
+	m_guiBuilder.setBackgroundColor(BACKGROUND_COLOR);
 
-	m_guiBuilder.addButton(Square, BUTTON_BACKGROUND, 50, 300, 40, 100);
-	m_guiBuilder.addTextBox("BACK", BLACK, 50, 300, 20);
+	m_guiBuilder.addButton(Square, BUTTON_BACKGROUND_COLOR, 50, 300, 100, 40);
+	m_guiBuilder.addTextBox("BACK", BUTTON_TEXT_COLOR, 50, 300, 20);
 
-	m_guiBuilder.addButton(Square, BUTTON_BACKGROUND, 100, 50, 40, 110);
-	m_guiBuilder.addTextBox("Room 1", BLACK, 100, 50, 20);
+	m_guiBuilder.addButton(Square, BUTTON_BACKGROUND_COLOR, 100, 50, 110, 40);
+	m_guiBuilder.addTextBox("Room 1", BUTTON_TEXT_COLOR, 100, 50, 20);
 
-	m_guiBuilder.addButton(Square, BUTTON_BACKGROUND, 240, 247, 50, 200);
-	m_guiBuilder.addTextBox("Add new room", BLACK, 240, 247, 20);
+	m_guiBuilder.addButton(Square, BUTTON_BACKGROUND_COLOR, 240, 247, 200, 50);
+	m_guiBuilder.addTextBox("Add new room", BUTTON_TEXT_COLOR, 240, 247, 20);
 
 	// set pointer to new GUI
 	m_gui = m_guiBuilder.getResult();
@@ -45,13 +45,13 @@ void RoomChooseMenuState::processInput(std::pair<unsigned, unsigned> touchAddres
 	switch(inputResult)
 	{
 		case (int)Buttons::Back:
-			m_stateManager->changeState(std::make_shared<MainMenuState>(m_stateManager));
+			m_stateManager->changeState(std::make_unique<MainMenuState>(m_stateManager));
 			return;
 		case (int)Buttons::Room:
-			m_stateManager->changeState(std::make_shared<RoomSettingsMenuState>(m_stateManager));
+			m_stateManager->changeState(std::make_unique<RoomSettingsMenuState>(m_stateManager));
 			return;
 		case (int)Buttons::NewRoom:
-			m_stateManager->changeState(std::make_shared<ChangeRoomNameMenuState>(m_stateManager));
+			m_stateManager->changeState(std::make_unique<ChangeRoomNameMenuState>(m_stateManager));
 			return;
 		default:
 			assert(!("InputResult out of range."));

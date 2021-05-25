@@ -17,7 +17,8 @@ class RoomSettingsMenuState: public State
 		enum class Buttons
 		{
 			Back,
-			NewDevice
+			NewDevice1, // TODO: temporary
+			NewDevice2
 		};
 		std::string m_name;
 		std::string m_temperature;
