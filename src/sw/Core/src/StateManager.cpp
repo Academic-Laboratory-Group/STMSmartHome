@@ -30,3 +30,8 @@ void StateManager::changeState(std::shared_ptr<State> state)
 {
 	m_currentState = std::move(state);
 }
+
+std::shared_ptr<Flat> StateManager::getFlat()
+{
+
+}

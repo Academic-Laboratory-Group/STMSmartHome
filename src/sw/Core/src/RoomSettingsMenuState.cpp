@@ -13,22 +13,23 @@ RoomSettingsMenuState::RoomSettingsMenuState(std::shared_ptr<StateManager> state
 	m_guiBuilder.addTextBox("BACK", BLACK, 50, 300, 20);
 
 	m_guiBuilder.addTextBox("Temperature:", BLACK, 115, 85, 20);
-	m_guiBuilder.addTextBox(m_temperature, BLACK, 220, 85, 20);
+	//m_guiBuilder.addTextBox(to_str(m_temperature), BLACK, 220, 85, 20); //not working
 	m_guiBuilder.addTextBox("*C" ,BLACK, 270, 85, 20);
 
-	m_guiBuilder.addButton(Square, BUTTON_BACKGROUND, 0, 200, 100, 200);
-	m_guiBuilder.addTextBox("BACK", BLACK, 50, 300, 20);
+	m_guiBuilder.addTextBox("Light", BLACK, 140, 195, 24);
+	m_guiBuilder.addButton(Square, BACKGROUND, 138, 145, 60, 60);
+	m_guiBuilder.addTextBox("+", RED, 138, 145, 24);
+	m_guiBuilder.addButton(Square, BACKGROUND, 138, 240, 60, 60);
+	m_guiBuilder.addTextBox("-", BLACK, 138, 240, 24);
+
+	m_guiBuilder.addTextBox("Heater", BLACK, 345, 195, 24);
+	m_guiBuilder.addButton(Square, BACKGROUND, 338, 145, 60, 60);
+	m_guiBuilder.addTextBox("+", RED, 338, 145, 24);
+	m_guiBuilder.addButton(Square, BACKGROUND, 338, 240, 60, 60);
+	m_guiBuilder.addTextBox("-", BLACK, 338, 240, 24);
 
 	m_guiBuilder.addButton(Circle, BUTTON_BACKGROUND, 140, 195, 150, 150);
-	m_guiBuilder.addTextBox("Light", BLACK, 135, 195, 24);
-	m_guiBuilder.addTextBox("+", RED, 133, 145, 24);
-	m_guiBuilder.addTextBox("-", BLACK, 133, 240, 24);
-
 	m_guiBuilder.addButton(Circle, BUTTON_BACKGROUND, 340, 195, 150, 150);
-	m_guiBuilder.addTextBox("Heater", BLACK, 340, 195, 24);
-	m_guiBuilder.addTextBox("+", RED, 333, 145, 24);
-	m_guiBuilder.addTextBox("-", BLACK, 333, 240, 24);
-
 	// set pointer to new GUI
 	m_gui = m_guiBuilder.getResult();
 
@@ -38,6 +39,7 @@ RoomSettingsMenuState::RoomSettingsMenuState(std::shared_ptr<StateManager> state
 
 void RoomSettingsMenuState::update(float deltaTime)
 {
+
 }
 
 void RoomSettingsMenuState::render()
@@ -57,8 +59,15 @@ void RoomSettingsMenuState::processInput(std::pair<unsigned, unsigned> touchAddr
 		case (int)Buttons::Back:
 			m_stateManager->changeState(std::make_shared<RoomChooseMenuState>(m_stateManager));
 			return;
-		case (int)Buttons::NewDevice:
-			m_stateManager->changeState(std::make_shared<NewDeviceControllingSignalMenuState>(m_stateManager));
+		case (int)Buttons::LightUp:
+			return;
+		case (int)Buttons::LightDown:
+			return;
+		case (int)Buttons::HeaterUp:
+			m_temperature += 0.5;
+			return;
+		case (int)Buttons::HeaterDown:
+			m_temperature -= 0.5;
 			return;
 		default:
 			assert(!("InputResult out of range."));

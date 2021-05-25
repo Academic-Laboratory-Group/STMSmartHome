@@ -2,6 +2,16 @@
 #define INC_ROOMSETTINGSMENUSTATE_H_
 
 #include "State.h"
+#include <iostream>
+#include <string>
+#include <sstream>
+
+template < typename Type > std::string to_str (const Type & t)
+{
+  std::ostringstream os;
+  os << t;
+  return os.str ();
+}
 
 class RoomSettingsMenuState: public State
 {
@@ -17,10 +27,13 @@ class RoomSettingsMenuState: public State
 		enum class Buttons
 		{
 			Back,
-			NewDevice
+			LightUp,
+			LightDown,
+			HeaterUp,
+			HeaterDown,
 		};
 		std::string m_name;
-		std::string m_temperature;
+		float m_temperature = 29.0;
 };
 
 

@@ -8,7 +8,7 @@
 
 class TemperatureSensor
 {
-	private:
+	protected:
 		EventManager* m_eventManager;
 		GPIO_TypeDef* m_GPIOx; 
 		Sensor m_sensor;

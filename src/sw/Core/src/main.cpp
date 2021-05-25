@@ -86,6 +86,8 @@ int main(void)
 	MX_TIM14_Init();
 	MX_USART2_UART_Init();
 	
+
+
 	LCD_SCAN_DIR Lcd_ScanDir = SCAN_DIR_DFT;//SCAN_DIR_DFT = D2U_L2R	
 	LCD_Init(Lcd_ScanDir, 1000);
 	TP_Init(Lcd_ScanDir);
@@ -148,6 +150,8 @@ void SystemClock_Config(void)
     Error_Handler();
   }
 }
+
+
 
 /**
   * @brief  This function is executed in case of error occurrence.
