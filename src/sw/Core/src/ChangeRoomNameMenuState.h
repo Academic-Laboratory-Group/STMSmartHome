@@ -16,7 +16,8 @@ class ChangeRoomNameMenuState: public State
 	private:
 		enum class Buttons
 		{
-			Back
+			Back,
+			Enter
 		};
 
 		std::string m_name;

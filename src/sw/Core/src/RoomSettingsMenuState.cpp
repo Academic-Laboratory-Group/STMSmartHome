@@ -4,32 +4,46 @@
 #include "StateManager.h"
 #include "Utils.h"
 
+#include <iostream>
+#include <string>
+#include <sstream>
+
+
+template < typename Type >
+std::string to_str(const Type& t)
+{
+	std::ostringstream os;
+	os << t;
+	return os.str();
+}
+
 RoomSettingsMenuState::RoomSettingsMenuState(std::shared_ptr<StateManager> stateManager) : State(stateManager)
 {
 	// make new
-	m_guiBuilder.setBackgroundColor(BACKGROUND);
+	m_guiBuilder.setBackgroundColor(BACKGROUND_COLOR);
 
-	m_guiBuilder.addButton(Square, BUTTON_BACKGROUND, 50, 300, 40, 100);
-	m_guiBuilder.addTextBox("BACK", BLACK, 50, 300, 20);
+	m_guiBuilder.addButton(Square, BUTTON_BACKGROUND_COLOR, 50, 300, 100, 40);
+	m_guiBuilder.addTextBox("BACK", BUTTON_TEXT_COLOR, 50, 300, 20);
 
-	m_guiBuilder.addTextBox("Temperature:", BLACK, 115, 85, 20);
+	m_guiBuilder.addTextBox("Temperature:", TEXT_COLOR, 115, 85, 20);
 	//m_guiBuilder.addTextBox(to_str(m_temperature), BLACK, 220, 85, 20); //not working
-	m_guiBuilder.addTextBox("*C" ,BLACK, 270, 85, 20);
+	m_guiBuilder.addTextBox("*C" ,TEXT_COLOR, 270, 85, 20);
 
-	m_guiBuilder.addTextBox("Light", BLACK, 140, 195, 24);
-	m_guiBuilder.addButton(Square, BACKGROUND, 138, 145, 60, 60);
-	m_guiBuilder.addTextBox("+", RED, 138, 145, 24);
-	m_guiBuilder.addButton(Square, BACKGROUND, 138, 240, 60, 60);
-	m_guiBuilder.addTextBox("-", BLACK, 138, 240, 24);
+	m_guiBuilder.addTextBox("Light", TEXT_COLOR, 140, 195, 24);
+	m_guiBuilder.addButton(Square, BUTTON_BACKGROUND_COLOR, 138, 145, 60, 60);
+	m_guiBuilder.addTextBox("+", TEXT_COLOR, 138, 145, 24);
+	m_guiBuilder.addButton(Square, BUTTON_BACKGROUND_COLOR, 138, 240, 60, 60);
+	m_guiBuilder.addTextBox("-", TEXT_COLOR, 138, 240, 24);
 
-	m_guiBuilder.addTextBox("Heater", BLACK, 345, 195, 24);
-	m_guiBuilder.addButton(Square, BACKGROUND, 338, 145, 60, 60);
-	m_guiBuilder.addTextBox("+", RED, 338, 145, 24);
-	m_guiBuilder.addButton(Square, BACKGROUND, 338, 240, 60, 60);
-	m_guiBuilder.addTextBox("-", BLACK, 338, 240, 24);
+	m_guiBuilder.addTextBox("Heater", TEXT_COLOR, 345, 195, 24);
+	m_guiBuilder.addButton(Square, BUTTON_BACKGROUND_COLOR, 338, 145, 60, 60);
+	m_guiBuilder.addTextBox("+", TEXT_COLOR, 338, 145, 24);
+	m_guiBuilder.addButton(Square, BUTTON_BACKGROUND_COLOR, 338, 240, 60, 60);
+	m_guiBuilder.addTextBox("-", TEXT_COLOR, 338, 240, 24);
 
-	m_guiBuilder.addButton(Circle, BUTTON_BACKGROUND, 140, 195, 150, 150);
-	m_guiBuilder.addButton(Circle, BUTTON_BACKGROUND, 340, 195, 150, 150);
+	m_guiBuilder.addButton(Circle, BUTTON_BACKGROUND_COLOR, 140, 195, 150, 150);
+	m_guiBuilder.addButton(Circle, BUTTON_BACKGROUND_COLOR, 340, 195, 150, 150);
+
 	// set pointer to new GUI
 	m_gui = m_guiBuilder.getResult();
 

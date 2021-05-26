@@ -19,9 +19,10 @@ class GUI : public Renderable
 		void render() override;
 		int processInput(std::pair<unsigned, unsigned> touchAddress);
 
-		void addButton(ButtonShape shape, Color color, unsigned x, unsigned y,
-				unsigned high, unsigned width);
-		void addTextBox(std::string text, Color color, unsigned x, unsigned y, unsigned size);
+		void addButton(ButtonShape shape, Color color, unsigned xCenter, unsigned yCenter,
+				unsigned width, unsigned high);
+		void addTextBox(std::string text, Color color, unsigned xCenter, unsigned yCenter,
+				unsigned size);
 		void setBackgroundColor(Color color);
 
 	private:

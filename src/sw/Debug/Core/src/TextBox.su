@@ -1,0 +1,4 @@
+gthr-default.h:229:1:int __gthread_key_delete(__gthread_key_t)	16	static
+Renderable.h:4:7:constexpr Renderable::Renderable()	16	static
+TextBox.cpp:4:1:TextBox::TextBox(std::string, Color, unsigned int, unsigned int, unsigned int)	24	static
+TextBox.cpp:9:6:virtual void TextBox::render()	32	static

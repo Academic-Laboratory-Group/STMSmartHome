@@ -2,16 +2,6 @@
 #define INC_ROOMSETTINGSMENUSTATE_H_
 
 #include "State.h"
-#include <iostream>
-#include <string>
-#include <sstream>
-
-template < typename Type > std::string to_str (const Type & t)
-{
-  std::ostringstream os;
-  os << t;
-  return os.str ();
-}
 
 class RoomSettingsMenuState: public State
 {
@@ -33,7 +23,7 @@ class RoomSettingsMenuState: public State
 			HeaterDown,
 		};
 		std::string m_name;
-		float m_temperature = 29.0;
+		float m_temperature = 29.0f;
 };
 
 

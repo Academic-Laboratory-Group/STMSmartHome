@@ -1,0 +1,8 @@
+gthr-default.h:229:1:int __gthread_key_delete(__gthread_key_t)	16	static
+RoomBuilder.cpp:3:1:RoomBuilder::RoomBuilder()	16	static
+RoomBuilder.cpp:8:6:void RoomBuilder::setName(std::string)	16	static
+RoomBuilder.cpp:13:6:void RoomBuilder::addSensor(int, std::string)	24	static
+RoomBuilder.cpp:18:6:void RoomBuilder::addController(int, std::string)	24	static
+RoomBuilder.cpp:21:1:void __static_initialization_and_destruction_0(int, int)	16	static
+RoomBuilder.cpp:21:1:cpp)	8	static
+RoomBuilder.cpp:21:1:cpp)	8	static

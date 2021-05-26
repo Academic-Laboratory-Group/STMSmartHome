@@ -15,10 +15,13 @@ class GUIBuilder
 		GUIBuilder();
 		~GUIBuilder() = default;
 
-		void addButton(ButtonShape shape, Color color, int x, int y, int high, int width);
-		void addTextBox(std::string text, Color color, int x, int y, int size);
+		void addButton(ButtonShape shape, Color color, unsigned xCenter,
+				unsigned yCenter, unsigned width, unsigned high);
+		void addTextBox(std::string text, Color color, unsigned xCenter,
+				unsigned yCenter, unsigned size);
 		void addKeyboard(void);
 		void setBackgroundColor(Color color);
+
 		void reset();
 		GUI getResult();
 };

@@ -4,11 +4,6 @@
 #include "gpio.h"
 
 
-enum ProcessInputType
-{
-	
-};
-
 enum ButtonShape
 {
 	Square,
@@ -31,9 +26,11 @@ enum Color
 	BROWN = 0XBC40,
 	BRRED = 0XFC07,
 	GRAY = 0X8430,
-	BACKGROUND = 0xFCF5D8,
-	BUTTON_BACKGROUND = 0xF2D9B0,
-	FRAMES = 0xCD8742
+	BACKGROUND_COLOR = WHITE,
+	BUTTON_BACKGROUND_COLOR = GRAY,
+	FRAMES_COLOR = BLACK,
+	BUTTON_TEXT_COLOR = WHITE,
+	TEXT_COLOR = BLACK
 };
 
 enum Sensor

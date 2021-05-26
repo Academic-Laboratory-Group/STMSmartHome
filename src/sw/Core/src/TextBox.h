@@ -10,7 +10,7 @@
 class TextBox : public Renderable
 {
 	public:
-		TextBox(std::string text, Color color, unsigned x, unsigned y, unsigned size);
+		TextBox(std::string text, Color color, unsigned xCenter, unsigned yCenter, unsigned size);
 		void render();
 
 	private:

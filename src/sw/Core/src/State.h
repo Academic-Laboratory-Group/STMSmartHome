@@ -1,8 +1,8 @@
 #ifndef _STATE_H_
 #define _STATE_H_
 
-#include "GUIBuilder.h"
 #include "GUI.h"
+#include "GUIBuilder.h"
 #include "Updatable.h"
 #include "Renderable.h"
 

@@ -18,11 +18,11 @@ class StateManager : public Updatable, Renderable
 		void render() override;
 		void processInput(std::pair<unsigned, unsigned> touchAddress);
 
-		void changeState(std::shared_ptr<State> state);
 		std::shared_ptr<Flat> getFlat();
+		void changeState(std::unique_ptr<State> state);
 
 	private:
-		std::shared_ptr<State> m_currentState;
+		std::unique_ptr<State> m_currentState;
 		std::shared_ptr<Flat> m_flat;
 };
 
