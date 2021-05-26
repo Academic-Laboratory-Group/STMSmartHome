@@ -4,11 +4,6 @@
 #include "gpio.h"
 
 
-enum ProcessInputType
-{
-	
-};
-
 enum ButtonShape
 {
 	Square,

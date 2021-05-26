@@ -17,7 +17,9 @@ void GUI::render()
 
 int GUI::processInput(std::pair<unsigned, unsigned> touchAddress)
 {
-	const auto it = std::find_if(m_buttons.begin(), m_buttons.end(), [touchAddress](std::shared_ptr<Button> button){ return button->processInput(touchAddress); });
+	const auto it = std::find_if(m_buttons.begin(), m_buttons.end(),
+			[touchAddress](std::shared_ptr<Button> button){
+				return button->processInput(touchAddress); });
 
 	if(it != m_buttons.end())
 		return std::distance(m_buttons.begin(), it);
