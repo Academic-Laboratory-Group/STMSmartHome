@@ -32,5 +32,5 @@ void StateManager::changeState(std::unique_ptr<State> state)
 
 std::shared_ptr<Flat> StateManager::getFlat()
 {
-
+	return{};
 }

@@ -148,6 +148,8 @@ eagle.epf
 *bin/
 *Debug/
 *Release/
+src/sw/Debug/
+src/sw/Release/
 *tmp/
 *.tmp
 *.bak
