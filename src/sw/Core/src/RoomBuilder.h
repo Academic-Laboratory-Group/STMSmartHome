@@ -6,7 +6,8 @@
 class RoomBuilder
 {
 	public:
-		RoomBuilder();
+		RoomBuilder() = default;
+		~RoomBuilder() = default;
 
 		void setName(std::string name);
 		void addSensor(int PinId, std::string name);

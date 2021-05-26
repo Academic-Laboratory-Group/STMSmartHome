@@ -1,9 +1,5 @@
 #include "RoomBuilder.h"
 
-RoomBuilder::RoomBuilder()
-{
-
-}
 
 void RoomBuilder::setName(std::string name)
 {
