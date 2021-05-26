@@ -1,5 +1,4 @@
 #include "StateManager.h"
-#include "State.h"
 #include "MainMenuState.h"
 #include "ChangeRoomNameMenuState.h"
 #include "NewDeviceControllingSignalMenuState.h"
@@ -8,12 +7,7 @@
 
 StateManager::StateManager()
 {
-	m_currentState = new MainMenuState(this);
-}
-
-StateManager::~StateManager()
-{
-	delete m_currentState;
+	m_currentState = std::make_unique<MainMenuState>(std::shared_ptr<StateManager>(this));
 }
 
 void StateManager::update(float deltaTime)
@@ -26,7 +20,12 @@ void StateManager::render()
 	m_currentState->render();
 }
 
-void StateManager::processInput()
+void StateManager::processInput(std::pair<unsigned, unsigned> touchAddress)
 {
-	m_currentState->processInput();
+	m_currentState->processInput(touchAddress);
+}
+
+void StateManager::changeState(std::unique_ptr<State> state)
+{
+	m_currentState = std::move(state);
 }

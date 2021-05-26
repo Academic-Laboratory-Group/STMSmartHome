@@ -12,7 +12,7 @@ void EventManager::unsubscribe(SensorListener* listener)
 
 void EventManager::notify(Sensor sensor, int value)
 {
-	for (int i = 0; i < listeners.size(); ++i)
+	for (auto i = 0u; i < listeners.size(); ++i)
 	{
 		listeners[i]->notify(sensor, value);
 	}

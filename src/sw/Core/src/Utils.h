@@ -1,18 +1,8 @@
 #ifndef _UTILS_H_
 #define _UTILS_H_
 	
-#include <utility>
 #include "gpio.h"
 
-enum ProcessInputType
-{
-	
-};
-
-enum ProgState
-{
-	
-};
 
 enum ButtonShape
 {
@@ -35,7 +25,12 @@ enum Color
 	YELLOW = 0xFFE0,
 	BROWN = 0XBC40,
 	BRRED = 0XFC07,
-	GRAY = 0X8430
+	GRAY = 0X8430,
+	BACKGROUND_COLOR = WHITE,
+	BUTTON_BACKGROUND_COLOR = GRAY,
+	FRAMES_COLOR = BLACK,
+	BUTTON_TEXT_COLOR = WHITE,
+	TEXT_COLOR = BLACK
 };
 
 enum Sensor

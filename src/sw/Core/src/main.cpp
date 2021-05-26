@@ -33,8 +33,6 @@
 #include "LCD_GUI.h"
 #include "LCD_Touch.h"
 
-static Prog* prog;
-
 /**
   * @brief System Clock Configuration
   * @retval None
@@ -47,7 +45,24 @@ void SystemClock_Config(void);
   */
 void ProgInteruptionHandler(void)
 {
-		prog->processInput();
+
+}
+
+void processInput(void)
+{
+	TP_Scan(0);
+
+	//Press the button
+	if (sTP_DEV.chStatus & TP_PRESS_DOWN)
+	{
+		//Judgment is horizontal screen
+		if (sTP_Draw.Xpoint < sLCD_DIS.LCD_Dis_Column &&
+				sTP_Draw.Ypoint < sLCD_DIS.LCD_Dis_Page &&
+				sLCD_DIS.LCD_Dis_Column > sLCD_DIS.LCD_Dis_Page)
+		{
+			Prog::getInstance()->processInput(std::make_pair(sTP_Draw.Xpoint, sTP_Draw.Ypoint));
+		}
+	}
 }
 
 /**
@@ -56,20 +71,20 @@ void ProgInteruptionHandler(void)
   */
 int main(void)
 {
-  /* MCU Configuration---------------------------------------------------------*/
-  /* Reset of all peripherals, Initializes the Flash interface and the Systick.*/
-  HAL_Init();
+	/* MCU Configuration---------------------------------------------------------*/
+	/* Reset of all peripherals, Initializes the Flash interface and the Systick.*/
+	HAL_Init();
 
-  /* Configure the system clock */
-  SystemClock_Config();
+	/* Configure the system clock */
+	SystemClock_Config();
 
-  /* Initialize all configured peripherals */
-  MX_GPIO_Init();
+	/* Initialize all configured peripherals */
+	MX_GPIO_Init();
 	MX_SPI1_Init();
-  MX_TIM3_Init();
+	MX_TIM3_Init();
 	MX_TIM13_Init();
-  MX_TIM14_Init();
-  MX_USART2_UART_Init();
+	MX_TIM14_Init();
+	MX_USART2_UART_Init();
 	
 	LCD_SCAN_DIR Lcd_ScanDir = SCAN_DIR_DFT;//SCAN_DIR_DFT = D2U_L2R	
 	LCD_Init(Lcd_ScanDir, 1000);
@@ -78,17 +93,15 @@ int main(void)
 	TP_GetAdFac();
 	
 	// Program's engine initialisation
-	prog = new Prog();
-	prog->render();
+	// Prog::getInstance()->render();
 	while(1)
 	{
+		processInput();
 		//It is one after another temporarily
-		prog->update(1);
-		//prog->render();
-
-  }
-	
-	//delete prog;
+		Prog::getInstance()->update(1);
+		//Prog::getInstance()->render();
+		HAL_Delay(100);
+	}
 }
 
 /**

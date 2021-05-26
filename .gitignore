@@ -145,9 +145,10 @@ eagle.epf
 
 ### Eclipse ###
 .metadata
-*/bin/
-*/Debug/
-*/tmp/
+*bin/
+*Debug/
+*Release/
+*tmp/
 *.tmp
 *.bak
 *.swp
