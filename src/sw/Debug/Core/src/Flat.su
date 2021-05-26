@@ -1,0 +1,12 @@
+gthr-default.h:229:1:int __gthread_key_delete(__gthread_key_t)	16	static
+stl_vector.h:285:7:std::_Vector_base<_Tp, _Alloc>::_Vector_base() [with _Tp = Room; _Alloc = std::allocator<Room>]	16	static
+stl_vector.h:484:7:std::vector<_Tp, _Alloc>::vector() [with _Tp = Room; _Alloc = std::allocator<Room>]	16	static
+Flat.cpp:3:1:Flat::Flat()	16	static
+Flat.cpp:8:6:void Flat::addRoom(Room&)	16	static
+stl_vector.h:128:2:std::_Vector_base<_Tp, _Alloc>::_Vector_impl::_Vector_impl() [with _Tp = Room; _Alloc = std::allocator<Room>]	16	static
+allocator.h:138:7:std::allocator< <template-parameter-1-1> >::allocator() [with _Tp = Room]	16	static
+stl_vector.h:94:2:std::_Vector_base<_Tp, _Alloc>::_Vector_impl_data::_Vector_impl_data() [with _Tp = Room; _Alloc = std::allocator<Room>]	16	static
+new_allocator.h:80:7:__gnu_cxx::new_allocator<_Tp>::new_allocator() [with _Tp = Room]	16	static
+Flat.cpp:11:1:void __static_initialization_and_destruction_0(int, int)	16	static
+Flat.cpp:11:1:cpp)	8	static
+Flat.cpp:11:1:cpp)	8	static
