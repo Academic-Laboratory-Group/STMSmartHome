@@ -2,12 +2,15 @@
 #include "TextBox.h"
 #include "Button.h"
 
+#include <array>
+
+
 GUIBuilder::GUIBuilder()
 {
 }
 
 void GUIBuilder::addButton( unsigned xCenter, unsigned yCenter, unsigned width,
-		unsigned height, std::string text, ButtonShape shape, Color color,
+		unsigned height, const std::string text, ButtonShape shape, Color color,
 		unsigned textSize, Color textColor )
 {
 	m_gui.addButton(std::make_shared<Button>(
@@ -24,7 +27,42 @@ void GUIBuilder::addKeyboard(unsigned xCenter, unsigned yCenter,
 		unsigned width, unsigned height, unsigned textSize,
 		Color buttonsColor, Color textColor)
 {
-	//m_gui.addKeyboard();
+	const auto singleButtonAreaWidth = static_cast<float>(width) / 10.f;
+	const auto singleButtonWidth = static_cast<unsigned>(0.9f * singleButtonAreaWidth);
+	const auto halfOfSingleButtonWidth = singleButtonWidth / 2u;
+
+	const auto singleButtonAreaHeight = static_cast<float>(height) / 3.f;
+	const auto singleButtonHeight = static_cast<unsigned>(0.9f * singleButtonAreaHeight);
+	const auto halfOfSingleButtonHeight = singleButtonHeight / 2u;
+
+	auto leftBorder = xCenter - width / 2u;
+	const auto topBorder = yCenter - height / 2u;
+
+	const auto sdRowCenter = topBorder + singleButtonAreaHeight + halfOfSingleButtonHeight;
+	const auto tdRowCenter = topBorder + 2 * singleButtonAreaHeight + halfOfSingleButtonHeight;
+
+	const std::array<std::string, 26> letters {"Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P",
+		"A", "S", "D", "F", "G", "H", "J", "K", "L", "Z", "X", "C", "V", "B", "N", "M"};
+
+	for (auto i = 0u; i < 10; ++i)
+		addButton(leftBorder + i * singleButtonAreaWidth + halfOfSingleButtonWidth,
+				topBorder + halfOfSingleButtonHeight, singleButtonWidth, singleButtonHeight,
+				letters.at(i));
+
+	leftBorder += singleButtonAreaWidth / 2u;
+
+	for (auto i = 0u; i < 9; ++i)
+		addButton(leftBorder + i * singleButtonAreaWidth + halfOfSingleButtonWidth,
+				sdRowCenter, singleButtonWidth, singleButtonHeight,
+				letters.at(i + 10));
+
+	leftBorder += singleButtonAreaWidth;
+
+	for (auto i = 0u; i < 7; ++i)
+		addButton(leftBorder + i * singleButtonAreaWidth + halfOfSingleButtonWidth,
+				tdRowCenter, singleButtonWidth, singleButtonHeight,
+				letters.at(i + 19));
+
 }
 
 void GUIBuilder::setBackgroundColor(Color color)

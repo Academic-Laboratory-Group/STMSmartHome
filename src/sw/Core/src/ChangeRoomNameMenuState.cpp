@@ -11,7 +11,7 @@ ChangeRoomNameMenuState::ChangeRoomNameMenuState(std::shared_ptr<StateManager> s
 	m_guiBuilder.addTextBox(100, 25, "Write name:");
 	m_guiBuilder.addTextBox(240, 25, m_name);
 
-	m_guiBuilder.addKeyboard(240, 150, 480, 180);
+	m_guiBuilder.addKeyboard(240, 155, 480, 230);
 
 	m_guiBuilder.addButton(50, 300, 100, 40, "BACK");
 	m_guiBuilder.addButton(430, 300, 100, 40, "ENTER");

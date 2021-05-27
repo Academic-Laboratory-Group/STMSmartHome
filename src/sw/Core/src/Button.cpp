@@ -3,7 +3,7 @@
 #include "LCD_GUI.h"
 
 Button::Button( unsigned xCenter, unsigned yCenter, unsigned width, unsigned height,
-		std::string text, ButtonShape shape, Color color, unsigned textSize,
+		const std::string text, ButtonShape shape, Color color, unsigned textSize,
 		Color textColor ) :
 		m_x(xCenter), m_y(yCenter), m_width(width), m_height(height), m_shape(shape),
 		m_color(color), m_textBox(

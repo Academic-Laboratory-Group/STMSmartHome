@@ -15,7 +15,7 @@ class Button : public Renderable
 	public:
 		Button( unsigned xCenter, unsigned yCenter,
 				unsigned width, unsigned height,
-				std::string text,
+				const std::string text,
 				ButtonShape shape = Square,
 				Color color = BUTTON_BACKGROUND_COLOR,
 				unsigned textSize = 20u,
