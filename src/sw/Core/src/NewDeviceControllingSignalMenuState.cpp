@@ -8,19 +8,12 @@ NewDeviceControllingSignalMenuState::NewDeviceControllingSignalMenuState(std::sh
 	// make new
 	m_guiBuilder.setBackgroundColor(BACKGROUND_COLOR);
 
-	m_guiBuilder.addTextBox("Kind of controlling signal", TEXT_COLOR, 240, 40, 24);
+	m_guiBuilder.addTextBox(240, 40, "Kind of controlling signal", 24);
 
-	m_guiBuilder.addButton(Square, BUTTON_BACKGROUND_COLOR, 240, 107, 220, 60);
-	m_guiBuilder.addTextBox("1/0 binary", BUTTON_TEXT_COLOR, 245, 107, 20);
-
-	m_guiBuilder.addButton(Square, BUTTON_BACKGROUND_COLOR, 240, 177, 220, 60);
-	m_guiBuilder.addTextBox("PWM", BUTTON_TEXT_COLOR, 235, 177, 20);
-
-	m_guiBuilder.addButton(Square, BUTTON_BACKGROUND_COLOR, 240, 247, 220, 60);
-	m_guiBuilder.addTextBox("Impulse", BUTTON_TEXT_COLOR, 238, 247, 20);
-
-	m_guiBuilder.addButton(Square, BUTTON_BACKGROUND_COLOR, 0, 200, 200, 100);
-	m_guiBuilder.addTextBox("BACK", BUTTON_TEXT_COLOR, 50, 300, 20);
+	m_guiBuilder.addButton(240, 107, 220, 60, "1/0 binary");
+	m_guiBuilder.addButton(240, 177, 220, 60, "PWM");
+	m_guiBuilder.addButton(40, 247, 220, 60, "Impulse");
+	m_guiBuilder.addButton(0, 200, 200, 100, "BACK");
 
 	// set pointer to new GUI
 	m_gui = m_guiBuilder.getResult();

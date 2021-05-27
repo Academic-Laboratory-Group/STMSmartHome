@@ -10,15 +10,20 @@
 class TextBox : public Renderable
 {
 	public:
-		TextBox(std::string text, Color color, unsigned xCenter, unsigned yCenter, unsigned size);
+		TextBox(unsigned xCenter, unsigned yCenter, std::string text,
+				unsigned size = 24u, Color color = TEXT_COLOR);
+		~TextBox() = default;
+
 		void render();
 
+		std::string getText();
+
 	private:
-		std::string m_text;
-		Color m_color;
 		unsigned m_x;
 		unsigned m_y;
+		std::string m_text;
 		unsigned m_size;
+		Color m_color;
 };
 
 

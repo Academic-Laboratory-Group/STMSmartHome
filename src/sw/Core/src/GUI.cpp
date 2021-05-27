@@ -10,15 +10,15 @@ void GUI::render()
 	GUI_Clear(m_backgroundColor);
 
 	for_each(m_buttons.begin(), m_buttons.end(),
-			[](std::shared_ptr<Button> button){ button->render(); });
-	for_each(m_textboxes.begin(), m_textboxes.end(),
-			[](std::shared_ptr<TextBox> textboxes){ textboxes->render(); });
+			[](const auto& button){ button->render(); });
+	for_each(m_textBoxes.begin(), m_textBoxes.end(),
+			[](const auto& textBoxes){ textBoxes->render(); });
 }
 
 int GUI::processInput(std::pair<unsigned, unsigned> touchAddress)
 {
 	const auto it = std::find_if(m_buttons.begin(), m_buttons.end(),
-			[touchAddress](std::shared_ptr<Button> button){
+			[touchAddress](const auto& button){
 				return button->processInput(touchAddress); });
 
 	if(it != m_buttons.end())
@@ -27,16 +27,14 @@ int GUI::processInput(std::pair<unsigned, unsigned> touchAddress)
 	return -1;
 }
 
-void GUI::addButton(ButtonShape shape, Color color, unsigned xCenter, unsigned yCenter,
-		unsigned width, unsigned high)
+void GUI::addButton( std::shared_ptr<Button> button )
 {
-	m_buttons.push_back(std::make_unique<Button>(shape, color, xCenter, yCenter, width, high));
+	m_buttons.emplace_back(std::move(button));
 }
 
-void GUI::addTextBox(std::string text, Color color, unsigned xCenter, unsigned yCenter,
-		unsigned size)
+void GUI::addTextBox( std::shared_ptr<TextBox> textBox )
 {
-	m_textboxes.push_back(std::make_unique<TextBox>(text, color, xCenter, yCenter, size));
+	m_textBoxes.emplace_back(std::move(textBox));
 }
 
 void GUI::setBackgroundColor(Color color)

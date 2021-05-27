@@ -18,13 +18,12 @@ RoomChooseMenuState::RoomChooseMenuState(std::shared_ptr<StateManager> stateMana
 	// make new
 	m_guiBuilder.setBackgroundColor(BACKGROUND_COLOR);
 
-	m_guiBuilder.addButton(Square, BUTTON_BACKGROUND_COLOR, 50, 300, 100, 40);
-	m_guiBuilder.addTextBox("BACK", BUTTON_TEXT_COLOR, 50, 300, 20);
+	m_guiBuilder.addButton(50, 300, 100, 40, "BACK");
 
 	const auto rooms = m_stateManager->getFlat()->getRooms();
 	if (rooms->empty())
 	{
-		m_guiBuilder.addTextBox("No rooms configured", TEXT_COLOR, 240, 160, 24); // 480x320
+		m_guiBuilder.addTextBox(240, 160, "No rooms configured"); // 480x320
 	}
 	else
 	{
@@ -32,15 +31,11 @@ RoomChooseMenuState::RoomChooseMenuState(std::shared_ptr<StateManager> stateMana
 		unsigned idy{};
 		for (const auto& room : *rooms.get())
 		{
-			m_guiBuilder.addButton(Square, BUTTON_BACKGROUND_COLOR, idx, idy, 50, 110);
-			m_guiBuilder.addTextBox(room.getName(), BLACK, idx, idy, 20); // TODO
+			m_guiBuilder.addButton( idx, idy, 50, 110, room.getName());
 		}
 	}
-	m_guiBuilder.addButton(Square, BUTTON_BACKGROUND_COLOR, 100, 50, 40, 110);
-	m_guiBuilder.addTextBox("Room 1", BUTTON_TEXT_COLOR, 100, 50, 20);
-
-	m_guiBuilder.addButton(Square, BUTTON_BACKGROUND_COLOR, 240, 247, 200, 50);
-	m_guiBuilder.addTextBox("Add new room", BUTTON_TEXT_COLOR, 240, 247, 20);
+	m_guiBuilder.addButton(100, 50, 40, 110, "Room 1");
+	m_guiBuilder.addButton(240, 247, 200, 50, "Add new room");
 
 	// set pointer to new GUI
 	m_gui = m_guiBuilder.getResult();
