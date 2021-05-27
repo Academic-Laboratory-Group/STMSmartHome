@@ -5,6 +5,9 @@
 #include "Controller.h"
 #include "RoomBuilder.h"
 
+#include <string>
+
+
 class Room : private RoomBuilder
 {
 	public:
@@ -12,9 +15,12 @@ class Room : private RoomBuilder
 		~Room() = default;
 
 		float getTemperature();
+		void setName(std::string name);
+		std::string getName() const;
 		void setControllerValue(int controllerId, float value);
 
 	private:
+		std::string m_name{"Room"};
 		TemperatureSensor m_sensor;
 		std::vector<Controller> m_controllers;
 

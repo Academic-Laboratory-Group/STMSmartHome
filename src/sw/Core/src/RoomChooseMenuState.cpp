@@ -2,12 +2,15 @@
 #include "MainMenuState.h"
 #include "RoomSettingsMenuState.h"
 #include "ChangeRoomNameMenuState.h"
+#include "Flat.h"
+#include "Room.h"
 #include "StateManager.h"
 #include "Utils.h"
 
 #include <assert.h>
 #include <algorithm>
 #include <math.h>
+#include <memory>
 
 
 RoomChooseMenuState::RoomChooseMenuState(std::shared_ptr<StateManager> stateManager) : State(stateManager)
@@ -19,43 +22,22 @@ RoomChooseMenuState::RoomChooseMenuState(std::shared_ptr<StateManager> stateMana
 	m_guiBuilder.addTextBox("BACK", BUTTON_TEXT_COLOR, 50, 300, 20);
 
 	const auto rooms = m_stateManager->getFlat()->getRooms();
-	if (rooms.empty())
+	if (rooms->empty())
 	{
-		m_guiBuilder.addTextBox("No rooms configured", BLACK, 240, 160, 24); // 480x320
+		m_guiBuilder.addTextBox("No rooms configured", TEXT_COLOR, 240, 160, 24); // 480x320
 	}
 	else
 	{
-		/*
-		const auto roomsSize = static_cast<float>(rooms.size());
-		constexpr unsigned maxRowSize = 3;
-		constexpr unsigned maxColSize = 3;
-		constexpr std::pair<unsigned, unsigned> boxSize(480, 220);
-		constexpr unsigned maxColSize = 3;
-
-		assert(!(maxRowSize * maxColSize > roomsSize));
-
-		const auto rowColAmount = roundf(sqrtf(roomsSize));
-		const auto lastRowSize = remainderf(roomsSize, maxRowSize);
-
-		int idx;
-		for(const auto & room : rooms)
-		{
-			const auto x =
-			m_guiBuilder.addButton(Square, BUTTON_BACKGROUND,
-					(boxSize.first / (2 * rowColAmount)),
-					(boxSize.second / (2 * rowColAmount)), 40, 110);
-			m_guiBuilder.addTextBox(room->getName(), BLACK, 100, 50, 20);
-		}*/
 		unsigned idx{};
 		unsigned idy{};
-		for (const auto& room : rooms)
+		for (const auto& room : *rooms.get())
 		{
-			m_guiBuilder.addButton(Square, BUTTON_BACKGROUND, idx, idy, 50, 110);
-			// m_guiBuilder.addTextBox(room->getName(), BLACK, idx, idy, 20); // TODO
+			m_guiBuilder.addButton(Square, BUTTON_BACKGROUND_COLOR, idx, idy, 50, 110);
+			m_guiBuilder.addTextBox(room.getName(), BLACK, idx, idy, 20); // TODO
 		}
 	}
-	m_guiBuilder.addButton(Square, BUTTON_BACKGROUND, 100, 50, 40, 110);
-	m_guiBuilder.addTextBox("Room 1", BLACK, 100, 50, 20);
+	m_guiBuilder.addButton(Square, BUTTON_BACKGROUND_COLOR, 100, 50, 40, 110);
+	m_guiBuilder.addTextBox("Room 1", BUTTON_TEXT_COLOR, 100, 50, 20);
 
 	m_guiBuilder.addButton(Square, BUTTON_BACKGROUND_COLOR, 240, 247, 200, 50);
 	m_guiBuilder.addTextBox("Add new room", BUTTON_TEXT_COLOR, 240, 247, 20);

@@ -10,16 +10,16 @@
 class Flat
 {
 	public:
-		Flat() = default;
+		Flat();
 		~Flat() = default;
 
 		void addRoom(std::shared_ptr<Room> room);
-		const std::vector<std::shared_ptr<Room>> getRooms() const;
+		const std::shared_ptr<std::vector<Room>> getRooms() const;
 		const std::shared_ptr<RoomBuilder> getBuilder() const;
 
 	private:
 		std::shared_ptr<RoomBuilder> m_roomBuilder;
-		std::vector<std::shared_ptr<Room>> m_rooms;
+		std::shared_ptr<std::vector<Room>> m_rooms;
 };
 
 

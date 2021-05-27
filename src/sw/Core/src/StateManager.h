@@ -22,8 +22,8 @@ class StateManager : public Updatable, Renderable
 		void changeState(std::unique_ptr<State> state);
 
 	private:
-		std::unique_ptr<State> m_currentState;
 		std::shared_ptr<Flat> m_flat;
+		std::unique_ptr<State> m_currentState;
 };
 
 #endif

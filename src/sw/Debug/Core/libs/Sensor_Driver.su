@@ -1,6 +1,0 @@
-Sensor_Driver.c:3:6:Delay_us	16	static
-Sensor_Driver.c:9:6:ONE_WIRE_SET	16	static
-Sensor_Driver.c:14:6:ONE_WIRE_RESET	16	static
-Sensor_Driver.c:19:9:DS18B20_Init	24	static
-Sensor_Driver.c:44:6:DS18B20_Write	24	static
-Sensor_Driver.c:59:9:DS18B20_Read	24	static
