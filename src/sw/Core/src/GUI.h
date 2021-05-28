@@ -8,6 +8,7 @@
 
 #include <vector>
 #include <memory>
+#include <string>
 
 
 class GUI : public Renderable
@@ -23,6 +24,8 @@ class GUI : public Renderable
 		void addTextBox( std::shared_ptr<TextBox> textBox );
 
 		void setBackgroundColor(Color color);
+
+		std::string getButtonText(int idx);
 
 	private:
 		std::vector<std::shared_ptr<Button>> m_buttons;

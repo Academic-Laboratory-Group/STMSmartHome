@@ -63,6 +63,10 @@ void GUIBuilder::addKeyboard(unsigned xCenter, unsigned yCenter,
 				tdRowCenter, singleButtonWidth, singleButtonHeight,
 				letters.at(i + 19));
 
+	const auto deleteMovement = static_cast<unsigned>(0.65f * static_cast<float>(singleButtonWidth));
+
+	addButton(xCenter + width / 2u - deleteMovement,
+			tdRowCenter, singleButtonAreaWidth, singleButtonHeight, "<-");
 }
 
 void GUIBuilder::setBackgroundColor(Color color)

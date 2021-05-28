@@ -6,12 +6,13 @@
 #include "RoomBuilder.h"
 
 #include <string>
+#include <memory>
 
 
 class Room : private RoomBuilder
 {
 	public:
-		Room() = default;
+		Room() : m_sensor(), m_controllers() {};
 		~Room() = default;
 
 		float getTemperature();
@@ -21,7 +22,7 @@ class Room : private RoomBuilder
 
 	private:
 		std::string m_name{"Room"};
-		TemperatureSensor m_sensor;
+		std::shared_ptr<TemperatureSensor> m_sensor;
 		std::vector<Controller> m_controllers;
 
 };

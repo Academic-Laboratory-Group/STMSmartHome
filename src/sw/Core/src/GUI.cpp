@@ -42,3 +42,7 @@ void GUI::setBackgroundColor(Color color)
 	m_backgroundColor = color;
 }
 
+std::string GUI::getButtonText(int idx)
+{
+	return m_buttons.at(idx)->getText();
+}

@@ -3,15 +3,19 @@
 #include "StateManager.h"
 #include "Utils.h"
 
-ChangeRoomNameMenuState::ChangeRoomNameMenuState(std::shared_ptr<StateManager> stateManager) : State(stateManager)
+ChangeRoomNameMenuState::ChangeRoomNameMenuState(
+		std::shared_ptr<StateManager> stateManager, std::shared_ptr<Room> room) :
+		State(stateManager), m_room(room), m_newName(room->getName())
 {
 	// make new
 	m_guiBuilder.setBackgroundColor(BACKGROUND_COLOR);
 
-	m_guiBuilder.addTextBox(100, 25, "Write name:");
-	m_guiBuilder.addTextBox(240, 25, m_name);
+	m_guiBuilder.addTextBox(100, 25, "New name:");
+	m_guiBuilder.addTextBox(240, 25, m_newName);
 
 	m_guiBuilder.addKeyboard(240, 155, 480, 230);
+	m_guiBuilder.addButton(240, 300, 200, 40, "_");
+
 
 	m_guiBuilder.addButton(50, 300, 100, 40, "BACK");
 	m_guiBuilder.addButton(430, 300, 100, 40, "ENTER");
@@ -39,13 +43,21 @@ void ChangeRoomNameMenuState::processInput(std::pair<unsigned, unsigned> touchAd
 	if (inputResult < 0)
 		return;
 
-	switch(inputResult)
+	const auto inputResultStr = m_gui.getButtonText(inputResult);
+
+	if(inputResultStr == "Back")
 	{
-		case (int)Buttons::Back:
-		case (int)Buttons::Enter:
 			m_stateManager->changeState(std::make_unique<RoomChooseMenuState>(m_stateManager));
 			return;
-		default:
-			assert(!("InputResult out of range."));
+	}
+	else if(inputResultStr == "Enter")
+	{
+		m_room->setName(m_newName);
+		m_stateManager->changeState(std::make_unique<RoomChooseMenuState>(m_stateManager));
+		return;
+	}
+	else
+	{
+		assert(!("InputResult out of range."));
 	}
 }

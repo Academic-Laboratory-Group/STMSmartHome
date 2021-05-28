@@ -69,7 +69,8 @@ void RoomChooseMenuState::processInput(std::pair<unsigned, unsigned> touchAddres
 			m_stateManager->changeState(std::make_unique<RoomSettingsMenuState>(m_stateManager));
 			return;
 		case (int)Buttons::NewRoom:
-			m_stateManager->changeState(std::make_unique<ChangeRoomNameMenuState>(m_stateManager));
+			m_stateManager->changeState(std::make_unique<ChangeRoomNameMenuState>(
+					m_stateManager, std::make_shared<Room>()));
 			return;
 		default:
 			assert(!("InputResult out of range."));
