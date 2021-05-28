@@ -7,7 +7,9 @@
 #include <assert.h>
 
 
-MainMenuState::MainMenuState(std::shared_ptr<StateManager> stateManager) : State(stateManager)
+MainMenuState::MainMenuState(
+		std::shared_ptr<StateManager> stateManager) :
+		State(stateManager)
 {
 	// make new
 	m_guiBuilder.setBackgroundColor(BACKGROUND_COLOR);

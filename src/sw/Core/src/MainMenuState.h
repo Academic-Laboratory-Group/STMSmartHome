@@ -2,6 +2,7 @@
 #define _MAIN_MENU_STATE_H_
 
 #include "State.h"
+#include "Room.h"
 
 class MainMenuState: public State
 {

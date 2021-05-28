@@ -1,13 +1,18 @@
 #include "Room.h"
 
-float Room::getTemperature()
+float Room::getTemperature() const
 {
-	return{};
+	return m_temperature;
 }
 
 void Room::setName(std::string name)
 {
 	m_name = std::move(name);
+}
+
+void Room::setTemperature(float temperature)
+{
+	m_temperature = std::move(temperature);
 }
 
 std::string Room::getName() const

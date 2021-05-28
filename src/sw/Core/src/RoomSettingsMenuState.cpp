@@ -4,20 +4,9 @@
 #include "StateManager.h"
 #include "Utils.h"
 
-#include <iostream>
-#include <string>
-#include <sstream>
-
-
-template < typename Type >
-std::string to_str(const Type& t)
-{
-	std::ostringstream os;
-	os << t;
-	return os.str();
-}
-
-RoomSettingsMenuState::RoomSettingsMenuState(std::shared_ptr<StateManager> stateManager) : State(stateManager)
+RoomSettingsMenuState::RoomSettingsMenuState(
+		std::shared_ptr<StateManager> stateManager, std::shared_ptr<Room> room) :
+		State(stateManager), m_room(room), m_temperature(room->getTemperature())
 {
 	// make new
 	m_guiBuilder.setBackgroundColor(BACKGROUND_COLOR);
@@ -25,7 +14,7 @@ RoomSettingsMenuState::RoomSettingsMenuState(std::shared_ptr<StateManager> state
 	m_guiBuilder.addButton(50, 300, 100, 40, "BACK");
 
 	m_guiBuilder.addTextBox(115, 85, "Temperature:", 20u);
-	//m_guiBuilder.addTextBox(to_str(m_temperature), BLACK, 220, 85, 20); //not working
+	m_guiBuilder.addTextBox(220, 85,std::to_string(m_temperature),20u);
 	m_guiBuilder.addTextBox(270, 85, "*C", 20u);
 
 	m_guiBuilder.addTextBox(140, 195, "Light", 24u, BUTTON_TEXT_COLOR);
@@ -81,4 +70,7 @@ void RoomSettingsMenuState::processInput(std::pair<unsigned, unsigned> touchAddr
 		default:
 			assert(!("InputResult out of range."));
 	}
+
+	m_room->setTemperature(m_temperature);
+	m_gui.setTextBoxText(1, std::to_string(m_temperature));
 }

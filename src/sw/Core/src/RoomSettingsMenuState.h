@@ -2,11 +2,15 @@
 #define INC_ROOMSETTINGSMENUSTATE_H_
 
 #include "State.h"
+#include "Room.h"
+
+#include <string>
 
 class RoomSettingsMenuState: public State
 {
 	public:
-		RoomSettingsMenuState(std::shared_ptr<StateManager> stateManager);
+		RoomSettingsMenuState(std::shared_ptr<StateManager> stateManager,
+				std::shared_ptr<Room> room);
 		~RoomSettingsMenuState() = default;
 
 		void update(float deltaTime) override;
@@ -22,8 +26,8 @@ class RoomSettingsMenuState: public State
 			HeaterUp,
 			HeaterDown,
 		};
-		std::string m_name;
-		float m_temperature = 29.0f;
+		std::shared_ptr<Room> m_room;
+		float m_temperature = 22.0f;
 };
 
 

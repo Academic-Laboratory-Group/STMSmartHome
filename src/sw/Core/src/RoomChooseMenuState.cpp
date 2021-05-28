@@ -13,7 +13,9 @@
 #include <memory>
 
 
-RoomChooseMenuState::RoomChooseMenuState(std::shared_ptr<StateManager> stateManager) : State(stateManager)
+RoomChooseMenuState::RoomChooseMenuState(
+		std::shared_ptr<StateManager> stateManager) :
+		State(stateManager)
 {
 	// make new
 	m_guiBuilder.setBackgroundColor(BACKGROUND_COLOR);
@@ -66,7 +68,7 @@ void RoomChooseMenuState::processInput(std::pair<unsigned, unsigned> touchAddres
 			m_stateManager->changeState(std::make_unique<MainMenuState>(m_stateManager));
 			return;
 		case (int)Buttons::Room:
-			m_stateManager->changeState(std::make_unique<RoomSettingsMenuState>(m_stateManager));
+			m_stateManager->changeState(std::make_unique<RoomSettingsMenuState>(m_stateManager, std::make_shared<Room>()));
 			return;
 		case (int)Buttons::NewRoom:
 			m_stateManager->changeState(std::make_unique<ChangeRoomNameMenuState>(

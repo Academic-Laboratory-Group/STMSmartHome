@@ -14,18 +14,18 @@ TextBox::TextBox(unsigned xCenter, unsigned yCenter, std::string text,
 	{
 		if(m_size == 16u)
 		{
-			m_left = xCenter - ((m_text.length()/2u) * 11u);
-			m_right = xCenter + ((m_text.length()/2u) * 11u);
+			m_left = xCenter - ((m_text.length()/2.0) * 11u);
+			m_right = xCenter + ((m_text.length()/2.0) * 11u);
 		}
 		else if(m_size == 20u)
 		{
-			m_left = xCenter - ((m_text.length()/2u) * 15u) + 5u;
-			m_right = xCenter + ((m_text.length()/2u) * 15u) - 5u;
+			m_left = xCenter - ((m_text.length()/2.0) * 14u);
+			m_right = xCenter + ((m_text.length()/2.0) * 14u);
 		}
 		else if(m_size == 24u)
 		{
-			m_left = xCenter - ((m_text.length()/2u) * 17u) - 5u;
-			m_right = xCenter + ((m_text.length()/2u) * 17u) + 5u;
+			m_left = xCenter - ((m_text.length()/2.0) * 17u);
+			m_right = xCenter + ((m_text.length()/2.0) * 17u);
 		}
 	}
 

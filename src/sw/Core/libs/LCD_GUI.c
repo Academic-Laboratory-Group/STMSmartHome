@@ -369,7 +369,7 @@ int GUI_DisStringInBox_EN(POINT Xbegin, POINT Ybegin, POINT Xend, POINT Yend, co
 					return -1; // Box is full.
         }
 
-        GUI_DisChar(Xpoint, Ypoint, * pString, Font, Color_Background, Color_Foreground);
+        GUI_DisChar(Xpoint, Ypoint + 4u, * pString, Font, Color_Background, Color_Foreground);
 
         //The next character of the address
         ++pString;

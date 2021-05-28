@@ -12,8 +12,8 @@ ChangeRoomNameMenuState::ChangeRoomNameMenuState(
 	// make new
 	m_guiBuilder.setBackgroundColor(BACKGROUND_COLOR);
 
-	m_guiBuilder.addTextBox(100, 25, "New name:", 24, TEXT_COLOR, 200, 50);
-	m_guiBuilder.addTextBox(340, 40, m_newName, 24, TEXT_COLOR, 280, 80);
+	m_guiBuilder.addTextBox(100, 25, "New name:", 24u, TEXT_COLOR, 200, 50);
+	m_guiBuilder.addTextBox(340, 40, m_newName, 24u, TEXT_COLOR, 280, 80);
 
 	m_guiBuilder.addKeyboard(240, 155, 480, 230);
 	m_guiBuilder.addButton(240, 300, 200, 40, "_");

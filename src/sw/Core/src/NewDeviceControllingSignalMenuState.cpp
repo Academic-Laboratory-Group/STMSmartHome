@@ -3,7 +3,9 @@
 #include "StateManager.h"
 #include "Utils.h"
 
-NewDeviceControllingSignalMenuState::NewDeviceControllingSignalMenuState(std::shared_ptr<StateManager> stateManager) : State(stateManager)
+NewDeviceControllingSignalMenuState::NewDeviceControllingSignalMenuState(
+		std::shared_ptr<StateManager> stateManager, std::shared_ptr<Room> room) :
+		State(stateManager), m_room(room)
 {
 	// make new
 	m_guiBuilder.setBackgroundColor(BACKGROUND_COLOR);
@@ -41,11 +43,11 @@ void NewDeviceControllingSignalMenuState::processInput(std::pair<unsigned, unsig
 	switch(inputResult)
 	{
 		case (int)Buttons::Back:
-			m_stateManager->changeState(std::make_unique<RoomSettingsMenuState>(m_stateManager));
+			m_stateManager->changeState(std::make_unique<RoomSettingsMenuState>(m_stateManager, m_room));
 			return;
 		default:
 			// TODO: Temporary when some states are not ready
-			m_stateManager->changeState(std::make_unique<RoomSettingsMenuState>(m_stateManager));
+			m_stateManager->changeState(std::make_unique<RoomSettingsMenuState>(m_stateManager, m_room));
 			return;
 			assert(!("InputResult out of range."));
 	}

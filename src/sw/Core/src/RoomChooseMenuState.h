@@ -1,9 +1,10 @@
 #ifndef INC_ROOMCHOOSEMENUSTATE_H_
 #define INC_ROOMCHOOSEMENUSTATE_H_
 
+#include "Room.h"
 #include "State.h"
 
-class RoomChooseMenuState: public State
+class RoomChooseMenuState : public State
 {
 	public:
 		RoomChooseMenuState(std::shared_ptr<StateManager> stateManager);
