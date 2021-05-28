@@ -26,7 +26,8 @@ class GUIBuilder
 
 		void addTextBox(unsigned xCenter, unsigned yCenter,
 				std::string text, unsigned size = 24u,
-				Color color = TEXT_COLOR);
+				Color color = TEXT_COLOR, unsigned width = 0u,
+				unsigned height = 0u);
 
 		void addKeyboard(unsigned xCenter, unsigned yCenter,
 				unsigned width, unsigned height,

@@ -18,9 +18,10 @@ void GUIBuilder::addButton( unsigned xCenter, unsigned yCenter, unsigned width,
 }
 
 void GUIBuilder::addTextBox(unsigned xCenter, unsigned yCenter, std::string text,
-		unsigned size, Color color)
+		unsigned size, Color color, unsigned width, unsigned height)
 {
-	m_gui.addTextBox(std::make_shared<TextBox>(xCenter, yCenter, text, size, color));
+	m_gui.addTextBox(std::make_shared<TextBox>(
+			xCenter, yCenter, text, size, color, width, height));
 }
 
 void GUIBuilder::addKeyboard(unsigned xCenter, unsigned yCenter,

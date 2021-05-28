@@ -26,6 +26,7 @@ class GUI : public Renderable
 		void setBackgroundColor(Color color);
 
 		std::string getButtonText(int idx);
+		void setTextBoxText(int idx, std::string name);
 
 	private:
 		std::vector<std::shared_ptr<Button>> m_buttons;
