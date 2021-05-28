@@ -29,37 +29,37 @@ void GUIBuilder::addKeyboard(unsigned xCenter, unsigned yCenter,
 {
 	const auto singleButtonAreaWidth = static_cast<float>(width) / 10.f;
 	const auto singleButtonWidth = static_cast<unsigned>(0.9f * singleButtonAreaWidth);
-	const auto halfOfSingleButtonWidth = singleButtonWidth / 2u;
+	const auto halfOfSingleButtonAreaWidth = singleButtonAreaWidth / 2u;
 
 	const auto singleButtonAreaHeight = static_cast<float>(height) / 3.f;
 	const auto singleButtonHeight = static_cast<unsigned>(0.9f * singleButtonAreaHeight);
-	const auto halfOfSingleButtonHeight = singleButtonHeight / 2u;
+	const auto halfOfSingleButtonAreaHeight = static_cast<unsigned>(singleButtonAreaHeight / 2.f);
 
 	auto leftBorder = xCenter - width / 2u;
 	const auto topBorder = yCenter - height / 2u;
 
-	const auto sdRowCenter = topBorder + singleButtonAreaHeight + halfOfSingleButtonHeight;
-	const auto tdRowCenter = topBorder + 2 * singleButtonAreaHeight + halfOfSingleButtonHeight;
+	const auto sdRowCenter = topBorder + static_cast<unsigned>(1.5f * singleButtonAreaHeight);
+	const auto tdRowCenter = topBorder + static_cast<unsigned>(2.5f * singleButtonAreaHeight);
 
 	const std::array<std::string, 26> letters {"Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P",
 		"A", "S", "D", "F", "G", "H", "J", "K", "L", "Z", "X", "C", "V", "B", "N", "M"};
 
 	for (auto i = 0u; i < 10; ++i)
-		addButton(leftBorder + i * singleButtonAreaWidth + halfOfSingleButtonWidth,
-				topBorder + halfOfSingleButtonHeight, singleButtonWidth, singleButtonHeight,
+		addButton(leftBorder + i * singleButtonAreaWidth + halfOfSingleButtonAreaWidth,
+				topBorder + halfOfSingleButtonAreaHeight, singleButtonWidth, singleButtonHeight,
 				letters.at(i));
 
 	leftBorder += singleButtonAreaWidth / 2u;
 
 	for (auto i = 0u; i < 9; ++i)
-		addButton(leftBorder + i * singleButtonAreaWidth + halfOfSingleButtonWidth,
+		addButton(leftBorder + i * singleButtonAreaWidth + halfOfSingleButtonAreaWidth,
 				sdRowCenter, singleButtonWidth, singleButtonHeight,
 				letters.at(i + 10));
 
 	leftBorder += singleButtonAreaWidth;
 
 	for (auto i = 0u; i < 7; ++i)
-		addButton(leftBorder + i * singleButtonAreaWidth + halfOfSingleButtonWidth,
+		addButton(leftBorder + i * singleButtonAreaWidth + halfOfSingleButtonAreaWidth,
 				tdRowCenter, singleButtonWidth, singleButtonHeight,
 				letters.at(i + 19));
 
