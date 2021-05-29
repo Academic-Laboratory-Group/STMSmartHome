@@ -1,6 +1,7 @@
 #pragma once
 
 #include "StateManager.h"
+#include "Flat.h"
 #include "Updatable.h"
 #include "Renderable.h"
 
@@ -28,4 +29,5 @@ class Prog : public Updatable, public Renderable
 	private:
 		static std::unique_ptr<Prog> s_progInstance;
 		std::shared_ptr<StateManager> m_stateManager;
+		std::shared_ptr<Flat> m_flat;
 };

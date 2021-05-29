@@ -2,6 +2,7 @@
 #define _STATE_MANAGER_H_
 
 #include "State.h"
+#include "Flat.h"
 #include "Updatable.h"
 #include "Renderable.h"
 
@@ -17,9 +18,11 @@ class StateManager : public Updatable, Renderable
 		void render() override;
 		void processInput(std::pair<unsigned, unsigned> touchAddress);
 
+		std::shared_ptr<Flat> getFlat();
 		void changeState(std::unique_ptr<State> state);
 
 	private:
+		std::shared_ptr<Flat> m_flat;
 		std::unique_ptr<State> m_currentState;
 };
 

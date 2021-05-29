@@ -2,11 +2,16 @@
 #define INC_CHANGEROOMNAMEMENUSTATE_H_
 
 #include "State.h"
+#include "Room.h"
+
+#include <string>
+
 
 class ChangeRoomNameMenuState: public State
 {
 	public:
-		ChangeRoomNameMenuState(std::shared_ptr<StateManager> stateManager);
+		ChangeRoomNameMenuState(std::shared_ptr<StateManager> stateManager,
+				std::shared_ptr<Room> room);
 		~ChangeRoomNameMenuState() = default;
 
 		void update(float deltaTime) override;
@@ -14,13 +19,8 @@ class ChangeRoomNameMenuState: public State
 		void processInput(std::pair<unsigned, unsigned> touchAddress) override;
 
 	private:
-		enum class Buttons
-		{
-			Back,
-			Enter
-		};
-
-		std::string m_name;
+		std::shared_ptr<Room> m_room;
+		std::string m_newName;
 };
 
 #endif /* INC_CHANGEROOMNAMEMENUSTATE_H_ */

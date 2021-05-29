@@ -5,6 +5,10 @@ TemperatureSensor::TemperatureSensor(EventManager* eventManager, Sensor sensor)
 {
 	m_eventManager = eventManager;
 	m_GPIOx = GPIOC;
+}
+
+void TemperatureSensor::setSensor(Sensor sensor)
+{
 	m_sensor = sensor;
 }
 

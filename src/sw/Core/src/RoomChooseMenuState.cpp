@@ -2,22 +2,57 @@
 #include "MainMenuState.h"
 #include "RoomSettingsMenuState.h"
 #include "ChangeRoomNameMenuState.h"
+#include "Flat.h"
+#include "Room.h"
 #include "StateManager.h"
 #include "Utils.h"
 
-RoomChooseMenuState::RoomChooseMenuState(std::shared_ptr<StateManager> stateManager) : State(stateManager)
+#include <assert.h>
+#include <algorithm>
+#include <math.h>
+#include <memory>
+#include <iterator>
+
+
+
+RoomChooseMenuState::RoomChooseMenuState(
+		std::shared_ptr<StateManager> stateManager) :
+		State(stateManager)
 {
 	// make new
 	m_guiBuilder.setBackgroundColor(BACKGROUND_COLOR);
 
-	m_guiBuilder.addButton(Square, BUTTON_BACKGROUND_COLOR, 50, 300, 100, 40);
-	m_guiBuilder.addTextBox("BACK", BUTTON_TEXT_COLOR, 50, 300, 20);
+	m_guiBuilder.addButton(50, 300, 100, 40, "BACK");
 
-	m_guiBuilder.addButton(Square, BUTTON_BACKGROUND_COLOR, 100, 50, 110, 40);
-	m_guiBuilder.addTextBox("Room 1", BUTTON_TEXT_COLOR, 100, 50, 20);
+	const auto rooms = m_stateManager->getFlat()->getRooms();
+	if (rooms->empty())
+	{
+		m_guiBuilder.addTextBox(240, 160, "No rooms configured"); // 480x320
+	}
+	else
+	{
+		m_guiBuilder.addTextBox(110, 25, "Choose room:", 24u, TEXT_COLOR, 220, 50);
 
-	m_guiBuilder.addButton(Square, BUTTON_BACKGROUND_COLOR, 240, 247, 200, 50);
-	m_guiBuilder.addTextBox("Add new room", BUTTON_TEXT_COLOR, 240, 247, 20);
+		unsigned idx = 20;
+		unsigned idy = 70;
+		unsigned free_place = 480;
+		for (const auto& room : *rooms.get())
+		{
+			if (room->getName().length() * 14 < free_place )
+				idx += (room->getName().length() * 14)/2u;
+			else
+			{
+				idy += 60;
+				idx = (room->getName().length() * 14)/2u + 20;
+			}
+			free_place -= room->getName().length() * 14;
+			m_guiBuilder.addButton( idx, idy, room->getName().length() * 14 + 20, 50, room->getName());
+			idx += ((room->getName().length() * 14 + 20)/2u) + 20;
+
+		}
+	}
+
+	m_guiBuilder.addButton(240, 247, 200, 50, "Add new room");
 
 	// set pointer to new GUI
 	m_gui = m_guiBuilder.getResult();
@@ -37,23 +72,44 @@ void RoomChooseMenuState::render()
 
 void RoomChooseMenuState::processInput(std::pair<unsigned, unsigned> touchAddress)
 {
+	const auto rooms = m_stateManager->getFlat()->getRooms();
+
 	const auto inputResult = m_gui.processInput(touchAddress);
 
 	if (inputResult < 0)
 		return;
 
-	switch(inputResult)
+	const auto inputResultStr = m_gui.getButtonText(inputResult);
+
+	if(inputResultStr == "BACK")
 	{
-		case (int)Buttons::Back:
-			m_stateManager->changeState(std::make_unique<MainMenuState>(m_stateManager));
-			return;
-		case (int)Buttons::Room:
-			m_stateManager->changeState(std::make_unique<RoomSettingsMenuState>(m_stateManager));
-			return;
-		case (int)Buttons::NewRoom:
-			m_stateManager->changeState(std::make_unique<ChangeRoomNameMenuState>(m_stateManager));
-			return;
-		default:
-			assert(!("InputResult out of range."));
+		m_stateManager->changeState(std::make_unique<MainMenuState>(m_stateManager));
+		return;
 	}
+	else if(inputResultStr == "Add new room")
+	{
+		m_stateManager->getFlat()->addRoom(std::make_shared<Room>());
+		m_stateManager->changeState(std::make_unique<ChangeRoomNameMenuState>(
+				m_stateManager,m_stateManager->getFlat()->getRooms().get()->back()));
+		return;
+	}
+	else
+	{
+		const auto result = std::find_if(rooms->begin(),
+					rooms->end(),[inputResultStr](const auto room){
+						return room->getName() == inputResultStr;});
+
+		if(rooms->end() != result)
+		{
+			m_stateManager->changeState(std::make_unique<RoomSettingsMenuState>(
+					m_stateManager, rooms->front()));
+			return;
+		}
+		else
+		{
+			assert(!("InputResult out of range."));
+		}
+
+	}
+
 }

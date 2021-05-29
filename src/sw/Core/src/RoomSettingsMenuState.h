@@ -2,11 +2,15 @@
 #define INC_ROOMSETTINGSMENUSTATE_H_
 
 #include "State.h"
+#include "Room.h"
+
+#include <string>
 
 class RoomSettingsMenuState: public State
 {
 	public:
-		RoomSettingsMenuState(std::shared_ptr<StateManager> stateManager);
+		RoomSettingsMenuState(std::shared_ptr<StateManager> stateManager,
+				std::shared_ptr<Room> room);
 		~RoomSettingsMenuState() = default;
 
 		void update(float deltaTime) override;
@@ -17,11 +21,19 @@ class RoomSettingsMenuState: public State
 		enum class Buttons
 		{
 			Back,
-			NewDevice1, // TODO: temporary
-			NewDevice2
+			Light,
+			Heater,
+			Temp,
+			Intensity,
+			LightUp,
+			LightDown,
+			Temperature,
+			HeaterUp,
+			HeaterDown,
 		};
-		std::string m_name;
-		std::string m_temperature;
+		std::shared_ptr<Room> m_room;
+		int m_temperature_to_change = 22.0f;
+		int m_intensity_to_change = 0;
 };
 
 

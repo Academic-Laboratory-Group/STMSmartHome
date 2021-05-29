@@ -8,6 +8,7 @@
 
 #include <vector>
 #include <memory>
+#include <string>
 
 
 class GUI : public Renderable
@@ -19,15 +20,17 @@ class GUI : public Renderable
 		void render() override;
 		int processInput(std::pair<unsigned, unsigned> touchAddress);
 
-		void addButton(ButtonShape shape, Color color, unsigned xCenter, unsigned yCenter,
-				unsigned width, unsigned high);
-		void addTextBox(std::string text, Color color, unsigned xCenter, unsigned yCenter,
-				unsigned size);
+		void addButton( std::shared_ptr<Button> button );
+		void addTextBox( std::shared_ptr<TextBox> textBox );
+
 		void setBackgroundColor(Color color);
+
+		std::string getButtonText(int idx);
+		void setTextBoxText(int idx, std::string name);
 
 	private:
 		std::vector<std::shared_ptr<Button>> m_buttons;
-		std::vector<std::shared_ptr<TextBox>> m_textboxes;
+		std::vector<std::shared_ptr<TextBox>> m_textBoxes;
 		Color m_backgroundColor;
 };
 

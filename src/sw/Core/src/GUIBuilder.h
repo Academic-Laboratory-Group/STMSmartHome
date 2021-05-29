@@ -5,6 +5,7 @@
 #include "Utils.h"
 
 #include <memory>
+#include <string>
 
 class GUIBuilder
 {
@@ -15,11 +16,25 @@ class GUIBuilder
 		GUIBuilder();
 		~GUIBuilder() = default;
 
-		void addButton(ButtonShape shape, Color color, unsigned xCenter,
-				unsigned yCenter, unsigned width, unsigned high);
-		void addTextBox(std::string text, Color color, unsigned xCenter,
-				unsigned yCenter, unsigned size);
-		void addKeyboard(void);
+		void addButton(unsigned xCenter, unsigned yCenter,
+				unsigned width, unsigned height,
+				const std::string text,
+				ButtonShape shape = Square,
+				Color color = BUTTON_BACKGROUND_COLOR,
+				unsigned textSize = 20u,
+				Color textColor = BUTTON_TEXT_COLOR);
+
+		void addTextBox(unsigned xCenter, unsigned yCenter,
+				std::string text, unsigned size = 24u,
+				Color color = TEXT_COLOR, unsigned width = 0u,
+				unsigned height = 0u);
+
+		void addKeyboard(unsigned xCenter, unsigned yCenter,
+				unsigned width, unsigned height,
+				unsigned textSize = 20u,
+				Color buttonsColor = BUTTON_BACKGROUND_COLOR,
+				Color textColor = BUTTON_TEXT_COLOR);
+
 		void setBackgroundColor(Color color);
 
 		void reset();

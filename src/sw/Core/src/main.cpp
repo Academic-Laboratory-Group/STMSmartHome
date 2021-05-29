@@ -85,20 +85,21 @@ int main(void)
 	MX_TIM13_Init();
 	MX_TIM14_Init();
 	MX_USART2_UART_Init();
-	
+
+
 	LCD_SCAN_DIR Lcd_ScanDir = SCAN_DIR_DFT;//SCAN_DIR_DFT = D2U_L2R	
 	LCD_Init(Lcd_ScanDir, 1000);
 	TP_Init(Lcd_ScanDir);
 
 	TP_GetAdFac();
-	
+	HAL_TIM_Base_Start_IT(&htim13);
 	// Program's engine initialisation
 	// Prog::getInstance()->render();
 	while(1)
 	{
 		processInput();
 		//It is one after another temporarily
-		Prog::getInstance()->update(1);
+		//Prog::getInstance()->update(1);
 		//Prog::getInstance()->render();
 		HAL_Delay(100);
 	}
@@ -148,6 +149,15 @@ void SystemClock_Config(void)
     Error_Handler();
   }
 }
+
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+	if(htim->Instance == TIM13)
+	{
+		Prog::getInstance()->update(1);
+	}
+}
+
 
 /**
   * @brief  This function is executed in case of error occurrence.

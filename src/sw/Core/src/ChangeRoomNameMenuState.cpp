@@ -1,25 +1,26 @@
 #include "ChangeRoomNameMenuState.h"
+
 #include "RoomChooseMenuState.h"
 #include "StateManager.h"
 #include "Utils.h"
 
-ChangeRoomNameMenuState::ChangeRoomNameMenuState(std::shared_ptr<StateManager> stateManager) : State(stateManager)
+
+ChangeRoomNameMenuState::ChangeRoomNameMenuState(
+		std::shared_ptr<StateManager> stateManager, std::shared_ptr<Room> room) :
+		State(stateManager), m_room(room), m_newName(room->getName())
 {
 	// make new
 	m_guiBuilder.setBackgroundColor(BACKGROUND_COLOR);
 
-	m_guiBuilder.addTextBox("Write name:", TEXT_COLOR, 100, 25, 24);
-	m_guiBuilder.addTextBox(m_name, TEXT_COLOR, 240, 25, 24);
+	m_guiBuilder.addTextBox(100, 25, "New name:", 24u, TEXT_COLOR, 200, 50);
+	m_guiBuilder.addTextBox(340, 40, m_newName, 24u, TEXT_COLOR, 280, 80);
 
-	m_guiBuilder.addTextBox("Q  W  E  R  T  Y  U  I  O  P", TEXT_COLOR, 250, 130, 20);
-	m_guiBuilder.addTextBox("A  S  D  F  G  H  J  K  L", TEXT_COLOR, 240, 180, 20);
-	m_guiBuilder.addTextBox("Z  X  C  V  B  N  M", TEXT_COLOR, 240, 230, 20);
+	m_guiBuilder.addKeyboard(240, 155, 480, 230);
+	m_guiBuilder.addButton(240, 300, 200, 40, "_");
 
-	m_guiBuilder.addButton(Square, BUTTON_BACKGROUND_COLOR, 50, 300, 100, 40);
-	m_guiBuilder.addTextBox("BACK", BUTTON_TEXT_COLOR, 50, 300, 20);
 
-	m_guiBuilder.addButton(Square, BUTTON_BACKGROUND_COLOR, 430, 300, 100, 40);
-	m_guiBuilder.addTextBox("ENTER", BUTTON_TEXT_COLOR, 420, 300, 20);
+	m_guiBuilder.addButton(50, 300, 100, 40, "BACK");
+	m_guiBuilder.addButton(430, 300, 100, 40, "ENTER");
 
 	// set pointer to new GUI
 	m_gui = m_guiBuilder.getResult();
@@ -44,13 +45,35 @@ void ChangeRoomNameMenuState::processInput(std::pair<unsigned, unsigned> touchAd
 	if (inputResult < 0)
 		return;
 
-	switch(inputResult)
+	const auto inputResultStr = m_gui.getButtonText(inputResult);
+
+	if(inputResultStr == "BACK")
 	{
-		case (int)Buttons::Back:
-		case (int)Buttons::Enter:
-			m_stateManager->changeState(std::make_unique<RoomChooseMenuState>(m_stateManager));
-			return;
-		default:
-			assert(!("InputResult out of range."));
+		m_stateManager->changeState(std::make_unique<RoomChooseMenuState>(m_stateManager));
+		return;
 	}
+	else if(inputResultStr == "ENTER")
+	{
+		m_room->setName(m_newName);
+		m_stateManager->changeState(std::make_unique<RoomChooseMenuState>(m_stateManager));
+		return;
+	}
+	else if(inputResultStr == "_")
+	{
+		m_newName.push_back(' ');
+	}
+	else if(inputResultStr == "<-")
+	{
+		m_newName.pop_back();
+	}
+	else if(!inputResultStr.empty())
+	{
+		m_newName.append(inputResultStr);
+	}
+	else
+	{
+		assert(!("InputResult out of range."));
+	}
+
+	m_gui.setTextBoxText(1, m_newName);
 }

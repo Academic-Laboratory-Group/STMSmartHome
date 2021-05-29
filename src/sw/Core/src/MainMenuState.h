@@ -2,6 +2,7 @@
 #define _MAIN_MENU_STATE_H_
 
 #include "State.h"
+#include "Room.h"
 
 class MainMenuState: public State
 {
@@ -18,6 +19,8 @@ class MainMenuState: public State
 		{
 			Adjust
 		};
+		int m_temp_first_room = 22.0;
+		int m_temp_second_room = 23.0;
 };
 	
 #endif

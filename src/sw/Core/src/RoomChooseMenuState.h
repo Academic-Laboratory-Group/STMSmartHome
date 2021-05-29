@@ -3,7 +3,7 @@
 
 #include "State.h"
 
-class RoomChooseMenuState: public State
+class RoomChooseMenuState : public State
 {
 	public:
 		RoomChooseMenuState(std::shared_ptr<StateManager> stateManager);
@@ -12,14 +12,6 @@ class RoomChooseMenuState: public State
 		void update(float deltaTime) override;
 		void render() override;
 		void processInput(std::pair<unsigned, unsigned> touchAddress) override;
-
-	private:
-		enum class Buttons
-		{
-			Back,
-			Room,
-			NewRoom
-		};
 };
 
 #endif /* INC_ROOMCHOOSEMENUSTATE_H_ */

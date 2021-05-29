@@ -5,9 +5,9 @@
 #include "RoomChooseMenuState.h"
 #include "RoomSettingsMenuState.h"
 
-StateManager::StateManager()
+StateManager::StateManager() : m_flat(std::make_shared<Flat>()),
+	m_currentState(std::make_unique<MainMenuState>(std::shared_ptr<StateManager>(this)))
 {
-	m_currentState = std::make_unique<MainMenuState>(std::shared_ptr<StateManager>(this));
 }
 
 void StateManager::update(float deltaTime)
@@ -28,4 +28,9 @@ void StateManager::processInput(std::pair<unsigned, unsigned> touchAddress)
 void StateManager::changeState(std::unique_ptr<State> state)
 {
 	m_currentState = std::move(state);
+}
+
+std::shared_ptr<Flat> StateManager::getFlat()
+{
+	return m_flat;
 }
