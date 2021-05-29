@@ -44,7 +44,7 @@ RoomChooseMenuState::RoomChooseMenuState(
 				idy += 60;
 				idx = (room->getName().length() * 14)/2u + 20;
 			}
-			free_place = room->getName().length() * 14;
+			free_place -= room->getName().length() * 14;
 			m_guiBuilder.addButton( idx, idy, room->getName().length() * 14 + 20, 50, room->getName());
 			idx += ((room->getName().length() * 14 + 20)/2u) + 20;
 
@@ -100,14 +100,15 @@ void RoomChooseMenuState::processInput(std::pair<unsigned, unsigned> touchAddres
 
 		if(rooms->end() != result)
 		{
-			//const auto room = rooms->at(result);
-			//m_stateManager->changeState(std::make_unique<RoomSettingsMenuState>(m_stateManager, room));
+			m_stateManager->changeState(std::make_unique<RoomSettingsMenuState>(
+					m_stateManager, rooms.get()->front()));
 			return;
 		}
 		else
 		{
 			assert(!("InputResult out of range."));
 		}
+
 	}
 
 }

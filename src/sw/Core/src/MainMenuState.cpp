@@ -2,7 +2,7 @@
 #include "MainMenuState.h"
 #include "StateManager.h"
 #include "Utils.h"
-
+#include "Room.h"
 #include <memory>
 #include <assert.h>
 
@@ -16,11 +16,24 @@ MainMenuState::MainMenuState(
 
 	m_guiBuilder.addTextBox(240, 40, "SmartHome App");
 
-	m_guiBuilder.addTextBox(215, 140, "FirstRoom temperature:", 20u);
-	m_guiBuilder.addTextBox(395, 140, "23*C", 20u);
+	const auto rooms = m_stateManager->getFlat()->getRooms();
+	if (rooms->empty())
+	{
+		m_guiBuilder.addTextBox(240, 160, "No rooms configured"); // 480x320
+	}
+	else
+	{
+		m_guiBuilder.addTextBox(215, 140, "In " + rooms->front()->getName() + " temperature:", 20u);
+		m_guiBuilder.addTextBox(395, 140, std::to_string(m_temp_first_room), 20u);
+		m_guiBuilder.addTextBox(435, 140, "*C", 20u);
 
-	m_guiBuilder.addTextBox(210, 170, "SecondRoom temperature:", 20u);
-	m_guiBuilder.addTextBox(405, 170, "23*C", 20u);
+		if (rooms->capacity() > 1)
+		{
+			m_guiBuilder.addTextBox(210, 170, "In " + rooms->at(1)->getName() + " temperature:", 20u);
+			m_guiBuilder.addTextBox(395, 170, std::to_string(m_temp_second_room), 20u);
+			m_guiBuilder.addTextBox(435, 170, "*C", 20u);
+		}
+	}
 
 	m_guiBuilder.addButton(240, 247, 220, 60, "Adjust settings");
 
@@ -33,6 +46,14 @@ MainMenuState::MainMenuState(
 
 void MainMenuState::update(float deltaTime)
 {
+	const auto rooms = m_stateManager->getFlat()->getRooms();
+	if (!rooms->empty())
+	{
+		m_gui.setTextBoxText(2, std::to_string(m_temp_first_room));
+
+		if (rooms->capacity() > 1)
+			m_gui.setTextBoxText(5, std::to_string(m_temp_second_room));
+	}
 }
 
 void MainMenuState::render()
