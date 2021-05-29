@@ -6,20 +6,21 @@
 
 #include <memory>
 
-
 class Flat
 {
 	public:
 		Flat();
 		~Flat() = default;
 
+		using Rooms = std::shared_ptr<std::vector<std::shared_ptr<Room>>>;
+
 		void addRoom(std::shared_ptr<Room> room);
-		const std::shared_ptr<std::vector<Room>> getRooms() const;
+		const Rooms getRooms() const;
 		const std::shared_ptr<RoomBuilder> getBuilder() const;
 
 	private:
 		std::shared_ptr<RoomBuilder> m_roomBuilder;
-		std::shared_ptr<std::vector<Room>> m_rooms;
+		Rooms m_rooms;
 };
 
 
