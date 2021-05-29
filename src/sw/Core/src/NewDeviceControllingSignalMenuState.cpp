@@ -14,8 +14,7 @@ NewDeviceControllingSignalMenuState::NewDeviceControllingSignalMenuState(
 
 	m_guiBuilder.addButton(240, 107, 220, 60, "1/0 binary");
 	m_guiBuilder.addButton(240, 177, 220, 60, "PWM");
-	m_guiBuilder.addButton(40, 247, 220, 60, "Impulse");
-	m_guiBuilder.addButton(0, 200, 200, 100, "BACK");
+	m_guiBuilder.addButton(50, 300, 100, 40, "BACK");
 
 	// set pointer to new GUI
 	m_gui = m_guiBuilder.getResult();
@@ -40,15 +39,27 @@ void NewDeviceControllingSignalMenuState::processInput(std::pair<unsigned, unsig
 	if (inputResult < 0)
 		return;
 
-	switch(inputResult)
+	const auto inputResultStr = m_gui.getButtonText(inputResult);
+
+	if (inputResultStr == "BACK")
 	{
-		case (int)Buttons::Back:
-			m_stateManager->changeState(std::make_unique<RoomSettingsMenuState>(m_stateManager, m_room));
-			return;
-		default:
-			// TODO: Temporary when some states are not ready
-			m_stateManager->changeState(std::make_unique<RoomSettingsMenuState>(m_stateManager, m_room));
-			return;
-			assert(!("InputResult out of range."));
+		m_stateManager->changeState(std::make_unique<RoomSettingsMenuState>(m_stateManager, m_room));
+		return;
+	}
+	else if(inputResultStr == "1/0 binary")
+	{
+		//m_room->setControllerValue(controllerId, value)
+		m_stateManager->changeState(std::make_unique<RoomSettingsMenuState>(m_stateManager, m_room));
+		return;
+	}
+	else if(inputResultStr == "PWM")
+	{
+		m_room->getSensor()->setSensor(Temperature1);
+		m_stateManager->changeState(std::make_unique<RoomSettingsMenuState>(m_stateManager, m_room));
+		return;
+	}
+	else
+	{
+		assert(!("InputResult out of range."));
 	}
 }

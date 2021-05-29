@@ -15,10 +15,6 @@ class NewDeviceControllingSignalMenuState: public State
 		void processInput(std::pair<unsigned, unsigned> touchAddress) override;
 
 	private:
-		enum class Buttons
-		{
-			Back
-		};
 		std::shared_ptr<Room> m_room;
 };
 

@@ -35,7 +35,7 @@ enum Color
 
 enum Sensor
 {
-	Temperature = GPIO_PIN_8
+	Temperature1 = GPIO_PIN_8
 };
 
 #endif

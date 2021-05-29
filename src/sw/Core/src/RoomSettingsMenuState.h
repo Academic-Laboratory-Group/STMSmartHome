@@ -21,13 +21,19 @@ class RoomSettingsMenuState: public State
 		enum class Buttons
 		{
 			Back,
+			Light,
+			Heater,
+			Temp,
+			Intensity,
 			LightUp,
 			LightDown,
+			Temperature,
 			HeaterUp,
 			HeaterDown,
 		};
 		std::shared_ptr<Room> m_room;
-		float m_temperature = 22.0f;
+		int m_temperature_to_change = 22.0f;
+		int m_intensity_to_change = 0;
 };
 
 

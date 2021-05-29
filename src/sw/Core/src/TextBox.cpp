@@ -62,13 +62,13 @@ std::string TextBox::getText()
 void TextBox::cleanDisplay()
 {
 	if(m_size == 16)
-		GUI_DrawRectangle(m_left, m_top, m_right,  m_top + 35,
+		GUI_DrawRectangle(m_left, m_top, m_right,  m_top + 16,
 				FONT_BACKGROUND, DRAW_FULL, DOT_PIXEL_2X2);
 	if(m_size == 20)
-		GUI_DrawRectangle(m_left, m_top, m_right, m_top + 35,
+		GUI_DrawRectangle(m_left, m_top, m_right, m_top + 20,
 				FONT_BACKGROUND, DRAW_FULL, DOT_PIXEL_2X2);
 	if(m_size == 24)
-		GUI_DrawRectangle(m_left, m_top, m_right, m_top + 35,
+		GUI_DrawRectangle(m_left, m_top, m_right, m_top + 24,
 				FONT_BACKGROUND, DRAW_FULL, DOT_PIXEL_2X2);
 }
 

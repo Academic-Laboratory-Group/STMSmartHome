@@ -1,6 +1,6 @@
 #include "Room.h"
 
-float Room::getTemperature() const
+int Room::getTemperature() const
 {
 	return m_temperature;
 }
@@ -10,14 +10,29 @@ void Room::setName(std::string name)
 	m_name = std::move(name);
 }
 
-void Room::setTemperature(float temperature)
+void Room::setTemperature(int temperature)
 {
-	m_temperature = std::move(temperature);
+	m_temperature_to_change = std::move(temperature);
+}
+
+void Room::setIntensity(int intensity)
+{
+	m_intensity_to_change = std::move(intensity);
+}
+
+int Room::getIntensity() const
+{
+	return m_intensity;
 }
 
 std::string Room::getName() const
 {
 	return m_name;
+}
+
+std::shared_ptr<TemperatureSensor> Room::getSensor()
+{
+	return m_sensor;
 }
 
 void Room::setControllerValue(int controllerId, float value)

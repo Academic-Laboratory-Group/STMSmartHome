@@ -24,13 +24,13 @@ MainMenuState::MainMenuState(
 	else
 	{
 		m_guiBuilder.addTextBox(215, 140, "In " + rooms->front()->getName() + " temperature:", 20u);
-		m_guiBuilder.addTextBox(395, 140, std::to_string(m_temp_first_room), 20u);
+		m_guiBuilder.addTextBox(395, 140, std::to_string(rooms->front()->getTemperature()), 20u);
 		m_guiBuilder.addTextBox(435, 140, "*C", 20u);
 
 		if (rooms->capacity() > 1)
 		{
 			m_guiBuilder.addTextBox(210, 170, "In " + rooms->at(1)->getName() + " temperature:", 20u);
-			m_guiBuilder.addTextBox(395, 170, std::to_string(m_temp_second_room), 20u);
+			m_guiBuilder.addTextBox(395, 170, std::to_string(rooms->at(1)->getTemperature()), 20u);
 			m_guiBuilder.addTextBox(435, 170, "*C", 20u);
 		}
 	}
@@ -49,10 +49,10 @@ void MainMenuState::update(float deltaTime)
 	const auto rooms = m_stateManager->getFlat()->getRooms();
 	if (!rooms->empty())
 	{
-		m_gui.setTextBoxText(2, std::to_string(m_temp_first_room));
+		m_gui.setTextBoxText(2, std::to_string(rooms->front()->getTemperature()));
 
 		if (rooms->capacity() > 1)
-			m_gui.setTextBoxText(5, std::to_string(m_temp_second_room));
+			m_gui.setTextBoxText(5, std::to_string(rooms->at(1)->getTemperature()));
 	}
 }
 

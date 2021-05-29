@@ -11,7 +11,8 @@
 #include <algorithm>
 #include <math.h>
 #include <memory>
-#include <vector>
+#include <iterator>
+
 
 
 RoomChooseMenuState::RoomChooseMenuState(
@@ -101,7 +102,7 @@ void RoomChooseMenuState::processInput(std::pair<unsigned, unsigned> touchAddres
 		if(rooms->end() != result)
 		{
 			m_stateManager->changeState(std::make_unique<RoomSettingsMenuState>(
-					m_stateManager, rooms.get()->front()));
+					m_stateManager, rooms->front()));
 			return;
 		}
 		else

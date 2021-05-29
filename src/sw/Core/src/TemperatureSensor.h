@@ -15,6 +15,7 @@ class TemperatureSensor
 			
 	public:
 		TemperatureSensor(EventManager* eventManager, Sensor sensor);
+		void setSensor(Sensor sensor);
 		void update();
 		int getSensorValue();
 
