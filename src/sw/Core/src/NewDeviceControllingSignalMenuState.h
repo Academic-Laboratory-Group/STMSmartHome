@@ -7,7 +7,8 @@
 class NewDeviceControllingSignalMenuState: public State
 {
 	public:
-		NewDeviceControllingSignalMenuState(std::shared_ptr<StateManager> stateManager, std::shared_ptr<Room> room);
+		NewDeviceControllingSignalMenuState(std::shared_ptr<StateManager> stateManager,
+				std::shared_ptr<Room> room);
 		~NewDeviceControllingSignalMenuState() = default;
 
 		void update(float deltaTime) override;

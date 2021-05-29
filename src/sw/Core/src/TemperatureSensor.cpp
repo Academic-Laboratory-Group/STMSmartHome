@@ -11,6 +11,7 @@ void TemperatureSensor::setSensor(Sensor sensor)
 {
 	m_sensor = sensor;
 }
+
 void TemperatureSensor::update()
 {
 	m_eventManager->notify(m_sensor, getSensorValue());

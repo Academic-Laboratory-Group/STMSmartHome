@@ -12,12 +12,12 @@ void Room::setName(std::string name)
 
 void Room::setTemperature(int temperature)
 {
-	m_temperature_to_change = std::move(temperature);
+	m_temperature_to_change = temperature;
 }
 
 void Room::setIntensity(int intensity)
 {
-	m_intensity_to_change = std::move(intensity);
+	m_intensity_to_change = intensity;
 }
 
 int Room::getIntensity() const
