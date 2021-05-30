@@ -1,6 +1,7 @@
 #include "TextBox.h"
 #include "LCD_GUI.h"
 
+
 TextBox::TextBox(unsigned xCenter, unsigned yCenter, std::string text,
 		unsigned size, Color color, unsigned width, unsigned height) :
 		m_text(text), m_size(size), m_color(color)

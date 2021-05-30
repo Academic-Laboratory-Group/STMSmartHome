@@ -1,3 +1,0 @@
-TemperatureSensor.cpp:4:1:TemperatureSensor::TemperatureSensor(EventManager*, Sensor)	24	static
-TemperatureSensor.cpp:11:6:void TemperatureSensor::update()	24	static
-TemperatureSensor.cpp:16:5:int TemperatureSensor::getSensorValue()	24	static
