@@ -33,22 +33,23 @@ RoomChooseMenuState::RoomChooseMenuState(
 	{
 		m_guiBuilder.addTextBox(110, 25, "Choose room:", 24u, TEXT_COLOR, 220, 50);
 
-		unsigned idx = 20;
-		unsigned idy = 70;
-		unsigned free_place = 480;
+		unsigned idx = 20u;
+		unsigned idy = 70u;
+		unsigned free_place = 480u;
 		for (const auto& room : *rooms.get())
 		{
 			if (room->getName().length() * 14 < free_place )
 				idx += (room->getName().length() * 14)/2u;
 			else
 			{
-				idy += 60;
+				idy += 60u;
 				idx = (room->getName().length() * 14)/2u + 20;
+				free_place = 460u;
 			}
 			free_place -= room->getName().length() * 14;
-			m_guiBuilder.addButton( idx, idy, room->getName().length() * 14 + 20, 50, room->getName());
-			idx += ((room->getName().length() * 14 + 20)/2u) + 20;
-
+			m_guiBuilder.addButton( idx, idy, room->getName().length() * 14 + 20, 50,
+					room->getName());
+			idx += ((room->getName().length() * 14 + 20)/2u) + 20u;
 		}
 	}
 
@@ -91,6 +92,7 @@ void RoomChooseMenuState::processInput(std::pair<unsigned, unsigned> touchAddres
 		m_stateManager->getFlat()->addRoom(std::make_shared<Room>());
 		m_stateManager->changeState(std::make_unique<ChangeRoomNameMenuState>(
 				m_stateManager,m_stateManager->getFlat()->getRooms().get()->back()));
+
 		return;
 	}
 	else
