@@ -33,9 +33,10 @@ enum Color
 	TEXT_COLOR = BLACK
 };
 
-enum Sensor
+enum class SensorType
 {
-	Temperature1 = GPIO_PIN_8
+	Temperature,
+	Size
 };
 
 #endif

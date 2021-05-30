@@ -1,7 +1,9 @@
 #ifndef SRC_ROOMBUILDER_H_
 #define SRC_ROOMBUILDER_H_
 
-#include <iostream>
+#include "ControllerFactory.h"
+
+#include <string>
 
 class RoomBuilder
 {
@@ -10,7 +12,8 @@ class RoomBuilder
 		~RoomBuilder() = default;
 
 		void setName(std::string name);
-		void addSensor(int PinId, std::string name);
-		void addController(int PinId, std::string name);
+		void addSensor(int PinId);
+		void addController(ControllerFactory controllerFactory,
+				int PinId, std::string name);
 };
 #endif /* SRC_ROOMBUILDER_H_ */

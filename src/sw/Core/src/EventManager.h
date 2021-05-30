@@ -2,18 +2,21 @@
 #define _EVENTMANAGER_H_
 
 #include "SensorListener.h"
-#include <vector>
 #include "Utils.h"
+
+#include <vector>
+#include <memory>
+
 
 class EventManager
 {
-	private:
-		std::vector <SensorListener*> listeners;
-	
 	public:
-		void subscribe(SensorListener* listener);
-		void unsubscribe(SensorListener* listener);
-		void notify(Sensor sensor, int value);
+		void subscribe(std::shared_ptr<SensorListener> listener);
+		void unsubscribe(std::shared_ptr<SensorListener> listener);
+		void notify(SensorType sensorType, float value);
+
+	private:
+		std::vector<std::shared_ptr<SensorListener>> m_listeners;
 };
 	
 #endif

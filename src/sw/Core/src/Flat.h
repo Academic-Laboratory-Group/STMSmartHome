@@ -3,8 +3,11 @@
 
 #include "Room.h"
 #include "RoomBuilder.h"
+#include "Sensor.h"
 
 #include <memory>
+#include <vector>
+
 
 class Flat
 {
@@ -20,6 +23,7 @@ class Flat
 
 	private:
 		std::shared_ptr<RoomBuilder> m_roomBuilder;
+		std::vector<std::unique_ptr<Sensor>> m_sensors;
 		Rooms m_rooms;
 };
 

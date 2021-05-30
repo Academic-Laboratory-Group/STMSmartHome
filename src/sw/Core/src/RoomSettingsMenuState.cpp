@@ -4,12 +4,20 @@
 #include "StateManager.h"
 #include "Utils.h"
 
+#include <limits> 	// std::numeric_limits
+#include <iostream> // std::cout, std::fixed
+#include <iomanip>  // std::setprecision
+
+
 RoomSettingsMenuState::RoomSettingsMenuState(
 		std::shared_ptr<StateManager> stateManager, std::shared_ptr<Room> room) :
-		State(stateManager), m_room(room), m_temperature_to_change(room->getTemperature()),
-		m_intensity_to_change(room->getIntensity())
+		State(stateManager), m_room(room), m_intensityToSet(room->getIntensity())
 {
-	// make new
+	const auto roomTemperature = m_room->getTemperature();
+	if(roomTemperature != std::numeric_limits<float>::infinity())
+		m_temperatureToSet = roomTemperature;
+
+	// make new GUI
 	m_guiBuilder.setBackgroundColor(BACKGROUND_COLOR);
 
 	m_guiBuilder.addButton(50, 300, 100, 40, "BACK");
@@ -19,19 +27,22 @@ RoomSettingsMenuState::RoomSettingsMenuState(
 	m_guiBuilder.addButton(140, 195, 150, 150, "Light", Circle);
 	m_guiBuilder.addButton(340, 195, 150, 150, "Heater", Circle);
 
-	if (m_room->getSensor() != NULL)
+	m_guiBuilder.addTextBox(140, 218, std::to_string(m_intensityToSet), 20u, BUTTON_TEXT_COLOR);
+	m_guiBuilder.addTextBox(140, 142, "+", 20u, RED);
+	m_guiBuilder.addTextBox(140, 246, "-", 20u, BLUE);
+
+	std::stringstream temperatureString;
+	temperatureString << std::fixed << std::setprecision(1) << m_temperatureToSet;
+	m_guiBuilder.addTextBox(340, 210, temperatureString.str(),
+			20u, BUTTON_TEXT_COLOR);
+	m_guiBuilder.addTextBox(340, 142, "+", 20u, RED);
+	m_guiBuilder.addTextBox(340, 246, "-", 20u, BLUE);
+
+	if (roomTemperature != std::numeric_limits<float>::infinity())
 	{
 		m_guiBuilder.addTextBox(115, 85, "Temperature:", 20u);
 		m_guiBuilder.addTextBox(220, 85, std::to_string(m_room->getTemperature()),20u);
 		m_guiBuilder.addTextBox(270, 85, "*C", 20u);
-
-		m_guiBuilder.addTextBox(140, 218, std::to_string(m_intensity_to_change), 20u);
-		m_guiBuilder.addTextBox(140, 142, "+", 20u, RED);
-		m_guiBuilder.addTextBox(140, 246, "-", 20u, BLUE);
-
-		m_guiBuilder.addTextBox(340, 210, std::to_string(m_temperature_to_change), 20u);
-		m_guiBuilder.addTextBox(340, 142, "+", 20u, RED);
-		m_guiBuilder.addTextBox(340, 246, "-", 20u, BLUE);
 	}
 
 	// set pointer to new GUI
@@ -43,7 +54,7 @@ RoomSettingsMenuState::RoomSettingsMenuState(
 
 void RoomSettingsMenuState::update(float deltaTime)
 {
-	if (m_room->getSensor() != NULL)
+	if (m_room->getTemperature() != std::numeric_limits<float>::infinity())
 		m_gui.setTextBoxText(2, std::to_string(m_room->getTemperature()));
 }
 
@@ -66,7 +77,7 @@ void RoomSettingsMenuState::processInput(std::pair<unsigned, unsigned> touchAddr
 		m_stateManager->changeState(std::make_unique<RoomChooseMenuState>(m_stateManager));
 		return;
 	}
-	else if(inputResultStr == "Light" && (m_room->getSensor() == NULL))
+	else if(inputResultStr == "Light")
 	{
 		m_stateManager->changeState(std::make_unique<NewDeviceControllingSignalMenuState>(m_stateManager, m_room));
 		return;
@@ -76,34 +87,30 @@ void RoomSettingsMenuState::processInput(std::pair<unsigned, unsigned> touchAddr
 		m_stateManager->changeState(std::make_unique<NewDeviceControllingSignalMenuState>(m_stateManager, m_room));
 		return;
 	}
-	else if (m_room->getSensor() != NULL)
+	else
 	{
 		switch(inputResult)
 		{
 			case (int)Buttons::LightUp:
-				m_intensity_to_change += 10;
+				m_intensityToSet += 10;
 				return;
 			case (int)Buttons::LightDown:
-				m_intensity_to_change -= 10;
+				m_intensityToSet -= 10;
 				return;
 			case (int)Buttons::HeaterUp:
-				m_temperature_to_change += 1;
+				m_temperatureToSet += 1;
 				return;
 			case (int)Buttons::HeaterDown:
-				m_temperature_to_change -= 1;
+				m_temperatureToSet -= 1;
 				return;
 			default:
 				assert(!("InputResult out of range."));
 		}
 	}
-	else
-	{
-		assert(!("InputResult out of range."));
-	}
 
-	m_gui.setTextBoxText(5, std::to_string(m_intensity_to_change));
-	m_gui.setTextBoxText(9, std::to_string(m_temperature_to_change));
+	m_gui.setTextBoxText(5, std::to_string(m_intensityToSet));
+	m_gui.setTextBoxText(9, std::to_string(m_temperatureToSet));
 
-	m_room->setTemperature(m_temperature_to_change);
-	m_room->setIntensity(m_intensity_to_change);
+	m_room->setIntensity(m_intensityToSet);
+	m_room->setHeaterTemperature(m_temperatureToSet);
 }
