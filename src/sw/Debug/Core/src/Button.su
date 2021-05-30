@@ -1,4 +1,0 @@
-Renderable.h:4:7:constexpr Renderable::Renderable()	16	static
-Button.cpp:5:1:Button::Button(ButtonShape, Color, unsigned int, unsigned int, unsigned int, unsigned int)	24	static
-Button.cpp:10:6:virtual void Button::render()	40	static
-Button.cpp:19:6:bool Button::processInput(std::pair<unsigned int, unsigned int>) const	24	static

@@ -1,2 +1,0 @@
-Room.cpp:3:7:float Room::getTemperature()	16	static
-Room.cpp:8:6:void Room::setControllerValue(int, float)	24	static
