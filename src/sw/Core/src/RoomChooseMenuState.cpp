@@ -92,6 +92,7 @@ void RoomChooseMenuState::processInput(std::pair<unsigned, unsigned> touchAddres
 		m_stateManager->getFlat()->addRoom(std::make_shared<Room>());
 		m_stateManager->changeState(std::make_unique<ChangeRoomNameMenuState>(
 				m_stateManager,m_stateManager->getFlat()->getRooms().get()->back()));
+
 		return;
 	}
 	else
