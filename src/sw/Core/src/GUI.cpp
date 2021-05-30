@@ -1,3 +1,5 @@
+#include "tim.h"
+
 #include "GUI.h"
 
 #include "LCD_GUI.h"
@@ -7,12 +9,14 @@
 
 void GUI::render()
 {
+	HAL_TIM_Base_Stop_IT(&htim13);
 	GUI_Clear(m_backgroundColor);
 
 	for_each(m_buttons.begin(), m_buttons.end(),
 			[](const auto& button){ button->render(); });
 	for_each(m_textBoxes.begin(), m_textBoxes.end(),
 			[](const auto& textBoxes){ textBoxes->render(); });
+	HAL_TIM_Base_Start_IT(&htim13);
 }
 
 int GUI::processInput(std::pair<unsigned, unsigned> touchAddress)
