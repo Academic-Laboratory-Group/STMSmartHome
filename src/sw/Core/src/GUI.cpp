@@ -1,7 +1,5 @@
-#include "tim.h"
-
 #include "GUI.h"
-
+#include "tim.h"
 #include "LCD_GUI.h"
 
 #include <algorithm>
