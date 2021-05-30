@@ -99,10 +99,10 @@ void RoomChooseMenuState::processInput(std::pair<unsigned, unsigned> touchAddres
 					rooms->end(),[inputResultStr](const auto room){
 						return room->getName() == inputResultStr;});
 
-		if(rooms->end() != result)
+		if(result != rooms->end())
 		{
 			m_stateManager->changeState(std::make_unique<RoomSettingsMenuState>(
-					m_stateManager, rooms->front()));
+					m_stateManager, *result));
 			return;
 		}
 		else
