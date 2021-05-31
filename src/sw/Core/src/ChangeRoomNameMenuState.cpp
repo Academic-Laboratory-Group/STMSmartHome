@@ -68,7 +68,8 @@ void ChangeRoomNameMenuState::processInput(std::pair<unsigned, unsigned> touchAd
 	}
 	else if(!inputResultStr.empty())
 	{
-		m_newName.append(inputResultStr);
+		if(m_newName.length() < 16)
+			m_newName.append(inputResultStr);
 	}
 	else
 	{
