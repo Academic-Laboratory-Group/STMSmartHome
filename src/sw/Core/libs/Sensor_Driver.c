@@ -2,13 +2,13 @@
 
 void Delay_us (int16_t delay) 
 {
-  htim14.Instance->CNT = 0;
-	while(htim14.Instance->CNT <= delay)
-		{
+	htim14.Instance->CNT = 0;
+	while (htim14.Instance->CNT <= delay)
+	{
 		 int a = 10;
 		 int b = a + 1;
 		 a + b;
-		}
+	}
 }
 
 void ONE_WIRE_SET(GPIO_TypeDef* m_GPIOx, uint16_t m_GPIO_pin)
