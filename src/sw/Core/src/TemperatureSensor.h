@@ -17,7 +17,7 @@ class TemperatureSensor
 		TemperatureSensor(EventManager* eventManager, Sensor sensor);
 		void setSensor(Sensor sensor);
 		void update();
-		float getSensorValue();
+		int getSensorValue();
 
 };
 	
