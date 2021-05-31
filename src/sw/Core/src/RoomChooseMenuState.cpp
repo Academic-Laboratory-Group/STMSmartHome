@@ -89,10 +89,18 @@ void RoomChooseMenuState::processInput(std::pair<unsigned, unsigned> touchAddres
 	}
 	else if(inputResultStr == "Add new room")
 	{
-		m_stateManager->getFlat()->addRoom(std::make_shared<Room>());
-		m_stateManager->changeState(std::make_unique<ChangeRoomNameMenuState>(
-				m_stateManager,m_stateManager->getFlat()->getRooms().get()->back()));
-
+		unsigned tmp = 0;
+		for (const auto& room : *rooms.get())
+		{
+			tmp += (room->getName().length() * 14) + 40;
+		}
+		if(tmp < 3 * 480)
+		{
+			m_stateManager->getFlat()->addRoom(std::make_shared<Room>());
+			m_stateManager->changeState(std::make_unique<ChangeRoomNameMenuState>(
+					m_stateManager,m_stateManager->getFlat()->getRooms().get()->back()));
+					return;
+		}
 		return;
 	}
 	else
