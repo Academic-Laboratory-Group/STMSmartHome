@@ -81,8 +81,9 @@ int main(void)
 	/* Initialize all configured peripherals */
 	MX_GPIO_Init();
 	MX_SPI1_Init();
-	MX_TIM3_Init();
-	MX_TIM13_Init();
+	MX_TIM3_Init(); //Interrupt update
+	MX_TIM12_Init(); //PWM
+	MX_TIM13_Init(); //Delay to sensor temperature
 	MX_TIM14_Init();
 	MX_USART2_UART_Init();
 
@@ -92,7 +93,21 @@ int main(void)
 	TP_Init(Lcd_ScanDir);
 
 	TP_GetAdFac();
+
 	HAL_TIM_Base_Start_IT(&htim13);
+	HAL_TIM_PWM_Start(&htim12, TIM_CHANNEL_1);
+
+	for (int i = 0 ; i < 200 ; ++i)
+	{
+		__HAL_TIM_SET_COMPARE(&htim12, TIM_CHANNEL_1, i * 10);
+		HAL_Delay(10);
+	}
+
+	for (int i = 200 ; i > -1 ; --i)
+	{
+		__HAL_TIM_SET_COMPARE(&htim12, TIM_CHANNEL_1, i * 10);
+		HAL_Delay(10);
+	}
 	// Program's engine initialisation
 	// Prog::getInstance()->render();
 	while(1)

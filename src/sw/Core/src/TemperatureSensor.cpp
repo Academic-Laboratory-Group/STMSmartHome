@@ -27,7 +27,7 @@ int TemperatureSensor::getSensorValue()
 		{
 			DS18B20_Write (0xCC, m_GPIOx, m_sensor); 
 			DS18B20_Write (0xBE, m_GPIOx, m_sensor); 
-			int temp = DS18B20_Read (m_GPIOx, m_sensor); 
+			int temp = DS18B20_Read (m_GPIOx, m_sensor);
 			temp |= DS18B20_Read (m_GPIOx, m_sensor) << 8; 
 			return temp;
 		}
