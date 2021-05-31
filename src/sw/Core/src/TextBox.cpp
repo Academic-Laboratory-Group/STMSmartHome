@@ -13,20 +13,22 @@ TextBox::TextBox(unsigned xCenter, unsigned yCenter, std::string text,
 	}
 	else
 	{
+		const auto halfOfTextSize = static_cast<float>(m_text.length()) / 2.0f;
+
 		if(m_size == 16u)
 		{
-			m_left = xCenter - ((m_text.length()/2.0f) * 11u);
-			m_right = xCenter + ((m_text.length()/2.0f) * 11u);
+			m_left = xCenter - static_cast<unsigned>(halfOfTextSize * 11.f);
+			m_right = xCenter + static_cast<unsigned>(halfOfTextSize * 11.f);
 		}
 		else if(m_size == 20u)
 		{
-			m_left = xCenter - ((m_text.length()/2.0f) * 14u);
-			m_right = xCenter + ((m_text.length()/2.0f) * 14u);
+			m_left = xCenter - static_cast<unsigned>(halfOfTextSize * 14.f);
+			m_right = xCenter + static_cast<unsigned>(halfOfTextSize * 14.f);
 		}
 		else if(m_size == 24u)
 		{
-			m_left = xCenter - ((m_text.length()/2.0f) * 17u);
-			m_right = xCenter + ((m_text.length()/2.0f) * 17u);
+			m_left = xCenter - static_cast<unsigned>(halfOfTextSize * 18.f);
+			m_right = xCenter + static_cast<unsigned>(halfOfTextSize * 18.f);
 		}
 	}
 

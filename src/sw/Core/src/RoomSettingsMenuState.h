@@ -32,7 +32,7 @@ class RoomSettingsMenuState: public State
 			HeaterDown,
 		};
 		std::shared_ptr<Room> m_room;
-		float m_temperatureToSet = 22.0f;
+		float m_temperatureToSet = 22.65f;
 		int m_intensityToSet = 0;
 };
 

@@ -45,29 +45,32 @@ void GUIBuilder::addKeyboard(unsigned xCenter, unsigned yCenter,
 	const std::array<std::string, 26> letters {"Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P",
 		"A", "S", "D", "F", "G", "H", "J", "K", "L", "Z", "X", "C", "V", "B", "N", "M"};
 
-	for (auto i = 0u; i < 10; ++i)
-		addButton(leftBorder + i * singleButtonAreaWidth + halfOfSingleButtonAreaWidth,
+	for (auto i = 0.f; i < 10.f; ++i)
+		addButton(static_cast<unsigned>(static_cast<float>(leftBorder) + static_cast<float>(i) *
+				singleButtonAreaWidth + halfOfSingleButtonAreaWidth),
 				topBorder + halfOfSingleButtonAreaHeight, singleButtonWidth, singleButtonHeight,
-				letters.at(i));
+				letters.at(static_cast<size_t>(i)));
 
-	leftBorder += singleButtonAreaWidth / 2u;
+	leftBorder += static_cast<unsigned>(singleButtonAreaWidth / 2.0f);
 
 	for (auto i = 0u; i < 9; ++i)
-		addButton(leftBorder + i * singleButtonAreaWidth + halfOfSingleButtonAreaWidth,
+		addButton(static_cast<unsigned>(static_cast<float>(leftBorder) + static_cast<float>(i) *
+				singleButtonAreaWidth + halfOfSingleButtonAreaWidth),
 				sdRowCenter, singleButtonWidth, singleButtonHeight,
 				letters.at(i + 10));
 
-	leftBorder += singleButtonAreaWidth;
+	leftBorder += static_cast<unsigned>(singleButtonAreaWidth);
 
 	for (auto i = 0u; i < 7; ++i)
-		addButton(leftBorder + i * singleButtonAreaWidth + halfOfSingleButtonAreaWidth,
+		addButton(static_cast<unsigned>(static_cast<float>(leftBorder) + static_cast<float>(i) *
+				singleButtonAreaWidth + halfOfSingleButtonAreaWidth),
 				tdRowCenter, singleButtonWidth, singleButtonHeight,
 				letters.at(i + 19));
 
 	const auto deleteMovement = static_cast<unsigned>(0.65f * static_cast<float>(singleButtonWidth));
 
 	addButton(xCenter + width / 2u - deleteMovement,
-			tdRowCenter, singleButtonAreaWidth, singleButtonHeight, "<-");
+			tdRowCenter, static_cast<unsigned>(singleButtonAreaWidth), singleButtonHeight, "<-");
 }
 
 void GUIBuilder::setBackgroundColor(Color color)

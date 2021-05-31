@@ -23,10 +23,10 @@ class TextBox : public Renderable
 	private:
 		void cleanDisplay();
 
-		unsigned m_left;
-		unsigned m_bottom;
-		unsigned m_top;
-		unsigned m_right;
+		unsigned m_left{};
+		unsigned m_bottom{};
+		unsigned m_top{};
+		unsigned m_right{};
 		std::string m_text;
 		unsigned m_size;
 		Color m_color;

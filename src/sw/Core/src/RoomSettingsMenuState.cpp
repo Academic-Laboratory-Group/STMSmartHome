@@ -5,8 +5,6 @@
 #include "Utils.h"
 
 #include <limits> 	// std::numeric_limits
-#include <iostream> // std::cout, std::fixed
-#include <iomanip>  // std::setprecision
 
 
 RoomSettingsMenuState::RoomSettingsMenuState(
@@ -31,10 +29,12 @@ RoomSettingsMenuState::RoomSettingsMenuState(
 	m_guiBuilder.addTextBox(140, 142, "+", 20u, RED);
 	m_guiBuilder.addTextBox(140, 246, "-", 20u, BLUE);
 
-	std::stringstream temperatureString;
-	temperatureString << std::fixed << std::setprecision(1) << m_temperatureToSet;
-	m_guiBuilder.addTextBox(340, 210, temperatureString.str(),
-			20u, BUTTON_TEXT_COLOR);
+	auto tmp = static_cast<int>(m_temperatureToSet);
+	auto integerStr = std::to_string(tmp);
+	tmp = static_cast<int>((m_temperatureToSet - static_cast<float>(tmp)) * 10.f);
+	auto fractionStr = std::to_string(tmp);
+	auto str = integerStr + '.' + fractionStr;
+	m_guiBuilder.addTextBox(340, 218, str, 20u, BUTTON_TEXT_COLOR);
 	m_guiBuilder.addTextBox(340, 142, "+", 20u, RED);
 	m_guiBuilder.addTextBox(340, 246, "-", 20u, BLUE);
 
