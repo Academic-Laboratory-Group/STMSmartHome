@@ -17,7 +17,7 @@ void TemperatureSensor::update()
 	m_eventManager->notify(m_sensor, getSensorValue());
 }
 
-int TemperatureSensor::getSensorValue()
+float TemperatureSensor::getSensorValue()
 {
 	if (DS18B20_Init(m_GPIOx, m_sensor))
 	{
@@ -29,7 +29,7 @@ int TemperatureSensor::getSensorValue()
 			DS18B20_Write (0xBE, m_GPIOx, m_sensor); 
 			int temp = DS18B20_Read (m_GPIOx, m_sensor); 
 			temp |= DS18B20_Read (m_GPIOx, m_sensor) << 8; 
-			return temp;
+			return temp * 0.0625;
 		}
 	}
 	return 0;
