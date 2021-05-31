@@ -114,9 +114,9 @@ void MX_TIM13_Init(void)
 {
 
   htim13.Instance = TIM13;
-  htim13.Init.Prescaler = 17999;
+  htim13.Init.Prescaler = 17999; // 10kHz
   htim13.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim13.Init.Period = 9999;
+  htim13.Init.Period = 59999;
   htim13.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim13.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim13) != HAL_OK)
@@ -303,6 +303,21 @@ void HAL_TIM_Base_MspDeInit(TIM_HandleTypeDef* tim_baseHandle)
   /* USER CODE END TIM14_MspDeInit 1 */
   }
 }
+
+void PauseCounters()
+{
+	HAL_TIM_Base_Stop_IT(&htim14);
+	HAL_TIM_Base_Stop_IT(&htim13);
+	counters_state = Pause;
+}
+
+void UnpauseCounters()
+{
+	HAL_TIM_Base_Start_IT(&htim14);
+	HAL_TIM_Base_Start_IT(&htim13);
+	counters_state = Working;
+}
+
 
 /* USER CODE BEGIN 1 */
 

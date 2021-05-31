@@ -81,10 +81,10 @@ int main(void)
 	/* Initialize all configured peripherals */
 	MX_GPIO_Init();
 	MX_SPI1_Init();
-	MX_TIM3_Init(); //Interrupt update
-	MX_TIM12_Init(); //PWM
-	MX_TIM13_Init(); //Delay to sensor temperature
-	MX_TIM14_Init();
+	MX_TIM3_Init();		// Display interrupt
+	MX_TIM12_Init(); 	// PWM
+	MX_TIM13_Init(); 	// Interrupt update
+	MX_TIM14_Init(); 	// Delay to sensor temperature
 	MX_USART2_UART_Init();
 
 
@@ -94,8 +94,8 @@ int main(void)
 
 	TP_GetAdFac();
 
-	HAL_TIM_Base_Start_IT(&htim13);
 	HAL_TIM_Base_Start_IT(&htim14);
+	HAL_TIM_Base_Start_IT(&htim13);
 	HAL_TIM_PWM_Start(&htim12, TIM_CHANNEL_1);
 
 	for (int i = 0 ; i < 200 ; ++i)
@@ -168,7 +168,7 @@ void SystemClock_Config(void)
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-	if(htim->Instance == TIM13)
+	if(htim->Instance == TIM13 && counters_state == Working)
 	{
 		Prog::getInstance()->update();
 	}

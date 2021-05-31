@@ -22,21 +22,21 @@ RoomSettingsMenuState::RoomSettingsMenuState(
 
 	m_guiBuilder.addTextBox(240, 35, "Room name: " + m_room->getName(), 20u);
 
-	m_guiBuilder.addButton(140, 210, 150, 150, "Light", Circle);
-	m_guiBuilder.addButton(340, 210, 150, 150, "Heater", Circle);
+	m_guiBuilder.addButton(140, 200, 150, 150, "Light", Circle);
+	m_guiBuilder.addButton(340, 200, 150, 150, "Heater", Circle);
 
-	m_guiBuilder.addTextBox(140, 218, std::to_string(m_intensityToSet), 20u, BUTTON_TEXT_COLOR);
+	m_guiBuilder.addTextBox(140, 225, std::to_string(m_intensityToSet), 20u, BUTTON_TEXT_COLOR);
 	m_guiBuilder.addTextBox(140, 142, "+", 20u, RED);
-	m_guiBuilder.addTextBox(140, 246, "-", 20u, BLUE);
+	m_guiBuilder.addTextBox(140, 255, "-", 20u, BLUE);
 
 	auto tmp = static_cast<int>(m_temperatureToSet);
 	auto integerStr = std::to_string(tmp);
 	tmp = static_cast<int>((m_temperatureToSet - static_cast<float>(tmp)) * 10.f);
 	auto fractionStr = std::to_string(tmp);
 	auto str = integerStr + '.' + fractionStr;
-	m_guiBuilder.addTextBox(340, 218, str, 20u, BUTTON_TEXT_COLOR);
+	m_guiBuilder.addTextBox(340, 225, str, 20u, BUTTON_TEXT_COLOR);
 	m_guiBuilder.addTextBox(340, 142, "+", 20u, RED);
-	m_guiBuilder.addTextBox(340, 246, "-", 20u, BLUE);
+	m_guiBuilder.addTextBox(340, 255, "-", 20u, BLUE);
 
 	if (roomTemperature != std::numeric_limits<float>::infinity())
 	{
