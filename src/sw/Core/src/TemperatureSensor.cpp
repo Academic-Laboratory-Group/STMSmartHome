@@ -8,7 +8,7 @@ TemperatureSensor::TemperatureSensor(int sensorPin) :
 
 }
 
-void TemperatureSensor::update()
+void TemperatureSensor::update(float)
 {
 	m_eventManager->notify(SensorType::Temperature, getSensorValue());
 }

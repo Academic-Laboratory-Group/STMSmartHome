@@ -22,8 +22,8 @@ RoomSettingsMenuState::RoomSettingsMenuState(
 
 	m_guiBuilder.addTextBox(240, 35, "Room name: " + m_room->getName(), 20u);
 
-	m_guiBuilder.addButton(140, 195, 150, 150, "Light", Circle);
-	m_guiBuilder.addButton(340, 195, 150, 150, "Heater", Circle);
+	m_guiBuilder.addButton(140, 210, 150, 150, "Light", Circle);
+	m_guiBuilder.addButton(340, 210, 150, 150, "Heater", Circle);
 
 	m_guiBuilder.addTextBox(140, 218, std::to_string(m_intensityToSet), 20u, BUTTON_TEXT_COLOR);
 	m_guiBuilder.addTextBox(140, 142, "+", 20u, RED);
@@ -98,10 +98,10 @@ void RoomSettingsMenuState::processInput(std::pair<unsigned, unsigned> touchAddr
 				m_intensityToSet -= 10;
 				return;
 			case (int)Buttons::HeaterUp:
-				m_temperatureToSet += 1;
+				m_temperatureToSet += 1.f;
 				return;
 			case (int)Buttons::HeaterDown:
-				m_temperatureToSet -= 1;
+				m_temperatureToSet -= 1.f;
 				return;
 			default:
 				assert(!("InputResult out of range."));

@@ -93,13 +93,13 @@ int main(void)
 
 	TP_GetAdFac();
 	HAL_TIM_Base_Start_IT(&htim13);
+	HAL_TIM_Base_Start_IT(&htim14);
 	// Program's engine initialisation
 	// Prog::getInstance()->render();
 	while(1)
 	{
 		processInput();
 		//It is one after another temporarily
-		//Prog::getInstance()->update(1);
 		//Prog::getInstance()->render();
 		HAL_Delay(100);
 	}
@@ -154,7 +154,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 	if(htim->Instance == TIM13)
 	{
-		Prog::getInstance()->update(1);
+		Prog::getInstance()->update();
 	}
 }
 

@@ -19,9 +19,9 @@ Prog* Prog::getInstance()
 	return s_progInstance.get();
 }
 
-void Prog::update(float deltaTime)
+void Prog::update(float)
 {
-	m_stateManager->update(deltaTime);
+	m_stateManager->update();
 }
 
 void Prog::render()

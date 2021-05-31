@@ -2,10 +2,19 @@
 #include "TemperatureSensor.h"
 #include "gpio.h"
 
+#include <algorithm>
+
+
 Flat::Flat() : m_roomBuilder(std::make_shared<RoomBuilder>()),
 m_rooms(std::make_shared<std::vector<std::shared_ptr<Room>>>())
 {
 	m_sensors.push_back(std::make_unique<TemperatureSensor>(GPIO_PIN_8));
+}
+
+void Flat::update(float)
+{
+	std::for_each(m_sensors.begin(), m_sensors.end(),
+			[](auto& sensor){ sensor->update(); });
 }
 
 void Flat::addRoom(std::shared_ptr<Room> room)

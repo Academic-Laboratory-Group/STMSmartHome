@@ -12,7 +12,7 @@ class TemperatureSensor : public Sensor
 		TemperatureSensor(int sensorPin);
 		~TemperatureSensor() = default;
 
-		void update() override;
+		void update(float) override;
 
 	private:
 		float getSensorValue() override;

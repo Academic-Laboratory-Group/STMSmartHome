@@ -2,17 +2,16 @@
 #define SRC_SENSOR_H_
 
 #include "EventManager.h"
+#include "Updatable.h"
 
 
-class Sensor
+class Sensor : public Updatable
 {
 public:
 	Sensor(int sensorPin, GPIO_TypeDef* GPIOx) :
 		m_sensorPin(sensorPin), m_GPIOx(GPIOx),
 		m_eventManager(std::make_shared<EventManager>()) {};
 	virtual ~Sensor() = default;
-
-	virtual void update() = 0;
 
 	virtual std::shared_ptr<EventManager> getEventManager()
 	{
