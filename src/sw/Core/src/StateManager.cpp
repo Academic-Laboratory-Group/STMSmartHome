@@ -12,8 +12,8 @@ StateManager::StateManager() : m_flat(std::make_shared<Flat>()),
 
 void StateManager::update(float)
 {
-	// m_currentState->update(deltaTime); // GUI is not using update
 	m_flat->update();
+	m_currentState->update(); // GUI is not using update
 }
 
 void StateManager::render()

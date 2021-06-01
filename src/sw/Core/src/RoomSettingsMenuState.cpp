@@ -60,7 +60,7 @@ void RoomSettingsMenuState::update(float deltaTime)
 {
 	if (m_room->getTemperature() != std::numeric_limits<float>::infinity())
 		m_gui.setTextBoxText(static_cast<int>(TextBoxes::RoomTemperatureValue),
-				std::to_string(m_room->getTemperature()));
+				float2str(m_room->getTemperature()));
 }
 
 void RoomSettingsMenuState::render()
