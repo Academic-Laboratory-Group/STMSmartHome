@@ -19,7 +19,7 @@ class GUIBuilder
 		void addButton(unsigned xCenter, unsigned yCenter,
 				unsigned width, unsigned height,
 				const std::string text,
-				ButtonShape shape = Square,
+				ButtonShape shape = ButtonShape::Square,
 				Color color = BUTTON_BACKGROUND_COLOR,
 				unsigned textSize = 20u,
 				Color textColor = BUTTON_TEXT_COLOR);
@@ -34,6 +34,9 @@ class GUIBuilder
 				unsigned textSize = 20u,
 				Color buttonsColor = BUTTON_BACKGROUND_COLOR,
 				Color textColor = BUTTON_TEXT_COLOR);
+
+		void addCircle(int xCenter, int yCenter, int radius,
+				Color color = BUTTON_BACKGROUND_COLOR);
 
 		void setBackgroundColor(Color color);
 

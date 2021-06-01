@@ -10,13 +10,15 @@
 
 Flat::Flat() : m_rooms(std::make_shared<std::vector<std::shared_ptr<Room>>>())
 {
-	m_sensors.push_back(std::make_unique<TemperatureSensor>(GPIO_PIN_8));
+	m_sensors.push_back(std::make_unique<TemperatureSensor>(GPIO_PIN_8)); // TODO: more pins and sensors
 }
 
 void Flat::update(float)
 {
 	std::for_each(m_sensors.begin(), m_sensors.end(),
 			[](auto& sensor){ sensor->update(); });
+	std::for_each(m_rooms->begin(), m_rooms->end(),
+			[](auto& room){ room->update(); });
 }
 
 void Flat::addRoom(std::shared_ptr<Room> room)

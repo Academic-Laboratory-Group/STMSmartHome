@@ -16,7 +16,7 @@ class Button : public Renderable
 		Button( unsigned xCenter, unsigned yCenter,
 				unsigned width, unsigned height,
 				const std::string text,
-				ButtonShape shape = Square,
+				ButtonShape shape = ButtonShape::Square,
 				Color color = BUTTON_BACKGROUND_COLOR,
 				unsigned textSize = 20u,
 				Color textColor = BUTTON_TEXT_COLOR );

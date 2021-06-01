@@ -3,6 +3,7 @@
 
 #include "Button.h"
 #include "TextBox.h"
+#include "Shape.h"
 #include "Utils.h"
 #include "Renderable.h"
 
@@ -22,6 +23,7 @@ class GUI : public Renderable
 
 		void addButton( std::shared_ptr<Button> button );
 		void addTextBox( std::shared_ptr<TextBox> textBox );
+		void addShape(std::shared_ptr<Shape> shape);
 
 		void setBackgroundColor(Color color);
 
@@ -31,6 +33,7 @@ class GUI : public Renderable
 	private:
 		std::vector<std::shared_ptr<Button>> m_buttons;
 		std::vector<std::shared_ptr<TextBox>> m_textBoxes;
+		std::vector<std::shared_ptr<Shape>> m_shapes;
 		Color m_backgroundColor;
 };
 

@@ -1,8 +1,11 @@
 #include "GUIBuilder.h"
 #include "TextBox.h"
 #include "Button.h"
+#include "Shape.h"
+#include "Circle.h"
 
 #include <array>
+#include <memory>
 
 
 GUIBuilder::GUIBuilder()
@@ -71,6 +74,11 @@ void GUIBuilder::addKeyboard(unsigned xCenter, unsigned yCenter,
 
 	addButton(xCenter + width / 2u - deleteMovement,
 			tdRowCenter, static_cast<unsigned>(singleButtonAreaWidth), singleButtonHeight, "<-");
+}
+
+void GUIBuilder::addCircle(int xCenter, int yCenter, int radius, Color color)
+{
+	m_gui.addShape(std::make_shared<Circle>(xCenter, yCenter, radius, color));
 }
 
 void GUIBuilder::setBackgroundColor(Color color)

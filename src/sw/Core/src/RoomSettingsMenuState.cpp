@@ -6,6 +6,7 @@
 
 #include <limits> 	// std::numeric_limits
 
+std::string float2str(float v);
 
 RoomSettingsMenuState::RoomSettingsMenuState(
 		std::shared_ptr<StateManager> stateManager, std::shared_ptr<Room> room) :
@@ -22,21 +23,23 @@ RoomSettingsMenuState::RoomSettingsMenuState(
 
 	m_guiBuilder.addTextBox(240, 35, "Room name: " + m_room->getName(), 20u);
 
-	m_guiBuilder.addButton(140, 200, 150, 150, "Light", Circle);
-	m_guiBuilder.addButton(340, 200, 150, 150, "Heater", Circle);
+	m_guiBuilder.addCircle(140, 200, 75);
+	m_guiBuilder.addTextBox(140, 200, "Light");
+	m_guiBuilder.addCircle(340, 200, 75);
+	m_guiBuilder.addTextBox(340, 200, "Heater");
 
-	m_guiBuilder.addTextBox(140, 225, std::to_string(m_intensityToSet), 20u, BUTTON_TEXT_COLOR);
-	m_guiBuilder.addTextBox(140, 142, "+", 20u, RED);
-	m_guiBuilder.addTextBox(140, 255, "-", 20u, BLUE);
+	m_guiBuilder.addTextBox(140, 225, std::to_string(m_intensityToSet), 20u,
+			BUTTON_TEXT_COLOR);
+	m_guiBuilder.addButton(140, 145, 40, 40, "+", ButtonShape::Circle,
+			BUTTON_BACKGROUND_COLOR, 20u, RED);
+	m_guiBuilder.addButton(140, 255, 40, 40, "-", ButtonShape::Circle,
+			BUTTON_BACKGROUND_COLOR, 20u, BLUE);
 
-	auto tmp = static_cast<int>(m_temperatureToSet);
-	auto integerStr = std::to_string(tmp);
-	tmp = static_cast<int>((m_temperatureToSet - static_cast<float>(tmp)) * 10.f);
-	auto fractionStr = std::to_string(tmp);
-	auto str = integerStr + '.' + fractionStr;
-	m_guiBuilder.addTextBox(340, 225, str, 20u, BUTTON_TEXT_COLOR);
-	m_guiBuilder.addTextBox(340, 142, "+", 20u, RED);
-	m_guiBuilder.addTextBox(340, 255, "-", 20u, BLUE);
+	m_guiBuilder.addTextBox(340, 225, float2str(m_temperatureToSet), 20u, BUTTON_TEXT_COLOR);
+	m_guiBuilder.addButton(340, 145, 40, 40, "+", ButtonShape::Circle,
+			BUTTON_BACKGROUND_COLOR, 20u, RED);
+	m_guiBuilder.addButton(340, 255, 40, 40, "-", ButtonShape::Circle,
+			BUTTON_BACKGROUND_COLOR, 20u, BLUE);
 
 	if (roomTemperature != std::numeric_limits<float>::infinity())
 	{
@@ -55,7 +58,8 @@ RoomSettingsMenuState::RoomSettingsMenuState(
 void RoomSettingsMenuState::update(float deltaTime)
 {
 	if (m_room->getTemperature() != std::numeric_limits<float>::infinity())
-		m_gui.setTextBoxText(2, std::to_string(m_room->getTemperature()));
+		m_gui.setTextBoxText(static_cast<int>(TextBoxes::RoomTemperatureValue),
+				std::to_string(m_room->getTemperature()));
 }
 
 void RoomSettingsMenuState::render()
@@ -83,24 +87,37 @@ void RoomSettingsMenuState::processInput(std::pair<unsigned, unsigned> touchAddr
 		{
 			case (int)Buttons::LightUp:
 				m_intensityToSet += 10;
-				return;
+				break;
 			case (int)Buttons::LightDown:
 				m_intensityToSet -= 10;
-				return;
+				break;
 			case (int)Buttons::HeaterUp:
 				m_temperatureToSet += 1.f;
-				return;
+				break;
 			case (int)Buttons::HeaterDown:
 				m_temperatureToSet -= 1.f;
-				return;
+				break;
 			default:
 				assert(!("InputResult out of range."));
 		}
+
+		m_room->setIntensity(m_intensityToSet);
+		m_room->setHeaterTemperature(m_temperatureToSet);
+
+		m_gui.setTextBoxText(static_cast<int>(TextBoxes::Intensity),
+				std::to_string(m_intensityToSet));
+		m_gui.setTextBoxText(static_cast<int>(TextBoxes::Temperature),
+				float2str(m_temperatureToSet));
 	}
 
-	m_gui.setTextBoxText(5, std::to_string(m_intensityToSet));
-	m_gui.setTextBoxText(9, std::to_string(m_temperatureToSet));
+}
 
-	m_room->setIntensity(m_intensityToSet);
-	m_room->setHeaterTemperature(m_temperatureToSet);
+std::string float2str(float v)
+{
+	auto tmp = static_cast<int>(v);
+	auto integerStr = std::to_string(tmp);
+	tmp = static_cast<int>((v - static_cast<float>(tmp)) * 10.f);
+	auto fractionStr = std::to_string(tmp);
+
+	return integerStr + '.' + fractionStr;
 }

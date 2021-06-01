@@ -4,7 +4,7 @@
 #include "gpio.h"
 
 
-enum ButtonShape
+enum class ButtonShape
 {
 	Square,
 	Circle
