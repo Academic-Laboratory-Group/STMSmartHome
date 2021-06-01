@@ -12,6 +12,7 @@ class TextBox : public Renderable
 	public:
 		TextBox(unsigned xCenter, unsigned yCenter, std::string text,
 				unsigned size = 24u, Color color = TEXT_COLOR,
+				Color backgroundColor = BACKGROUND_COLOR,
 				unsigned width = 0u, unsigned height = 0u);
 		~TextBox() = default;
 
@@ -30,6 +31,7 @@ class TextBox : public Renderable
 		std::string m_text;
 		unsigned m_size;
 		Color m_color;
+		Color m_backgroundColor;
 };
 
 

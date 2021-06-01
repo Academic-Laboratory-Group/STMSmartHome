@@ -29,13 +29,14 @@ RoomSettingsMenuState::RoomSettingsMenuState(
 	m_guiBuilder.addTextBox(340, 200, "Heater");
 
 	m_guiBuilder.addTextBox(140, 225, std::to_string(m_intensityToSet), 20u,
-			BUTTON_TEXT_COLOR);
+			BUTTON_TEXT_COLOR, BUTTON_BACKGROUND_COLOR);
 	m_guiBuilder.addButton(140, 145, 40, 40, "+", ButtonShape::Circle,
 			BUTTON_BACKGROUND_COLOR, 20u, RED);
 	m_guiBuilder.addButton(140, 255, 40, 40, "-", ButtonShape::Circle,
 			BUTTON_BACKGROUND_COLOR, 20u, BLUE);
 
-	m_guiBuilder.addTextBox(340, 225, float2str(m_temperatureToSet), 20u, BUTTON_TEXT_COLOR);
+	m_guiBuilder.addTextBox(340, 225, float2str(m_temperatureToSet), 20u,
+			BUTTON_TEXT_COLOR, BUTTON_BACKGROUND_COLOR);
 	m_guiBuilder.addButton(340, 145, 40, 40, "+", ButtonShape::Circle,
 			BUTTON_BACKGROUND_COLOR, 20u, RED);
 	m_guiBuilder.addButton(340, 255, 40, 40, "-", ButtonShape::Circle,
