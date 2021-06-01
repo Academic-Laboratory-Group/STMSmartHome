@@ -45,7 +45,7 @@ RoomSettingsMenuState::RoomSettingsMenuState(
 	if (roomTemperature != std::numeric_limits<float>::infinity())
 	{
 		m_guiBuilder.addTextBox(115, 85, "Temperature:", 20u);
-		m_guiBuilder.addTextBox(220, 85, std::to_string(m_room->getTemperature()),20u);
+		m_guiBuilder.addTextBox(220, 85, float2str(m_room->getTemperature()),20u);
 		m_guiBuilder.addTextBox(270, 85, "*C", 20u);
 	}
 

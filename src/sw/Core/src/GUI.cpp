@@ -60,5 +60,5 @@ std::string GUI::getButtonText(int idx)
 
 void GUI::setTextBoxText(int idx, std::string name)
 {
-	m_textBoxes.at(idx)->setText(name);
+	m_textBoxes[idx]->setText(name);
 }
