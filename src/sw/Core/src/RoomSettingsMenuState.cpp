@@ -77,16 +77,6 @@ void RoomSettingsMenuState::processInput(std::pair<unsigned, unsigned> touchAddr
 		m_stateManager->changeState(std::make_unique<RoomChooseMenuState>(m_stateManager));
 		return;
 	}
-	else if(inputResultStr == "Light")
-	{
-		m_stateManager->changeState(std::make_unique<NewDeviceControllingSignalMenuState>(m_stateManager, m_room));
-		return;
-	}
-	else if(inputResultStr == "Heater")
-	{
-		m_stateManager->changeState(std::make_unique<NewDeviceControllingSignalMenuState>(m_stateManager, m_room));
-		return;
-	}
 	else
 	{
 		switch(inputResult)

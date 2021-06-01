@@ -39,4 +39,11 @@ enum class SensorType
 	Size
 };
 
+enum class ControllerType
+{
+	Switch,
+	PWM,
+	Size
+};
+
 #endif

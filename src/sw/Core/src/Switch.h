@@ -7,7 +7,8 @@
 class Switch : public Controller
 {
 public:
-	Switch() = default;
+	Switch(int pin) :
+		Controller(pin, ControllerType::Switch) {};
 	~Switch() = default;
 
 	void setValue(float value) override

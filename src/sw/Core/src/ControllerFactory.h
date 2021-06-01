@@ -3,6 +3,8 @@
 
 #include "Controller.h"
 
+#include <memory>
+
 
 class ControllerFactory
 {
@@ -10,7 +12,7 @@ public:
 	ControllerFactory() = default;
 	virtual ~ControllerFactory() = default;
 
-	virtual Controller createController() = 0;
+	virtual std::shared_ptr<Controller> createController(int pin) = 0;
 };
 
 

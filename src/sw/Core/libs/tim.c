@@ -77,9 +77,9 @@ void MX_TIM12_Init(void)
 
   /* USER CODE END TIM12_Init 1 */
   htim12.Instance = TIM12;
-  htim12.Init.Prescaler = 179;
+  htim12.Init.Prescaler = 1799;
   htim12.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim12.Init.Period = 999;
+  htim12.Init.Period = 99;
   htim12.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim12.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim12) != HAL_OK)
@@ -306,16 +306,22 @@ void HAL_TIM_Base_MspDeInit(TIM_HandleTypeDef* tim_baseHandle)
 
 void PauseCounters()
 {
-	HAL_TIM_Base_Stop_IT(&htim14);
-	HAL_TIM_Base_Stop_IT(&htim13);
-	counters_state = Pause;
+	if(counters_state != Pause)
+	{
+		HAL_TIM_Base_Stop_IT(&htim14);
+		HAL_TIM_Base_Stop_IT(&htim13);
+		counters_state = Pause;
+	}
 }
 
 void UnpauseCounters()
 {
-	HAL_TIM_Base_Start_IT(&htim14);
-	HAL_TIM_Base_Start_IT(&htim13);
-	counters_state = Working;
+	if(counters_state != Working)
+	{
+		HAL_TIM_Base_Start_IT(&htim14);
+		HAL_TIM_Base_Start_IT(&htim13);
+		counters_state = Working;
+	}
 }
 
 

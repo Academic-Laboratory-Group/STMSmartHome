@@ -5,6 +5,8 @@
 #include "Controller.h"
 #include "PWMController.h"
 
+#include <memory>
+
 
 class PWMControllerFactory : public ControllerFactory
 {
@@ -12,9 +14,9 @@ public:
 	PWMControllerFactory() = default;
 	~PWMControllerFactory() = default;
 
-	Controller createController() override
+	std::shared_ptr<Controller> createController(int pin) override
 	{
-		return Factory();
+		return std::make_shared<PWMController>(pin);
 	}
 };
 
