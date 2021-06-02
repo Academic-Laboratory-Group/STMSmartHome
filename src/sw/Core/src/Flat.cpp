@@ -24,7 +24,7 @@ void Flat::update(float)
 void Flat::addRoom(std::shared_ptr<Room> room)
 {
 	m_sensors.at(0)->getEventManager()->subscribe(room);
-	room->addController(std::make_unique<PWMControllerFactory>(), 0); // TODO: Set correct pins
+	room->addController(std::make_unique<PWMControllerFactory>(), GPIO_PIN_14); // TODO: Set correct pins
 	room->addController(std::make_unique<SwitchFactory>(), 1);
 	m_rooms->push_back(std::move(room));
 }

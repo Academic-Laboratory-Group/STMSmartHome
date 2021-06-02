@@ -14,7 +14,7 @@ void Room::update(float)
 				[](auto& controller)
 				{
 					if(controller->getType() == ControllerType::Switch)
-						controller->setValue(1.f);
+						controller->setValue(0.f);
 				});
 
 	if(m_temperature < m_temperatureToSet - 0.5f)
@@ -22,7 +22,7 @@ void Room::update(float)
 				[](auto& controller)
 				{
 					if(controller->getType() == ControllerType::Switch)
-						controller->setValue(0.f);
+						controller->setValue(1.f);
 				});
 }
 

@@ -7,6 +7,7 @@
 #include <memory>
 #include <assert.h>
 
+std::string float2Str(float v);
 
 MainMenuState::MainMenuState(
 		std::shared_ptr<StateManager> stateManager) :
@@ -18,21 +19,28 @@ MainMenuState::MainMenuState(
 	m_guiBuilder.addTextBox(240, 40, "SmartHome App");
 
 	const auto rooms = m_stateManager->getFlat()->getRooms();
+
 	if (rooms->empty())
 	{
 		m_guiBuilder.addTextBox(240, 160, "No rooms configured"); // 480x320
 	}
 	else
 	{
-		m_guiBuilder.addTextBox(215, 140, "In " + rooms->front()->getName() + " temperature:", 20u);
-		m_guiBuilder.addTextBox(395, 140, std::to_string(rooms->front()->getTemperature()), 20u);
-		m_guiBuilder.addTextBox(435, 140, "*C", 20u);
+		if (rooms->front()->getTemperature() != std::numeric_limits<float>::infinity())
+		{
+			m_guiBuilder.addTextBox(215, 140, "In " + rooms->front()->getName() + " temperature:", 20u);
+			m_guiBuilder.addTextBox(395, 140, float2Str(rooms->front()->getTemperature()), 20u);
+			m_guiBuilder.addTextBox(435, 140, "*C", 20u);
+		}
 
 		if (rooms->capacity() > 1) // TODO: temporary
 		{
-			m_guiBuilder.addTextBox(210, 170, "In " + rooms->at(1)->getName() + " temperature:", 20u);
-			m_guiBuilder.addTextBox(395, 170, std::to_string(rooms->at(1)->getTemperature()), 20u);
-			m_guiBuilder.addTextBox(435, 170, "*C", 20u);
+			if (rooms->at(1)->getTemperature() != std::numeric_limits<float>::infinity())
+			{
+				m_guiBuilder.addTextBox(210, 170, "In " + rooms->at(1)->getName() + " temperature:", 20u);
+				m_guiBuilder.addTextBox(395, 170, float2Str(rooms->at(1)->getTemperature()), 20u);
+				m_guiBuilder.addTextBox(435, 170, "*C", 20u);
+			}
 		}
 	}
 
@@ -50,10 +58,17 @@ void MainMenuState::update(float deltaTime)
 	const auto rooms = m_stateManager->getFlat()->getRooms();
 	if (!rooms->empty())
 	{
-		m_gui.setTextBoxText(2, std::to_string(rooms->front()->getTemperature()));
+		if (rooms->front()->getTemperature() != std::numeric_limits<float>::infinity())
+			m_gui.setTextBoxText(static_cast<int>(TextBoxes::FirstTemperature),
+					float2Str(rooms->front()->getTemperature()));
 
 		if (rooms->capacity() > 1)
-			m_gui.setTextBoxText(5, std::to_string(rooms->at(1)->getTemperature()));
+		{
+			if (rooms->at(1)->getTemperature() != std::numeric_limits<float>::infinity())
+						m_gui.setTextBoxText(static_cast<int>(TextBoxes::SecondTemperature),
+								float2Str(rooms->at(1)->getTemperature()));
+		}
+
 	}
 }
 
@@ -78,3 +93,14 @@ void MainMenuState::processInput(std::pair<unsigned, unsigned> touchAddress)
 			assert(!("InputResult out of range."));
 	}
 }
+
+std::string float2Str(float v)
+{
+	auto tmp = static_cast<int>(v);
+	auto integerStr = std::to_string(tmp);
+	tmp = static_cast<int>((v - static_cast<float>(tmp)) * 10.f);
+	auto fractionStr = std::to_string(tmp);
+
+	return integerStr + '.' + fractionStr;
+}
+

@@ -17,7 +17,17 @@ class MainMenuState: public State
 	private:
 		enum class Buttons
 		{
-			Adjust
+			Adjust,
+		};
+		enum class TextBoxes
+		{
+			Name,
+			NameFirstRoom,
+			FirstTemperature,
+			FirstTemperatureDegree,
+			NameSecondRoom,
+			SecondTemperature,
+			SecondTemperatureDegree,
 		};
 		float m_temp_first_room = 22.0f;
 		float m_temp_second_room = 23.0f;

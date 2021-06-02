@@ -13,7 +13,10 @@ public:
 
 	void setValue(float value) override
 	{
-
+		if (value)
+			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, GPIO_PIN_SET);
+		else
+			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, GPIO_PIN_RESET);
 	}
 };
 
