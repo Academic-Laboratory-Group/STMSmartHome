@@ -9,5 +9,13 @@ Schematic of correct connections:
 
 ![NucleoSensor](assets/NucleoSensor.jpg)
 
+# PINOUT for diode LED
+                                                NUCLEO PIN                LED PIN
+                                                   PB14  <------------------>  PWM (+)
+                                                   GND   <------------------>  GND (-)
+Schematic of correct connections:
+
+![NucleoLight](assets/NucleoLight.jpg)
+
              
         
