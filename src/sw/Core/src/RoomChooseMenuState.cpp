@@ -31,7 +31,8 @@ RoomChooseMenuState::RoomChooseMenuState(
 	}
 	else
 	{
-		m_guiBuilder.addTextBox(110, 25, "Choose room:", 24u, TEXT_COLOR, 220, 50);
+		m_guiBuilder.addTextBox(110, 25, "Choose room:", 24u, TEXT_COLOR,
+				BACKGROUND_COLOR, 220, 50);
 
 		unsigned idx = 20u;
 		unsigned idy = 70u;

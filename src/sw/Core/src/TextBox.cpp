@@ -3,8 +3,9 @@
 
 
 TextBox::TextBox(unsigned xCenter, unsigned yCenter, std::string text,
-		unsigned size, Color color, unsigned width, unsigned height) :
-		m_text(text), m_size(size), m_color(color)
+		unsigned size, Color color, Color backgroundColor,
+		unsigned width, unsigned height) :
+		m_text(text), m_size(size), m_color(color), m_backgroundColor(backgroundColor)
 {
 	if(width != 0u)
 	{
@@ -13,20 +14,22 @@ TextBox::TextBox(unsigned xCenter, unsigned yCenter, std::string text,
 	}
 	else
 	{
+		const auto halfOfTextSize = static_cast<float>(m_text.length()) / 2.0f;
+
 		if(m_size == 16u)
 		{
-			m_left = xCenter - ((m_text.length()/2.0f) * 11u);
-			m_right = xCenter + ((m_text.length()/2.0f) * 11u);
+			m_left = xCenter - static_cast<unsigned>(halfOfTextSize * 11.f);
+			m_right = xCenter + static_cast<unsigned>(halfOfTextSize * 11.f);
 		}
 		else if(m_size == 20u)
 		{
-			m_left = xCenter - ((m_text.length()/2.0f) * 14u);
-			m_right = xCenter + ((m_text.length()/2.0f) * 14u);
+			m_left = xCenter - static_cast<unsigned>(halfOfTextSize * 14.f);
+			m_right = xCenter + static_cast<unsigned>(halfOfTextSize * 14.f);
 		}
 		else if(m_size == 24u)
 		{
-			m_left = xCenter - ((m_text.length()/2.0f) * 17u);
-			m_right = xCenter + ((m_text.length()/2.0f) * 17u);
+			m_left = xCenter - static_cast<unsigned>(halfOfTextSize * 18.f);
+			m_right = xCenter + static_cast<unsigned>(halfOfTextSize * 18.f);
 		}
 	}
 
@@ -46,13 +49,13 @@ void TextBox::render()
 {
 	if(m_size == 16)
 		GUI_DisStringInBox_EN(m_left, m_top, m_right, m_bottom,
-				m_text.c_str(), &Font16, FONT_BACKGROUND, m_color);
+				m_text.c_str(), &Font16, m_backgroundColor, m_color);
 	if(m_size == 20)
 		GUI_DisStringInBox_EN(m_left, m_top, m_right, m_bottom,
-				m_text.c_str(), &Font20, FONT_BACKGROUND, m_color);
+				m_text.c_str(), &Font20, m_backgroundColor, m_color);
 	if(m_size == 24)
 		GUI_DisStringInBox_EN(m_left, m_top, m_right, m_bottom,
-				m_text.c_str(), &Font24, FONT_BACKGROUND, m_color);
+				m_text.c_str(), &Font24, m_backgroundColor, m_color);
 }
 
 std::string TextBox::getText()
@@ -64,13 +67,13 @@ void TextBox::cleanDisplay()
 {
 	if(m_size == 16)
 		GUI_DrawRectangle(m_left, m_top, m_right,  m_top + 16,
-				FONT_BACKGROUND, DRAW_FULL, DOT_PIXEL_2X2);
+				m_backgroundColor, DRAW_FULL, DOT_PIXEL_2X2);
 	if(m_size == 20)
 		GUI_DrawRectangle(m_left, m_top, m_right, m_top + 20,
-				FONT_BACKGROUND, DRAW_FULL, DOT_PIXEL_2X2);
+				m_backgroundColor, DRAW_FULL, DOT_PIXEL_2X2);
 	if(m_size == 24)
 		GUI_DrawRectangle(m_left, m_top, m_right, m_top + 24,
-				FONT_BACKGROUND, DRAW_FULL, DOT_PIXEL_2X2);
+				m_backgroundColor, DRAW_FULL, DOT_PIXEL_2X2);
 }
 
 void TextBox::setText(std::string text)

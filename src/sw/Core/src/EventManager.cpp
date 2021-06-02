@@ -1,19 +1,22 @@
 #include "EventManager.h"
+
 #include <algorithm>
 
-void EventManager::subscribe(SensorListener* listener)
+
+void EventManager::subscribe(std::shared_ptr<SensorListener> listener)
 {
-	listeners.push_back(listener);
+	m_listeners.push_back(listener);
 }
-void EventManager::unsubscribe(SensorListener* listener)
+void EventManager::unsubscribe(std::shared_ptr<SensorListener> listener)
 {
-	listeners.erase(std::remove(listeners.begin(), listeners.end(), listener), listeners.end());
+	m_listeners.erase(std::remove(m_listeners.begin(), m_listeners.end(), listener),
+			m_listeners.end());
 }
 
-void EventManager::notify(Sensor sensor, int value)
+void EventManager::notify(SensorType sensorType, float value)
 {
-	for (auto i = 0u; i < listeners.size(); ++i)
+	for (const auto& listener : m_listeners)
 	{
-		listeners[i]->notify(sensor, value);
+		listener->notify(sensorType, value);
 	}
 }

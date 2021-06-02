@@ -4,7 +4,7 @@
 #include "gpio.h"
 
 
-enum ButtonShape
+enum class ButtonShape
 {
 	Square,
 	Circle
@@ -33,9 +33,17 @@ enum Color
 	TEXT_COLOR = BLACK
 };
 
-enum Sensor
+enum class SensorType
 {
-	Temperature1 = GPIO_PIN_8
+	Temperature,
+	Size
+};
+
+enum class ControllerType
+{
+	Switch,
+	PWM,
+	Size
 };
 
 #endif

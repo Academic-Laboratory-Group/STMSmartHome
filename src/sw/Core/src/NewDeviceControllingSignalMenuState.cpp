@@ -54,7 +54,7 @@ void NewDeviceControllingSignalMenuState::processInput(std::pair<unsigned, unsig
 	}
 	else if(inputResultStr == "PWM")
 	{
-		m_room->getSensor()->setSensor(Temperature1);
+		//m_room->getSensor()->setSensorId(Temperature1);
 		m_stateManager->changeState(std::make_unique<RoomSettingsMenuState>(m_stateManager, m_room));
 		return;
 	}

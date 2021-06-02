@@ -1,9 +1,9 @@
 #include "Sensor_Driver.h"
 
-void Delay_us (int16_t delay) 
+void Delay_us (uint32_t delay)
 {
-  htim14.Instance->CNT = 0;
-	while(htim14.Instance->CNT <= delay);
+	htim14.Instance->CNT = 0;
+	while (htim14.Instance->CNT <= delay);
 }
 
 void ONE_WIRE_SET(GPIO_TypeDef* m_GPIOx, uint16_t m_GPIO_pin)

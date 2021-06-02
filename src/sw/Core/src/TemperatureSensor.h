@@ -1,24 +1,21 @@
 #ifndef _TEMPERATURESENSOR_H_
 #define _TEMPERATURESENSOR_H_
 
-#include "gpio.h"
-#include "SensorListener.h"
-#include "Utils.h"
 #include "EventManager.h"
+#include "Sensor.h"
+#include "Utils.h"
+#include "gpio.h"
 
-class TemperatureSensor
+class TemperatureSensor : public Sensor
 {
-	private:
-		EventManager* m_eventManager;
-		GPIO_TypeDef* m_GPIOx; 
-		Sensor m_sensor;
-			
 	public:
-		TemperatureSensor(EventManager* eventManager, Sensor sensor);
-		void setSensor(Sensor sensor);
-		void update();
-		int getSensorValue();
+		TemperatureSensor(int sensorPin);
+		~TemperatureSensor() = default;
 
+		void update(float) override;
+
+	private:
+		float getSensorValue() override;
 };
 	
 #endif

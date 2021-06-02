@@ -22,7 +22,7 @@ class Prog : public Updatable, public Renderable
 
 		static Prog* getInstance();
 
-		void update(float deltaTime) override;
+		void update(float deltaTime = 0.f) override;
 		void render() override;
 		void processInput(std::pair<unsigned, unsigned> touchAddress);
 

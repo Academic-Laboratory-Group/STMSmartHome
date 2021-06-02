@@ -32,17 +32,9 @@ TIM_HandleTypeDef htim14;
 /* TIM3 init function */
 void MX_TIM3_Init(void)
 {
-
-  /* USER CODE BEGIN TIM3_Init 0 */
-
-  /* USER CODE END TIM3_Init 0 */
-
   TIM_MasterConfigTypeDef sMasterConfig = {0};
   TIM_OC_InitTypeDef sConfigOC = {0};
 
-  /* USER CODE BEGIN TIM3_Init 1 */
-
-  /* USER CODE END TIM3_Init 1 */
   htim3.Instance = TIM3;
   htim3.Init.Prescaler = 1800-1;
   htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
@@ -67,9 +59,6 @@ void MX_TIM3_Init(void)
   {
     Error_Handler();
   }
-  /* USER CODE BEGIN TIM3_Init 2 */
-
-  /* USER CODE END TIM3_Init 2 */
   HAL_TIM_MspPostInit(&htim3);
 
 }
@@ -88,9 +77,9 @@ void MX_TIM12_Init(void)
 
   /* USER CODE END TIM12_Init 1 */
   htim12.Instance = TIM12;
-  htim12.Init.Prescaler = 179;
+  htim12.Init.Prescaler = 1799;
   htim12.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim12.Init.Period = 999;
+  htim12.Init.Period = 99;
   htim12.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim12.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim12) != HAL_OK)
@@ -124,39 +113,22 @@ void MX_TIM12_Init(void)
 void MX_TIM13_Init(void)
 {
 
-  /* USER CODE BEGIN TIM13_Init 0 */
-
-  /* USER CODE END TIM13_Init 0 */
-
-  /* USER CODE BEGIN TIM13_Init 1 */
-
-  /* USER CODE END TIM13_Init 1 */
   htim13.Instance = TIM13;
-  htim13.Init.Prescaler = 17999;
+  htim13.Init.Prescaler = 17999; // 10kHz
   htim13.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim13.Init.Period = 9999;
+  htim13.Init.Period = 59999;
   htim13.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim13.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim13) != HAL_OK)
   {
     Error_Handler();
   }
-  /* USER CODE BEGIN TIM13_Init 2 */
-
-  /* USER CODE END TIM13_Init 2 */
 
 }
 /* TIM14 init function */
 void MX_TIM14_Init(void)
 {
 
-  /* USER CODE BEGIN TIM14_Init 0 */
-
-  /* USER CODE END TIM14_Init 0 */
-
-  /* USER CODE BEGIN TIM14_Init 1 */
-
-  /* USER CODE END TIM14_Init 1 */
   htim14.Instance = TIM14;
   htim14.Init.Prescaler = 179;
   htim14.Init.CounterMode = TIM_COUNTERMODE_UP;
@@ -167,9 +139,6 @@ void MX_TIM14_Init(void)
   {
     Error_Handler();
   }
-  /* USER CODE BEGIN TIM14_Init 2 */
-
-  /* USER CODE END TIM14_Init 2 */
 
 }
 
@@ -334,6 +303,27 @@ void HAL_TIM_Base_MspDeInit(TIM_HandleTypeDef* tim_baseHandle)
   /* USER CODE END TIM14_MspDeInit 1 */
   }
 }
+
+void PauseCounters()
+{
+	if(counters_state != Pause)
+	{
+		HAL_TIM_Base_Stop_IT(&htim14);
+		HAL_TIM_Base_Stop_IT(&htim13);
+		counters_state = Pause;
+	}
+}
+
+void UnpauseCounters()
+{
+	if(counters_state != Working)
+	{
+		HAL_TIM_Base_Start_IT(&htim14);
+		HAL_TIM_Base_Start_IT(&htim13);
+		counters_state = Working;
+	}
+}
+
 
 /* USER CODE BEGIN 1 */
 

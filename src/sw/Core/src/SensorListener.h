@@ -5,8 +5,8 @@
 
 class SensorListener
 {
-	public:
-		virtual void notify(Sensor sensor, int value) = 0;
+public:
+	virtual void notify(SensorType sensorType, float value) = 0;
 };
-	
+
 #endif

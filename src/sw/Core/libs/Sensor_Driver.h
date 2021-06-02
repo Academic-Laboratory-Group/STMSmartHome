@@ -8,7 +8,7 @@ extern "C" {
 #include "gpio.h"
 #include "tim.h"
 
-void Delay_us (int16_t delay);
+void Delay_us (uint32_t delay);
 void ONE_WIRE_SET(GPIO_TypeDef* m_GPIOx, uint16_t m_GPIO_pin);
 void ONE_WIRE_RESET(GPIO_TypeDef* m_GPIOx, uint16_t m_GPIO_pin);
 uint8_t DS18B20_Init(GPIO_TypeDef* m_GPIOx, uint16_t m_GPIO_pin);

@@ -14,7 +14,7 @@ class StateManager : public Updatable, Renderable
 		StateManager();
 		~StateManager() = default;
 
-		void update(float deltaTime) override;
+		void update(float deltaTime = 0.f) override;
 		void render() override;
 		void processInput(std::pair<unsigned, unsigned> touchAddress);
 

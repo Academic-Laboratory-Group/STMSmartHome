@@ -7,14 +7,18 @@
 
 void GUI::render()
 {
-	HAL_TIM_Base_Stop_IT(&htim13);
+	PauseCounters();
+
 	GUI_Clear(m_backgroundColor);
 
+	for_each(m_shapes.begin(), m_shapes.end(),
+			[](const auto& shape){ shape->render(); });
 	for_each(m_buttons.begin(), m_buttons.end(),
 			[](const auto& button){ button->render(); });
 	for_each(m_textBoxes.begin(), m_textBoxes.end(),
 			[](const auto& textBoxes){ textBoxes->render(); });
-	HAL_TIM_Base_Start_IT(&htim13);
+
+	UnpauseCounters();
 }
 
 int GUI::processInput(std::pair<unsigned, unsigned> touchAddress)
@@ -29,14 +33,19 @@ int GUI::processInput(std::pair<unsigned, unsigned> touchAddress)
 	return -1;
 }
 
-void GUI::addButton( std::shared_ptr<Button> button )
+void GUI::addButton(std::shared_ptr<Button> button)
 {
 	m_buttons.emplace_back(std::move(button));
 }
 
-void GUI::addTextBox( std::shared_ptr<TextBox> textBox )
+void GUI::addTextBox(std::shared_ptr<TextBox> textBox)
 {
 	m_textBoxes.emplace_back(std::move(textBox));
+}
+
+void GUI::addShape(std::shared_ptr<Shape> shape)
+{
+	m_shapes.emplace_back(std::move(shape));
 }
 
 void GUI::setBackgroundColor(Color color)
@@ -51,5 +60,5 @@ std::string GUI::getButtonText(int idx)
 
 void GUI::setTextBoxText(int idx, std::string name)
 {
-	m_textBoxes.at(idx)->setText(name);
+	m_textBoxes[idx]->setText(name);
 }
