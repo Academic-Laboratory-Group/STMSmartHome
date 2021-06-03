@@ -21,9 +21,6 @@
 ### Change string value menu
 ![ChangeStringValueMenu](assets/GUIVisualization/ChangeStringValueMenu.png)
 
-### Add new device menu
-![AddNewDeviceMenu](assets/GUIVisualization/AddNewDeviceMenu.png)
-
 ### Other things probably needed to have:
 * change number value menu,
 * add new device menu extensions like unit type, limits (min and max value), pins where connected the device is.
