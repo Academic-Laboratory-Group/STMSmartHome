@@ -9,7 +9,10 @@ class PWMController : public Controller
 {
 public:
 	PWMController(int pin) :
-		Controller(pin, ControllerType::PWM) {};
+		Controller(pin, ControllerType::PWM)
+	{
+		setValue(50.f);
+	};
 	~PWMController() = default;
 
 	void setValue(float value) override

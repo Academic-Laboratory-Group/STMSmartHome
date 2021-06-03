@@ -41,7 +41,7 @@ enum CountersStates
 	Working,
 	Pause
 };
-static int counters_state = Working;
+extern int counters_state;
 
 /* USER CODE BEGIN Private defines */
 

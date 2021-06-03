@@ -304,6 +304,7 @@ void HAL_TIM_Base_MspDeInit(TIM_HandleTypeDef* tim_baseHandle)
   }
 }
 
+int counters_state = Working;
 void PauseCounters()
 {
 	if(counters_state != Pause)
