@@ -2,7 +2,7 @@
 #include "TemperatureSensor.h"
 #include "PWMControllerFactory.h"
 #include "SwitchFactory.h"
-#include "gpio.h"
+#include "Pinout.h"
 
 #include <algorithm>
 #include <memory>
@@ -10,7 +10,6 @@
 
 Flat::Flat() : m_rooms(std::make_shared<std::vector<std::shared_ptr<Room>>>())
 {
-	m_sensors.push_back(std::make_unique<TemperatureSensor>(GPIO_PIN_8)); // TODO: more pins and sensors
 }
 
 void Flat::update(float)
@@ -23,9 +22,25 @@ void Flat::update(float)
 
 void Flat::addRoom(std::shared_ptr<Room> room)
 {
-	m_sensors.at(0)->getEventManager()->subscribe(room);
-	room->addController(std::make_unique<PWMControllerFactory>(), GPIO_PIN_14); // TODO: Set correct pins
-	room->addController(std::make_unique<SwitchFactory>(), 1);
+	if(g_sensorsPinOutIterator < g_sensorsPinOut.size())
+	{
+		m_sensors.push_back(std::make_unique<TemperatureSensor>(
+				g_sensorsPinOut[g_sensorsPinOutIterator]));
+		m_sensors.at(g_sensorsPinOutIterator)->getEventManager()->subscribe(room);
+		++g_sensorsPinOutIterator;
+	}
+	if(g_switchPinOutIterator < g_switchPinOut.size())
+	{
+		room->addController(std::make_unique<SwitchFactory>(),
+				g_switchPinOutIterator);
+		++g_switchPinOutIterator;
+	}
+	if(g_PWMPinOutIterator < g_PWMPinOut.size())
+	{
+		room->addController(std::make_unique<PWMControllerFactory>(),
+				g_PWMPinOutIterator);
+		++g_PWMPinOutIterator;
+	}
 	m_rooms->push_back(std::move(room));
 }
 

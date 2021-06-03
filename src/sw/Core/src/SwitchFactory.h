@@ -14,9 +14,9 @@ public:
 	SwitchFactory() = default;
 	~SwitchFactory() = default;
 
-	std::shared_ptr<Controller> createController(int pin) override
+	std::shared_ptr<Controller> createController(int pinIterator) override
 	{
-		return std::make_shared<Switch>(pin);
+		return std::make_shared<Switch>(pinIterator);
 	}
 };
 

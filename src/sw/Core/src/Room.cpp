@@ -8,7 +8,7 @@
 void Room::update(float)
 {
 	// Heater
-	if(m_temperature > m_temperatureToSet + 0.5f)
+	if(m_temperature > m_temperatureToSet + 0.1f)
 		// TODO: actually SwitchController means always HeaterController for now
 		for_each(m_controllers.begin(), m_controllers.end(),
 				[](auto& controller)
@@ -17,7 +17,7 @@ void Room::update(float)
 						controller->setValue(0.f);
 				});
 
-	if(m_temperature < m_temperatureToSet - 0.5f)
+	if(m_temperature < m_temperatureToSet - 0.1f)
 		for_each(m_controllers.begin(), m_controllers.end(),
 				[](auto& controller)
 				{

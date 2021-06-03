@@ -8,16 +8,19 @@
 class PWMController : public Controller
 {
 public:
-	PWMController(int pin) :
-		Controller(pin, ControllerType::PWM)
+	PWMController(int pinIterator) :
+		Controller(pinIterator, ControllerType::PWM)
 	{
+		HAL_TIM_PWM_Start(g_PWMPinOut.at(pinIterator).htim,
+				g_PWMPinOut.at(pinIterator).channel);
 		setValue(50.f);
 	};
 	~PWMController() = default;
 
 	void setValue(float value) override
 	{
-		__HAL_TIM_SET_COMPARE(&htim12, TIM_CHANNEL_1,
+		const auto pinOut = g_PWMPinOut.at(m_pinIterator);
+		__HAL_TIM_SET_COMPARE(pinOut.htim, pinOut.channel,
 				static_cast<int>(value));
 	}
 };

@@ -3,13 +3,14 @@
 
 #include "EventManager.h"
 #include "Updatable.h"
+#include "Pinout.h"
 
 
 class Sensor : public Updatable
 {
 public:
-	Sensor(int sensorPin, GPIO_TypeDef* GPIOx) :
-		m_sensorPin(sensorPin), m_GPIOx(GPIOx),
+	Sensor(Pin pin) :
+		m_pin(pin),
 		m_eventManager(std::make_shared<EventManager>()) {};
 	virtual ~Sensor() = default;
 
@@ -21,8 +22,7 @@ public:
 protected:
 	virtual float getSensorValue() = 0;
 
-	int m_sensorPin;
-	GPIO_TypeDef* m_GPIOx;
+	Pin m_pin;
 	std::shared_ptr<EventManager> m_eventManager;
 };
 

@@ -12,7 +12,7 @@ public:
 	ControllerFactory() = default;
 	virtual ~ControllerFactory() = default;
 
-	virtual std::shared_ptr<Controller> createController(int pin) = 0;
+	virtual std::shared_ptr<Controller> createController(int pinIterator) = 0;
 };
 
 

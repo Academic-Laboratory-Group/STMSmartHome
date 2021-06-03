@@ -4,12 +4,12 @@
 #include "EventManager.h"
 #include "Sensor.h"
 #include "Utils.h"
-#include "gpio.h"
+#include "Pinout.h"
 
 class TemperatureSensor : public Sensor
 {
 	public:
-		TemperatureSensor(int sensorPin);
+		TemperatureSensor(Pin pin);
 		~TemperatureSensor() = default;
 
 		void update(float) override;

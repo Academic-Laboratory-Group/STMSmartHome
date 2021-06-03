@@ -14,9 +14,9 @@ public:
 	PWMControllerFactory() = default;
 	~PWMControllerFactory() = default;
 
-	std::shared_ptr<Controller> createController(int pin) override
+	std::shared_ptr<Controller> createController(int pinIterator) override
 	{
-		return std::make_shared<PWMController>(pin);
+		return std::make_shared<PWMController>(pinIterator);
 	}
 };
 

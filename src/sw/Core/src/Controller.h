@@ -7,8 +7,8 @@
 class Controller
 {
 public:
-	Controller(int pin, ControllerType type) :
-		m_pin(pin), m_type(type) {};
+	Controller(int pinIterator, ControllerType type) :
+		m_pinIterator(pinIterator), m_type(type) {};
 	virtual ~Controller() = default;
 
 	virtual void setValue(float value) = 0;
@@ -18,8 +18,8 @@ public:
 		return m_type;
 	}
 
-private:
-	const int m_pin{-1};
+protected:
+	const int m_pinIterator{-1};
 	const ControllerType m_type;
 };
 

@@ -24,19 +24,19 @@ RoomSettingsMenuState::RoomSettingsMenuState(
 	m_guiBuilder.addTextBox(240, 35, "Room name: " + m_room->getName(), 20u);
 
 	m_guiBuilder.addCircle(140, 200, 75);
-	m_guiBuilder.addTextBox(140, 200, "Light", 24u, TEXT_COLOR);
+	m_guiBuilder.addTextBox(140, 200, "Light", 24u, BUTTON_TEXT_COLOR);
 	m_guiBuilder.addCircle(340, 200, 75);
-	m_guiBuilder.addTextBox(340, 200, "Heater", 24u, TEXT_COLOR);
+	m_guiBuilder.addTextBox(340, 200, "Heater", 24u, BUTTON_TEXT_COLOR);
 
-	m_guiBuilder.addTextBox(140, 225, std::to_string(m_intensityToSet), 20u,
-			BUTTON_TEXT_COLOR, BUTTON_BACKGROUND_COLOR);
+	m_guiBuilder.addTextBox(155, 225, std::to_string(m_intensityToSet), 20u,
+			BUTTON_TEXT_COLOR, BUTTON_BACKGROUND_COLOR, 60u, 30u);
 	m_guiBuilder.addButton(140, 145, 40, 40, "+", ButtonShape::Circle,
 			BUTTON_BACKGROUND_COLOR, 20u, RED);
 	m_guiBuilder.addButton(140, 255, 40, 40, "-", ButtonShape::Circle,
 			BUTTON_BACKGROUND_COLOR, 20u, BLUE);
 
 	m_guiBuilder.addTextBox(340, 225, float2str(m_temperatureToSet), 20u,
-			BUTTON_TEXT_COLOR, BUTTON_BACKGROUND_COLOR);
+			BUTTON_TEXT_COLOR, BUTTON_BACKGROUND_COLOR, 60u, 30u);
 	m_guiBuilder.addButton(340, 145, 40, 40, "+", ButtonShape::Circle,
 			BUTTON_BACKGROUND_COLOR, 20u, RED);
 	m_guiBuilder.addButton(340, 255, 40, 40, "-", ButtonShape::Circle,
@@ -87,16 +87,18 @@ void RoomSettingsMenuState::processInput(std::pair<unsigned, unsigned> touchAddr
 		switch(inputResult)
 		{
 			case (int)Buttons::LightUp:
-				m_intensityToSet += 10;
+				if (m_intensityToSet < 100)
+					m_intensityToSet += 10;
 				break;
 			case (int)Buttons::LightDown:
-				m_intensityToSet -= 10;
+				if (m_intensityToSet > 0)
+					m_intensityToSet -= 10;
 				break;
 			case (int)Buttons::HeaterUp:
-				m_temperatureToSet += 1.f;
+				m_temperatureToSet += 0.1f;
 				break;
 			case (int)Buttons::HeaterDown:
-				m_temperatureToSet -= 1.f;
+				m_temperatureToSet -= 0.1f;
 				break;
 			default:
 				assert(!("InputResult out of range."));
