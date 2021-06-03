@@ -23,6 +23,7 @@ class Room : public SensorListener, Updatable
 		void setIntensity(int intensity);
 		int getIntensity() const;
 		void setHeaterTemperature(float temperature);
+		float getHeaterTemperature();
 		float getTemperature() const;
 
 		void addController(std::unique_ptr<ControllerFactory> controllerFactory,
@@ -36,7 +37,7 @@ class Room : public SensorListener, Updatable
 		std::string m_name{""};
 		float m_temperature{std::numeric_limits<float>::infinity()};
 		int m_intensity{50};
-		float m_temperatureToSet{0};
+		float m_temperatureToSet{std::numeric_limits<float>::infinity()};
 		std::vector<std::shared_ptr<Controller>> m_controllers;
 
 };

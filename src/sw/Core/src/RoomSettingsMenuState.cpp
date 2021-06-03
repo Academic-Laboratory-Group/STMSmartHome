@@ -12,9 +12,15 @@ RoomSettingsMenuState::RoomSettingsMenuState(
 		std::shared_ptr<StateManager> stateManager, std::shared_ptr<Room> room) :
 		State(stateManager), m_room(room), m_intensityToSet(room->getIntensity())
 {
-	const auto roomTemperature = m_room->getTemperature();
+	auto roomTemperature = m_room->getHeaterTemperature();
 	if(roomTemperature != std::numeric_limits<float>::infinity())
 		m_temperatureToSet = roomTemperature;
+	else
+	{
+		roomTemperature = m_room->getTemperature();
+		if(roomTemperature != std::numeric_limits<float>::infinity())
+			m_temperatureToSet = roomTemperature;
+	}
 
 	// make new GUI
 	m_guiBuilder.setBackgroundColor(BACKGROUND_COLOR);

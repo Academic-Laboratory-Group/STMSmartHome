@@ -44,6 +44,7 @@ void Room::setIntensity(int intensity)
 				if(controller->getType() == ControllerType::PWM)
 					controller->setValue(static_cast<float>(intensity));
 			});
+	m_intensity = intensity;
 }
 
 int Room::getIntensity() const
@@ -54,6 +55,11 @@ int Room::getIntensity() const
 void Room::setHeaterTemperature(float temperature)
 {
 	m_temperatureToSet = temperature;
+}
+
+float Room::getHeaterTemperature()
+{
+	return m_temperatureToSet;
 }
 
 float Room::getTemperature() const
