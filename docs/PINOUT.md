@@ -1,17 +1,17 @@
 # Allocation of pins for room's controllers and sensors
 
 Room 1:
-* SENSOR: PC8
-* LIGHT: PB14
+* Sensor: PC8
+* Light: PB14
 * Heater: PC9
 
 Room 2:
-* SENSOR: PC6
-* LIGHT: PB15
+* Sensor: PC6
+* Light: PB15
 * Heater: PB8
 
 Room 3:
-* SENSOR: PC5
+* Sensor: PC5
 * Heater: PB9
 
 # PINOUT for digital temperature sensor DS18B20
