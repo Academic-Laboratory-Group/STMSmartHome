@@ -24,9 +24,9 @@ RoomSettingsMenuState::RoomSettingsMenuState(
 	m_guiBuilder.addTextBox(240, 35, "Room name: " + m_room->getName(), 20u);
 
 	m_guiBuilder.addCircle(140, 200, 75);
-	m_guiBuilder.addTextBox(140, 200, "Light");
+	m_guiBuilder.addTextBox(140, 200, "Light", 24u, TEXT_COLOR);
 	m_guiBuilder.addCircle(340, 200, 75);
-	m_guiBuilder.addTextBox(340, 200, "Heater");
+	m_guiBuilder.addTextBox(340, 200, "Heater", 24u, TEXT_COLOR);
 
 	m_guiBuilder.addTextBox(140, 225, std::to_string(m_intensityToSet), 20u,
 			BUTTON_TEXT_COLOR, BUTTON_BACKGROUND_COLOR);

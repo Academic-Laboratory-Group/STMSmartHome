@@ -25,7 +25,7 @@ float TemperatureSensor::getSensorValue()
 			DS18B20_Write(0xBE, m_GPIOx, m_sensorPin);
 			int temp = DS18B20_Read(m_GPIOx, m_sensorPin);
 			temp |= DS18B20_Read(m_GPIOx, m_sensorPin) << 8;
-			return static_cast<float>(temp) * 0.0625;
+			return static_cast<float>(temp) * 0.0625f;
 		}
 	}
 	return 0;
