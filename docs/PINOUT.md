@@ -1,18 +1,18 @@
 # Allocation of pins to rooms
 
 Room 1:
-*SENSOR: PC8
-*LIGHT: PB14
-*Heater: PC9
+* SENSOR: PC8
+* LIGHT: PB14
+* Heater: PC9
 
 Room 2:
-*SENSOR: PC6
-*LIGHT: PB15
-*Heater: PB8
+* SENSOR: PC6
+* LIGHT: PB15
+* Heater: PB8
 
 Room 3:
-*SENSOR: PC5
-*Heater: PB9
+* SENSOR: PC5
+* Heater: PB9
 
 # PINOUT for digital temperature sensor DS18B20
                                                 NUCLEO PIN                SENSOR PIN
