@@ -1,4 +1,4 @@
-# Allocation of pins for "rooms"(controllers and sensors)
+# Allocation of pins for room's controllers and sensors
 
 Room 1:
 * SENSOR: PC8
