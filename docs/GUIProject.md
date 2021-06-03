@@ -4,6 +4,10 @@
 * Button background - #F2D9B0
 * Frames - #CD8742
 
+---
+> Decided to stay with black and white as display have problems with colors.
+---
+
 ## State diagram
 ![StateDiagram](assets/StateDiagram.png)
 
