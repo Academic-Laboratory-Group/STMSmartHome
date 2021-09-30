@@ -12,7 +12,7 @@ Product features:
 * time controled settings.
 
 Result:  
-(click on the image to move into the YouTube channel)  
+(click on the images to move to the specific movie on our YouTube channel)  
 [![Result](docs/assets/Result.jpg)](https://www.youtube.com/watch?v=28xRfD5T_kk "STMSmartHome")  
 [![Gource](docs/assets/Gource.jpg)](https://www.youtube.com/watch?v=1gYMx32AHFE&t=1s "STMSmartHome worklog by Gource")  
 
