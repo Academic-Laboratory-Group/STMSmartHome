@@ -3,6 +3,9 @@
 # STMSmartHome
 Smart Home system realised on STM with use of C++ language. 
 
+[![Result](docs/assets/Result.jpg)](https://www.youtube.com/watch?v=28xRfD5T_kk "STMSmartHome")
+[![Gource](docs/assets/Gource.jpg)](https://www.youtube.com/watch?v=1gYMx32AHFE&t=1s "STMSmartHome worklog by Gource")
+
 Product features:
 * 4" touch screen,
 * temperature measurement,
